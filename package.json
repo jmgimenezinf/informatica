@@ -9,7 +9,9 @@
     "react": "^15.5.4",
     "react-apollo": "^1.1.2",
     "react-dom": "^15.5.4",
-    "react-materialize": "^0.18.1"
+    "react-materialize": "^0.18.1",
+    "react-slick": "^0.14.11",
+    "slick-carousel": "^1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",

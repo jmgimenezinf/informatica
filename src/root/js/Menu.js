@@ -5,7 +5,8 @@ import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import ProfesoresViajeros from '../../alumnos/js/ProfesoresViajeros';
 import Inicio from '../../inicio/js/Inicio';
 import Institucional from '../../institucional/js/Institucional'
-import Novedades from '../../novedades/js/Novedades'
+import Tesinas from '../../alumnos/js/Tesinas'
+import '../css/root.css'
 class Menu extends Component {
   handleSubMenu(e){
     var href =String(e.target).split("#")[1];
@@ -17,7 +18,7 @@ class Menu extends Component {
         break;
       case 'tesinas':
         this.setState({
-            page:<ProfesoresViajeros/>
+            page:<Tesinas/>
         });
         break;
       case 'profesores-viajeros':
@@ -41,11 +42,6 @@ class Menu extends Component {
       case 'institucional':
         this.setState({
             page:<Institucional/>
-        });
-        break;
-      case 'novedades':
-         this.setState({
-            page:<Novedades/>
         });
         break;
       case 'docentes':
@@ -83,7 +79,6 @@ class Menu extends Component {
             <Navbar brand='logo' right className="blue darken-2">
                 <NavItem href='#inicio' onClick={(e)=> this.handleMenu(e)}>Inicio</NavItem>
                 <NavItem href='#institucional' onClick={(e)=> this.handleMenu(e)}>Institucional</NavItem>
-                <NavItem href='#novedades' onClick={(e)=> this.handleMenu(e)}>Novedades</NavItem>
                 <NavItem href='#alumnos'>
                   <Dropdown options={{ inDuration: 300,
                               outDuration: 225,
@@ -108,12 +103,6 @@ class Menu extends Component {
                 <NavItem href='#contacto' onClick={(e)=> this.handleMenu(e)}>Contacto</NavItem>
             </Navbar>
             <div>{this.state.page} </div>
-            <Button floating fab='vertical' icon='add_alert' className='green' large style={{bottom: '45px', right: '24px'}}>
-                <Button floating icon='insert_chart' className='red'/>
-                <Button floating icon='format_quote' className='yellow darken-1'/>
-                <Button floating icon='publish' className='green'/>
-                <Button floating icon='attach_file' className='blue'/>
-            </Button>
       </div>
     );
   }
