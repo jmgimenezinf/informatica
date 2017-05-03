@@ -7,29 +7,20 @@ import "slick-carousel/slick/slick-theme.css";
 class TesinasEnDesarrollo extends Component {
   render() {
     var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+        dots: true,
+  infinite: true,
+  speed: 500,
+  fade: true,
+  cssEase: 'linear',
+      autoplay:true
     };
     return (
             <Slider {...settings}>
                 <div>
-                    <Card header={<CardTitle reveal waves='light'/>}
-                    title="Herramienta para la representacion XML de un modelo fisico de datos"
-                    reveal={<p>
-                        Alumnos	Dario JENKINS
-                        Tutor	Rodolfo BERTONE
-                        Fecha de defensa	06/08/2004
-                        Estado	Aprobada</p>}>
-                    </Card>
+                     <h3>1</h3>                                        
                 </div>
                 <div>
-                    <Card header={<CardTitle reveal waves='light'/>}
-                    title="Herramienta para la representacion XML de un modelo fisico de datos"
-                    reveal={<p>Here is some more information about this product that is only revealed once clicked on.</p>}>
-                    </Card>
+                    <h3>2</h3>
                 </div>
                 <div><h3>3</h3></div>
                 <div><h3>4</h3></div>

@@ -89,7 +89,7 @@ class Menu extends Component {
                               alignment: 'left',
                               stopPropagation: false }} 
                     trigger={ <NavItem>Alumnos</NavItem>}>
-                    <NavItem href='#planes-estudio' onClick={(e)=> this.handleSubMenu(e)}>Planes de estudio</NavItem>
+                    <NavItem className="blue-text" href='#planes-estudio' onClick={(e)=> this.handleSubMenu(e)}>Planes de estudio</NavItem>
                     <NavItem divider />
                     <NavItem href='#tesinas' onClick={(e)=> this.handleSubMenu(e)}>Tesinas</NavItem>
                     <NavItem divider />
