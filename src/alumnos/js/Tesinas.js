@@ -9,34 +9,36 @@ import TesinasEnDesarrollo from './TesinasEnDesarrollo'
 import TesinasHtml from '../html/TesinasHtml'
 class Tesinas extends Component {
   render() {
-    var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
-    };
     return (
+        <Row>
         <Row className="container">
-            <Col s={12} l={12} m={12}>
-                <h3 className="blue-text">Tesinas</h3>
+
+            <Col s={3} l={12} m={6}>
+                <h3 className="blue-text center-align">Tesinas aprobadas</h3>
             </Col>
-            <Col>
-                <TesinasHtml/>
-            </Col>
-            <Col s={3} l={6} m={6}>
-                <h3 className="blue-text">Tesinas aprobadas</h3>
-            </Col>
-            <Col s={9} l={6} m={12}>
+            <Col s={9} l={12} m={12}>
                 <TesinasAprobadas/>
             </Col>
-            <Col s={3} l={6} m={6}>
-                <h3 className="blue-text">Tesinas en desarrollo</h3>
-            </Col>
-            <Col s={9} l={6} m={6}>
-                 <TesinasEnDesarrollo/>
-            </Col>
         </Row>
+        <Row className="blue darken-2 z-depth-4">
+            <section className="blue">
+            <Col s={12} l={12} m={12}>
+                <h3 className="lime-text">Tesinas</h3>
+            </Col>
+            <Col l={6}>
+                <div className="white-text"><TesinasHtml/></div>
+            </Col>
+            </section>
+        </Row>
+        <Row>
+            <Col s={3} l={12} m={6}>
+                <h3 className="blue-text center-align">Tesinas en desarrollo</h3>
+            </Col>
+            <Col s={9} l={12} m={6}>
+                 <TesinasEnDesarrollo/>
+            </Col>            
+        </Row>
+    </Row>
     );
   }
 }
