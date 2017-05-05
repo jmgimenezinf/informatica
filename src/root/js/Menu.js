@@ -5,6 +5,7 @@ import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import ProfesoresViajeros from '../../alumnos/js/ProfesoresViajeros';
 import Inicio from '../../inicio/js/Inicio';
 import Institucional from '../../institucional/js/Institucional'
+import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas'
 import '../css/root.css'
 class Menu extends Component {
@@ -36,7 +37,7 @@ class Menu extends Component {
     switch (href) {
       case 'inicio':
         this.setState({
-            page:<Inicio/>
+            page:<Inicio titulo="melo"/>
         });
         break;
       case 'institucional':
@@ -51,6 +52,9 @@ class Menu extends Component {
        
         break;
       case 'extension':
+        this.setState({
+          page:<Extension/>
+        });
        
         break;
       case 'laboratorios':
@@ -70,7 +74,7 @@ class Menu extends Component {
  constructor(props) {
     super(props);
     this.handleMenu = this.handleMenu.bind(this);
-    this.state={page:<Inicio/>};
+    this.state={page:<Inicio titulo="melo"/>};
   }
 
   render() {
