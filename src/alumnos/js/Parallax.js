@@ -17,17 +17,23 @@ class Tesinas extends Component {
                  <TesinasEnDesarrollo/>
             </Col>            
         </Row>
-        <Row className="grey lighten-3 galaxya ampliar z-depth-4">
-            <section>
-                <Col offset="l1" l={11}>
-                        <h3 className="blue-text">Tesinas</h3>
-                </Col>
-                <Col offset="l1"l={7}>
-                        <div className="black-text"><TesinasHtml/></div>
-                </Col>
+        <Row className="galaxya">
+            <section className="ampliar">
+            <Col s={12} l={12} m={12} className="center-align">
+                
+            </Col>
+                
+            <Col l={12} className="ampliar">
+            <Collapsible popout>
+                <CollapsibleItem header={<h3 className="black-text" centered>Tesinas</h3>} icon='filter_drama'>
+                <div className="yellow-text"><TesinasHtml/></div>
+                </CollapsibleItem>
+            </Collapsible>   
+            </Col>
             </section>
         </Row>
-        <Row>
+        <Row  className="brown lighten-4">
+
             <Col className="grey lighten-3"s={12} l={12} m={12}>
                 <TesinasAprobadas/>
             </Col>

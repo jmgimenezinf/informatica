@@ -37,7 +37,7 @@ class Menu extends Component {
     switch (href) {
       case 'inicio':
         this.setState({
-            page:<Inicio titulo="melo"/>
+            page:<Inicio titulo="Inicio"/>
         });
         break;
       case 'institucional':
@@ -74,7 +74,7 @@ class Menu extends Component {
  constructor(props) {
     super(props);
     this.handleMenu = this.handleMenu.bind(this);
-    this.state={page:<Inicio titulo="melo"/>};
+    this.state={page:<Inicio titulo="Inicio"/>};
   }
 
   render() {
