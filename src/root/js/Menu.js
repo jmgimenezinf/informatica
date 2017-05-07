@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {NavItem,Navbar,Row,Col,Dropdown,Button} from 'react-materialize';
+import {NavItem,Navbar,Row,Col,Dropdown,Button,Footer} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import ProfesoresViajeros from '../../alumnos/js/ProfesoresViajeros';
 import Inicio from '../../inicio/js/Inicio';
@@ -80,7 +80,7 @@ class Menu extends Component {
   render() {
     return (
       <div> 
-            <Navbar brand='' right className="blue darken-2">
+            <Navbar brand={<div className="logo"><img src={'logo.svg'}></img></div>} right className="blue darken-2">
                 <NavItem href='#inicio' onClick={(e)=> this.handleMenu(e)}>Inicio</NavItem>
                 <NavItem href='#institucional' onClick={(e)=> this.handleMenu(e)}>Institucional</NavItem>
                 <NavItem href='#alumnos'>
@@ -107,6 +107,7 @@ class Menu extends Component {
                 <NavItem href='#contacto' onClick={(e)=> this.handleMenu(e)}>Contacto</NavItem>
             </Navbar>
             <div>{this.state.page} </div>
+            <Footer className="blue darken-2"copyrights="&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"></Footer>
       </div>
     );
   }

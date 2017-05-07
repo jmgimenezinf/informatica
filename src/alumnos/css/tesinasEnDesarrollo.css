@@ -10,7 +10,8 @@
 
 }
 .tarjeta2 {
-    background-image: url('../images/saas.jpg');
+    /*background-image: url('../images/saas.jpg');*/
+    background: yellow;
      width: 100%;
      height: 100%;
      position: absolute;
