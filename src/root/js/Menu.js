@@ -80,7 +80,7 @@ class Menu extends Component {
   render() {
     return (
       <div> 
-            <Navbar brand={<div className="logo"><img src={'logo.svg'}></img></div>} right className="blue darken-2">
+            <Navbar brand={<div className="logo"><img src={'logo.svg'}></img></div>} right className="blue darken-2 menu">
                 <NavItem href='#inicio' onClick={(e)=> this.handleMenu(e)}>Inicio</NavItem>
                 <NavItem href='#institucional' onClick={(e)=> this.handleMenu(e)}>Institucional</NavItem>
                 <NavItem href='#alumnos'>
