@@ -8,7 +8,7 @@ class Inicio extends Component {
     return (
         <Row className="container">
           <Col s={12} l={12} m={12}>
-              <h3 className="blue-text">{this.props.titulo}</h3>
+              <h3 className="blue-text">Inicio</h3>
           </Col>
           <Col s={12} l={12} m={12}>
               <InicioHtml/>
