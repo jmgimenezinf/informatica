@@ -6,7 +6,7 @@ body {
     background-image: linear-gradient(to right, white, #e0e0e0);
 }
 .logo {
-        -webkit-filter: drop-shadow( 4px 4px 8px white);
+        -webkit-filter: drop-shadow( 1px 1px 5px white);
 
 }
 .menu {

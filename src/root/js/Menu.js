@@ -7,6 +7,7 @@ import Inicio from '../../inicio/js/Inicio';
 import Institucional from '../../institucional/js/Institucional'
 import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas'
+import Docentes from '../../docentes/js/Docentes'
 import '../css/root.css'
 class Menu extends Component {
   handleSubMenu(e){
@@ -46,7 +47,9 @@ class Menu extends Component {
         });
         break;
       case 'docentes':
-
+       this.setState({
+            page:<Docentes/>
+        });
         break;
       case 'investigacion':
        
@@ -107,7 +110,8 @@ class Menu extends Component {
                 <NavItem href='#contacto' onClick={(e)=> this.handleMenu(e)}>Contacto</NavItem>
             </Navbar>
             <div>{this.state.page} </div>
-            <Footer className="blue darken-2"copyrights="&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"></Footer>
+            <Footer className="blue darken-2"copyrights={<Row><Col l={1}><img className="logo"src={'logo.svg'}></img></Col>
+            <Col l={11}><p>&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB</p></Col></Row>}></Footer>
       </div>
     );
   }
