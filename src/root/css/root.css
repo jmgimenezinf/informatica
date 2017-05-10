@@ -6,7 +6,17 @@ body {
     background-image: linear-gradient(to right, white, #e0e0e0);
 }
 .logo {
-        -webkit-filter: drop-shadow( 1px 1px 5px white);
+        
 
 }
+.gitLogo{
+        position: relative;
 
+}
+.banner{
+    background-image: url('../images/banner.svg');    
+    padding-bottom: 0px;  
+}
+.menu{
+    padding-left: 15%;
+}

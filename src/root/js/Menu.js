@@ -7,7 +7,7 @@ import Inicio from '../../inicio/js/Inicio';
 import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas'
 import Docentes from '../../docentes/js/Docentes'
-import Institucional from '../../institucional/js/Institucional'
+import Autoridades from '../../institucional/js/Autoridades'
 import '../css/root.css'
 import {
   BrowserRouter as Router,
@@ -19,24 +19,56 @@ class Menu extends Component {
 render() {
   return (
     <div> 
+        <Row className="banner">
+          <Col offset="l4"l={8}>
+            <div className="logo"><img src={'logo.svg'}></img></div>
+          </Col>
+        </Row>
+        <Row>
         <Router>
           <div>
-            <Navbar className="blue darken-2" brand={<div className="logo"><img src={'logo.svg'}></img></div>} right >
+            <Navbar className="blue darken-2 menu">
                 <li><Link to="inicio">Inicio</Link></li>
-                <li><Link to="institucional">Institucional</Link></li>
-                <li><Link to="docentes">Docentes</Link></li>
-                <Dropdown options={{hover:true,belowOrigin:true,alignment:"left"}} trigger={<li>Alumnos</li>}>
-                    <li><Link to="tesinas">Tesinas</Link></li>
+                <li><a><Dropdown options={{outDuration: 225,
+                              constrainWidth: false, 
+                              hover: true, 
+                              gutter: 5, 
+                              belowOrigin: false, 
+                              alignment: 'left',
+                              stopPropagation: false }} trigger={<li>Institucional</li>}>
+                    <li><Link to="autoridades">Autoridades</Link></li>
+                    <li><Link to="docentes">Docentes</Link></li>
+                    <li><Link to="docentes">Laboratorios</Link></li>
                     <NavItem divider />
-                </Dropdown>
+                </Dropdown></a></li>  
+                <li><a><Dropdown options={{outDuration: 225,
+                              constrainWidth: false, 
+                              hover: true, 
+                              gutter: 5, 
+                              belowOrigin: false, 
+                              alignment: 'left',
+                              stopPropagation: false }} trigger={<li>Oferta académica</li>}>
+                    <li><Link to="planes-de-estudio">Planes de estudio</Link></li>
+                    <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
+                    <li><Link to="docentes">Cursos de pogrado</Link></li>
+                    <li><Link to="extension">Extension</Link></li>
+                    <NavItem divider />
+                </Dropdown></a></li>  
+                <li><Link to="tesinas">Investigación</Link></li>
+                <li><Link to="tesinas">Tesinas</Link></li>
+                <li><Link to="tesinas">Contacto</Link></li>
+                <li><Link to="inicio"><img src={'gitlab.svg'}></img></Link></li>
             </Navbar>
             <Route exact path="/" component={Inicio}/>
             <Route exact path="/inicio" component={Inicio}/>
-            <Route exact path="/institucional" component={Institucional}/>
+            <Route exact path="/planes-de-estudio" component={PlanesDeEstudio}/>
+            <Route exact path="/autoridades" component={Autoridades}/>
             <Route exact path="/docentes" component={Docentes}/>
             <Route exact path="/tesinas" component={Tesinas}/>
+            <Route exact path="/extension" component={Extension}/>
           </div>
         </Router>
+        </Row>
         <Footer className="blue darken-2"copyrights={"&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"}></Footer>
     </div>
   );
