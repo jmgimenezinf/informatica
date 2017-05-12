@@ -5,18 +5,29 @@ body {
     background-image: -moz-linear-gradient(left, white, #e0e0e0);
     background-image: linear-gradient(to right, white, #e0e0e0);
 }
-.logo {
-        
 
-}
-.gitLogo{
-        position: relative;
-
-}
 .banner{
     background-image: url('../images/banner.svg');    
     padding-bottom: 0px;  
+    margin-bottom:0px;   
 }
 .menu{
     padding-left: 15%;
+}
+@media only screen and (max-width: 500px) {
+.menu{
+    padding-left: 0%;
+}
+
+}
+.pagina{
+    position: relative;
+    top:5%;
+}
+
+.item li a{
+    color: #757575;
+}
+.item li a:hover{
+    color: #42a5f5;
 }

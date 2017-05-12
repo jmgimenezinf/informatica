@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {NavItem,Navbar,Row,Col,Dropdown,Button,Footer} from 'react-materialize';
+import {NavItem,Navbar,Row,Col,Dropdown,Footer,Button,Icon,Modal} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import ProfesoresViajeros from '../../alumnos/js/ProfesoresViajeros';
 import Inicio from '../../inicio/js/Inicio';
@@ -16,20 +16,26 @@ import {
 } from 'react-router-dom'
 
 class Menu extends Component {
+  handleClickGitlab = () => {
+   window.location="http://192.168.1.40:4554/gitlab/";
+  }
 render() {
   return (
     <div> 
         <Row className="banner">
-          <Col offset="l4"l={8}>
+          <Col offset="1"l={6}>
             <div className="logo"><img src={'logo.svg'}></img></div>
+          </Col>
+          <Col offset="l4" l={2}>
+              <Button tooltip={"Gitlab"} onClick={this.handleClickGitlab}floating className='grey small' waves='light' icon={<img src={'gitlab.svg'}></img>} />
           </Col>
         </Row>
         <Row>
         <Router>
-          <div>
+          <div className="pagina">
             <Navbar className="blue darken-2 menu">
                 <li><Link to="inicio">Inicio</Link></li>
-                <li><a><Dropdown options={{outDuration: 225,
+                <li><a><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
                               hover: true, 
                               gutter: 5, 
@@ -41,7 +47,7 @@ render() {
                     <li><Link to="docentes">Laboratorios</Link></li>
                     <NavItem divider />
                 </Dropdown></a></li>  
-                <li><a><Dropdown options={{outDuration: 225,
+                <li><a><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
                               hover: true, 
                               gutter: 5, 
@@ -57,7 +63,6 @@ render() {
                 <li><Link to="tesinas">Investigación</Link></li>
                 <li><Link to="tesinas">Tesinas</Link></li>
                 <li><Link to="tesinas">Contacto</Link></li>
-                <li><Link to="inicio"><img src={'gitlab.svg'}></img></Link></li>
             </Navbar>
             <Route exact path="/" component={Inicio}/>
             <Route exact path="/inicio" component={Inicio}/>
@@ -69,7 +74,7 @@ render() {
           </div>
         </Router>
         </Row>
-        <Footer className="blue darken-2"copyrights={"&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"}></Footer>
+        <Footer className="blue darken-2"copyrights="&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"></Footer>
     </div>
   );
 }

@@ -16,10 +16,11 @@ class TesinasEnDesarrollo extends Component {
       autoplay:true
     };
     return (
+        <Col s={12}>
             <Slider {...settings}>
                 <div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} s={12}>
                     <Card className="z-depth-4 red small tarjeta1" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text center-align">	Monitoreo y seguimiento mediante Smartwatch</div>}
                     reveal={<div className="blue"><p>
@@ -33,7 +34,7 @@ class TesinasEnDesarrollo extends Component {
                 </div>
                 <div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} s={12}>
                     <Card className="z-depth-4 green small tarjeta2" header={<CardTitle reveal waves='light'/>}
                     title={<div className="black-text center-align">Implementación de una aplicación, bajo el modelo SAAS, para una PyME en un entorno de CLOUD COMPUTING</div>}
                     reveal={<div className="blue"><p>
@@ -46,6 +47,7 @@ class TesinasEnDesarrollo extends Component {
                 </div>
                 </div>
             </Slider>
+        </Col>
     );
   }
 }
