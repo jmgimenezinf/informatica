@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Row,Col} from 'react-materialize';
-import  NovedadesHtml from '../html/NovedadesHtml'
+import {Row,Col,Collection,CollectionItem,Badge,Button,Icon} from 'react-materialize';
 class Novedades extends Component {
   render() {
     return (
-        <Row className="container">
-          <Col s={12} l={12} m={12}>
-              <h3 className="blue-text">Novedades</h3>
-          </Col>
-          <Col s={12} l={12} m={12}>
-              <NovedadesHtml/>
-          </Col>
-        </Row>
+    <div>
+      <Col s={12}>
+          <h5 className="blue-text" >Novedades</h5>
+          <Collection>
+              <CollectionItem href="#!">
+              Alumnos <Badge newIcon>1</Badge>
+              </CollectionItem>
+              <CollectionItem href="#!">
+              Docentes <Badge newIcon>4</Badge>
+              </CollectionItem>
+              <CollectionItem href="#!">
+              Público<Badge newIcon>4</Badge>
+              </CollectionItem>
+          </Collection>
+      </Col>
+      <Col l={12} s={12}>
+          <Button className="grey white-text"waves='light'>Todas novedades</Button>
+      </Col>
+    </div>
     );
   }
 }

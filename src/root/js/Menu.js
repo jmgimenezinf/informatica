@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {NavItem,Navbar,Row,Col,Dropdown,Footer,Button,Icon,Modal} from 'react-materialize';
+import {NavItem,Navbar,Row,Col,Dropdown,Footer,Button} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
-import ProfesoresViajeros from '../../alumnos/js/ProfesoresViajeros';
 import Inicio from '../../inicio/js/Inicio';
 import Extension from '../../extension/js/Extension';
-import Tesinas from '../../alumnos/js/Tesinas'
-import Docentes from '../../docentes/js/Docentes'
-import Autoridades from '../../institucional/js/Autoridades'
-import '../css/root.css'
+import Tesinas from '../../alumnos/js/Tesinas';
+import Docentes from '../../docentes/js/Docentes';
+import Autoridades from '../../institucional/js/Autoridades';
+import '../css/root.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -17,7 +15,7 @@ import {
 
 class Menu extends Component {
   handleClickGitlab = () => {
-   window.location="http://192.168.1.40:4554/gitlab/";
+   window.location="http://192.168.156.49:4554/gitlab/";
   }
 render() {
   return (
@@ -27,7 +25,7 @@ render() {
             <div className="logo"><img src={'logo.svg'}></img></div>
           </Col>
           <Col offset="l4" l={2}>
-              <Button tooltip={"Gitlab"} onClick={this.handleClickGitlab}floating className='grey small' waves='light' icon={<img src={'gitlab.svg'}></img>} />
+              <Button onClick={this.handleClickGitlab}floating className='grey small boton-gitlab' waves='light'/>
           </Col>
         </Row>
         <Row>
@@ -64,7 +62,7 @@ render() {
                 <li><Link to="tesinas">Tesinas</Link></li>
                 <li><Link to="tesinas">Contacto</Link></li>
             </Navbar>
-            <Route exact path="/" component={Inicio}/>
+            <Route exact path="/" component={Inicio} />
             <Route exact path="/inicio" component={Inicio}/>
             <Route exact path="/planes-de-estudio" component={PlanesDeEstudio}/>
             <Route exact path="/autoridades" component={Autoridades}/>
