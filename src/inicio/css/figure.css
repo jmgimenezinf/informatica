@@ -1,85 +1,105 @@
+.sedes {
+    width: 97vw;
+    height: 100%;
+    /*border: 1px solid blue;*/
+}
 .sedes-figure{
+    position: relative;
     float: left;
-    margin:0%;
+    width: 25%;
+    height: 50vh;
+    margin: auto;
+    padding: auto;
+    border: 2px solid #d7ccc8;
+    max-width:100%;
 }
 
-.sedes-figure img { position: relative; 
-width: 175px; 
-height: 175px;
-z-index: -1;
-float: left;
-margin-left: 0%;
-padding:0%;
-filter: grayscale(90%);
+.sedes-figure img { position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    background-size: cover;
+    z-index: -1;
+    float: left;
+    margin-left: 0%;
+    filter: grayscale(90%);
 }
 
 .sedes-figure:hover img {
-    width: 175px; 
-height: 175px;
+width: 100%;
+height: 100%;
+max-width: 100%;
+background-size: cover;
 z-index: -1;
 float: left;
 margin-left: 0%;
-padding:0%;
- filter: grayscale(0%);
-  -webkit-transition: filter 1s; /* Safari */
-    transition: filter 1s;
+filter: grayscale(0%);
+-webkit-transition: filter 1s; /* Safari */
+transition: filter 1s;
 }
 .sedes-figure:hover figcaption{
-width: 175px; 
-height: 37px;
+position: relative;
+height: 25%;
+width: 100%;
+max-width: 100%;
 color:white;
-background: #009688 ; 
-text-align:center; 
-font-weight:bold; 
+background: #009688 ;
+text-align:center;
+font-weight:bold;
 opacity:0.8;
-z-index: -1;
 float: left;
-margin-top:14%;
-  -webkit-transition: background 0.5s; /* Safari */
-    transition: background 0.5s;
-}
-figcaption { position: absolute; 
-width: 175px; 
-height: 37px;
-color:white;
-background: #0d47a1 ; 
-text-align:center; 
-font-weight:bold; 
-opacity:0.8;
-z-index: -1;
-float: left;
-margin-top:14%;
 font-family: 'Raleway';
-
-} 
+top: -25%;
+-webkit-transition: background 0.5s; /* Safari */
+transition: background 0.5s;
+}
+.sedes-figure figcaption {
+position: relative;
+height: 25%;
+width: 100%;
+max-width: 100%;
+color:white;
+background: #0d47a1 ;
+text-align:center;
+font-weight:bold;
+opacity:0.8;
+float: left;
+font-family: 'Raleway';
+top: -25%;
+}
 
 .breaker-bottom {
-    position: absolute;
-    background-image: url('../images/breaker-bottom.svg');
+    content: "";
+    background-image: url(../images/breaker-bottom.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center 0%;
-    z-index: 10;
-    width: 69.3%;
-    height:3%;
+    background-position: center bottom;
+    position: relative;
+    left: 0;
+    top:20px;
+    max-width: 100%;
+    width: 100%;
+    height: 20px;
+    z-index: 100;
+    overflow: visible;
 }
-.breaker{
-    content: " ";
-    position: absolute;
-    background-image: url('../images/breaker.svg');
+.breaker {
+    content: "";
+    background-image: url(../images/breaker.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center -10%;
-    z-index: 10;
-    width: 70%;
-    height:3%;
-    margin-top:16%;
+    background-position: center;
+    position: relative;
+    left: 0px;
+    top:48vh;
+    max-width: 100%;
+    width: 102%;
+    height: 20px;
+    overflow: visible;
 }
+
 .titulo{
 text-transform: uppercase;
-color:#424242;
-font-family: 'Roboto', sans-serif;
-font-family: 'Oswald', sans-serif;
-font-family: 'Gloria Hallelujah', cursive;
-font-family: 'Droid Serif', cursive;
+color:#2196f3;
+
 }

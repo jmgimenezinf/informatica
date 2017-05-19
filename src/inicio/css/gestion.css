@@ -1,6 +1,6 @@
-.tarjeta{
+.gestion-tarjeta {
     position: relative;
-    width: 33.3%;
+    width: 50%;
     height: 20vw;
     float: left;
     border-left: 1px solid #d7ccc8;
