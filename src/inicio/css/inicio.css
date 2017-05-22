@@ -4,13 +4,13 @@
 }
 .titulo {
     letter-spacing: -1px;
-    color: #2196f3;
+    color: black;
     font-weight: bolder;
-    font-family: "Raleway";
+    font-family: "Droid Serif";
 }
 .subtitulo {
     letter-spacing: -1px;
-    color: #2196f3;
+    color: #bdbdbd;
     font-weight: bolder;
     font-family: "Raleway";
 }
@@ -22,3 +22,14 @@ h1,h2,h3,h4 {
     letter-spacing: -2px; 
 }
 
+.separador {
+    position: relative;
+    background-image: url(../images/ave.svg);
+    top: -10px;
+    left:45%;
+    width: 10%;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

@@ -14,22 +14,20 @@ render() {
   return (
       <div>
       <Row>
-          <Col l={3} m={3}s={12} className="blue lighten-5">
-              <Novedades/>
-          </Col>
-          <Col l={9} m={9} s={12} className="blue lighten-5">
-            <Col l={12}>
-                <h3 className="blue-text left-align">Departamento de Informática</h3>
-                <InicioHtml1/>
+        <Col l={12}  className="blue lighten-5">
+            <Col l={3} m={3}s={12}>
+                <Novedades/>
             </Col>
-            {/*<Col s={12} l={12} m={12}>
-                <InicioHtml2/>
-            </Col>*/}
-          </Col>
+            <Col l={9} m={9} s={12}>
+                    <h3 className="black-text left-align">Departamento de Informática</h3>
+                    {/*<InicioHtml1/>*/}
+            </Col>
+        </Col>
       </Row>
       <Row>
         <Col l={12}>
-            <h3 className="center-align titulo">Carreras</h3>
+            <h4 className="center-align titulo">Carreras</h4>
+            <div className="separador"></div>
         </Col>
         <Carreras/>
       </Row>
@@ -42,7 +40,8 @@ render() {
       </Row>
       <Row>
             <Col l={12}>
-                <h3 className="center-align titulo">Nuestras sedes</h3>
+                <h4 className="center-align titulo">Nuestras sedes</h4>
+                <div className="separador"></div>
                 <Figure/>
             </Col>
       </Row>

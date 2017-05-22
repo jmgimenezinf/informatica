@@ -25,7 +25,7 @@ render() {
             <div className="logo"><img src={'logo.svg'}></img></div>
           </Col>
           <Col offset="l4" l={2}>
-              <Button onClick={this.handleClickGitlab}floating className='grey small boton-gitlab' waves='light'/>
+              {/*<Button onClick={this.handleClickGitlab}floating className='grey small boton-gitlab' waves='light'/>*/}
           </Col>
         </Row>
         <Row>
