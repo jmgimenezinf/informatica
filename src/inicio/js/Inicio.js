@@ -8,28 +8,33 @@ import  '../css/inicio.css';
 import Novedades from '../../novedades/js/Novedades';
 import Figure from './Figure';
 import Carreras from './Carreras';
-import Gestion from './Gestion'
+import Gestion from './Gestion';
+import '../css/boton.css'
 class Inicio extends Component {
 render() {
   return (
       <div>
       <Row>
-        <Col l={12}  className="blue lighten-5">
-            <Col l={3} m={3}s={12}>
+        <Col l={12}  className="blue lighten-5 parallax">
+            <Col l={3} m={3}s={12} className="polarizado">
                 <Novedades/>
             </Col>
-            <Col l={9} m={9} s={12}>
-                    <h3 className="black-text left-align">Departamento de Informática</h3>
+            <Col l={9} m={9} s={12} className="polarizado">
+                    <h2 className="white-text left-align">Departamento de Informática</h2>
                     {/*<InicioHtml1/>*/}
             </Col>
         </Col>
+        <div className="breaker-inicio"/>
       </Row>
       <Row>
-        <Col l={12}>
+        <Col l={12} className="carreras">
             <h4 className="center-align titulo">Carreras</h4>
             <div className="separador"></div>
         </Col>
         <Carreras/>
+        <Col l={12} offset="l5">
+                <a href="#" className="boton">Plan de estudios</a>
+        </Col>
       </Row>
       <Row>
         <Col l={12}>
@@ -37,6 +42,9 @@ render() {
                 de extensión, que fortalecen la vinculación con la sociedad"</h5>
         </Col>
         <Gestion/>
+        <Col l={12} offset="l5">
+                <a href="#" className="boton">Plan de estudios</a>
+        </Col>
       </Row>
       <Row>
             <Col l={12}>

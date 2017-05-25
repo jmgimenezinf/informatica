@@ -7,12 +7,15 @@
     color: black;
     font-weight: bolder;
     font-family: "Droid Serif";
+    margin-top: 5%;
 }
 .subtitulo {
     letter-spacing: -1px;
     color: #bdbdbd;
     font-weight: bolder;
     font-family: "Raleway";
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 p{
     font-family: "Droid Serif";
@@ -32,4 +35,45 @@ h1,h2,h3,h4 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+.parallax {
+
+    /* Set a specific height */
+    /* Create the parallax scrolling effect */
+    background-image: url("../images/arduino.jpg");
+    position: relative;
+    width: 100%;
+    height: 37vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+.polarizado{
+        /* The image used */
+   background: rgba(0,0,0,0.75);
+background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(255,255,255,0)));
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+background: -o-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+background: -ms-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=0 );
+z-index: 10;
+}
+.breaker-inicio {
+    content: "";
+    background-image: url(../images/breaker.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    left: 0px;
+    top:35vh;
+    max-width: 100%;
+    width: 102%;
+    height: 20px;
+    overflow: visible;
+    z-index: 20;
 }
