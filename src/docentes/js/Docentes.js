@@ -3,28 +3,30 @@ import ReactDOM from 'react-dom';
 import {Row,Col} from 'react-materialize';
 import '../css/docentes.css';
 
-
 class Docentes extends Component {
 constructor(props) {
     super(props);
+    this.state = {display:"block"};
     this.handleAcordeon = this.handleAcordeon.bind(this);
 }
 handleAcordeon(){
-  this.classList.toggle("active");
 
-  var panel = this.nextElementSibling;
-  if (panel.style.display === "block") {
-      panel.style.display = "none";
+  if (this.state.display == "none") {
+      this.setState({display:"block"});
   } else {
-      panel.style.display = "block";
+      this.setState({display:"none"});
 }
+
 }
   render() {
+    var stylePanel ={
+      display: this.state.display
+    }
     return (
         <Row>
           <Col s={2} l={3} m={2}>
             <button className="acordeon" onClick={this.handleAcordeon} >Docentes</button>
-            <div className="panel">
+            <div className="panel" style={stylePanel}>
               <p>Lorem ipsum...</p>
             </div>
 
