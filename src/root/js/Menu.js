@@ -51,7 +51,7 @@ render() {
                               gutter: 5, 
                               belowOrigin: false, 
                               alignment: 'left',
-                              stopPropagation: false }} trigger={<li>Oferta académica</li>}>
+                              stopPropagation: true }} trigger={<li>Oferta académica</li>}>
                     <li><Link to="planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
                     <li><Link to="docentes">Cursos de pogrado</Link></li>

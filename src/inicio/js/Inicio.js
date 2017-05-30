@@ -33,7 +33,7 @@ render() {
         </Col>
         <Carreras/>
         <Col l={12} offset="l5">
-                <a href="#" className="boton">Plan de estudios</a>
+                <a href="#" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
         </Col>
       </Row>
       <Row>
@@ -43,7 +43,6 @@ render() {
         </Col>
         <Gestion/>
         <Col l={12} offset="l5">
-                <a href="#" className="boton">Plan de estudios</a>
         </Col>
       </Row>
       <Row>
