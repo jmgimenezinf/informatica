@@ -27,7 +27,7 @@ h1,h2,h3,h4 {
 
 .separador {
     position: relative;
-    background-image: url(../images/ave.svg);
+    background-image: url('../images/ave.svg');
     top: -10px;
     left:45%;
     width: 10%;
@@ -40,7 +40,7 @@ h1,h2,h3,h4 {
 
     /* Set a specific height */
     /* Create the parallax scrolling effect */
-    background-image: url("../images/analista-programador.jpg");
+    background-image: url('../images/analista-programador.jpg');
     position: relative;
     width: 100%;
     height: 37vh;
@@ -50,21 +50,19 @@ h1,h2,h3,h4 {
     background-size: cover;
     z-index: 1;
 }
-.polarizado{
-        /* The image used */
-   background: rgba(0,0,0,0.75);
+.polarizado {
+background: rgba(0,0,0,0.75);
 background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(255,255,255,0)));
 background: -webkit-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
 background: -o-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-background: -ms-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff', GradientType=0 );
+/*background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);*/
 z-index: 10;
 }
+
 .breaker-inicio {
     content: "";
-    background-image: url(../images/breaker.svg);
+    background-image: url('../images/breaker.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

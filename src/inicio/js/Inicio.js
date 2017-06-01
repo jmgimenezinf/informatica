@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Row,Col} from 'react-materialize';
-import  InicioHtml from '../html/InicioHtml';
-import  InicioHtml1 from '../html/InicioHtml1';
-import  InicioHtml2 from '../html/InicioHtml2';
 import  '../css/inicio.css';
 import Novedades from '../../novedades/js/Novedades';
 import Figure from './Figure';

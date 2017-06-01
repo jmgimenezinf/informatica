@@ -1,5 +1,5 @@
 /* Style the buttons that are used to open and close the accordion panel */
-button.acordeon {
+button.menu-item {
     background-color: white;
     color: #444;
     cursor: pointer;
@@ -13,13 +13,13 @@ button.acordeon {
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-button.acordeon.active, button.acordeon:hover {
+button.menu-item.active, button.menu-item:hover {
     background-color: #ddd;
   
 }
 
 /* Style the accordion panel. Note: hidden by default */
-div.panel {
+div.sub-menu {
     background-color: white;
     display: none;
 }

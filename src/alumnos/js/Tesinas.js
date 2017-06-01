@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {Row,Col,Card,CardTitle,CardPanel,Collapsible,CollapsibleItem} from 'react-materialize';
-import Slider from 'react-slick';
+import {Row,Col} from 'react-materialize';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TesinasAprobadas from './TesinasAprobadas'

@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import '../css/figure.css';
 import {Icon} from 'react-materialize'
 class Figure extends Component {

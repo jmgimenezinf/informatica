@@ -1,11 +1,13 @@
 {
   "name": "informatica",
   "version": "0.1.0",
+  "homepage":"http://www.dinfo.ing.unp.edu.ar/prueva",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",

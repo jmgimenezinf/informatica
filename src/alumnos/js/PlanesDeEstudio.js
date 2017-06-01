@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {Row,Col,Table,Icon,Button} from 'react-materialize';
 class PlanesDeEstudio extends Component {
   render() {

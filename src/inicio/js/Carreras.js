@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import '../css/carreras.css';
 
 class Carreras extends Component {

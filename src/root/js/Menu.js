@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {NavItem,Navbar,Row,Col,Dropdown,Footer,Button} from 'react-materialize';
+import {NavItem,Navbar,Row,Col,Dropdown,Footer} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import Inicio from '../../inicio/js/Inicio';
 import Extension from '../../extension/js/Extension';
@@ -22,6 +22,7 @@ render() {
     <div> 
         <Row className="banner">
           <Col offset="1"l={6}>
+             {/* eslint-disable-next-line*/}
             <div className="logo"><img src={'logo.svg'}></img></div>
           </Col>
           <Col offset="l4" l={2}>

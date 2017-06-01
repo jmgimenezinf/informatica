@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {Row,Col,Card,CardTitle,CardPanel} from 'react-materialize';
+import {Col,Card,CardTitle} from 'react-materialize';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

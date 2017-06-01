@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import {Row,Col,Collection,CollectionItem,Badge,Button,Icon,Modal} from 'react-materialize';
+import {Col,Collection,CollectionItem,Badge,Button,Modal} from 'react-materialize';
+import TodasNovedades from './TodasNovedades.js';
 class Novedades extends Component {
   render() {
     return (
@@ -47,7 +47,7 @@ class Novedades extends Component {
                   trigger={
                     <Button className="grey white-text"waves='light'>Todas novedades</Button>
                   }>
-              
+                  <TodasNovedades/>
               </Modal>
       </Col>
     </div>
