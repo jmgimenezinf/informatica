@@ -17,7 +17,6 @@ render() {
             </Col>
             <Col l={9} m={9} s={12} className="polarizado">
                     <h2 className="white-text left-align">Departamento de Informática</h2>
-                    {/*<InicioHtml1/>*/}
             </Col>
         </Col>
         <div className="breaker-inicio"/>
@@ -29,7 +28,7 @@ render() {
         </Col>
         <Carreras/>
         <Col l={12} offset="l5">
-                <a href="#" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
+                <a href="/planes-de-estudio" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
         </Col>
       </Row>
       <Row>
@@ -42,11 +41,11 @@ render() {
         </Col>
       </Row>
       <Row>
-            <Col l={12}>
-                <h4 className="center-align titulo">Nuestras sedes</h4>
-                <div className="separador"></div>
-                <Figure/>
-            </Col>
+        <Col l={12}>
+            <h4 className="center-align titulo">Nuestras sedes</h4>
+            <div className="separador"></div>
+            <Figure/>
+        </Col>
       </Row>
       </div>
   );

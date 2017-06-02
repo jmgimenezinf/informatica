@@ -33,7 +33,7 @@ render() {
         <Router>
           <div className="pagina">
             <Navbar className="blue darken-2 menu">
-                <li><Link to="inicio">Inicio</Link></li>
+                <li><Link to="/">Inicio</Link></li>
                 <li><a><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
                               hover: true, 
@@ -41,9 +41,9 @@ render() {
                               belowOrigin: false, 
                               alignment: 'left',
                               stopPropagation: false }} trigger={<li>Institucional</li>}>
-                    <li><Link to="autoridades">Autoridades</Link></li>
-                    <li><Link to="docentes">Docentes</Link></li>
-                    <li><Link to="docentes">Laboratorios</Link></li>
+                    <li><Link to="/autoridades">Autoridades</Link></li>
+                    <li><Link to="/docentes">Docentes</Link></li>
+                    <li><Link to="/docentes">Laboratorios</Link></li>
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <li><a><Dropdown className="item" options={{outDuration: 225,
@@ -53,23 +53,22 @@ render() {
                               belowOrigin: false, 
                               alignment: 'left',
                               stopPropagation: true }} trigger={<li>Oferta académica</li>}>
-                    <li><Link to="planes-de-estudio">Planes de estudio</Link></li>
+                    <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
-                    <li><Link to="docentes">Cursos de pogrado</Link></li>
-                    <li><Link to="extension">Extension</Link></li>
+                    <li><Link to="/docentes">Cursos de pogrado</Link></li>
+                    <li><Link to="/extension">Extension</Link></li>
                     <NavItem divider />
                 </Dropdown></a></li>  
-                <li><Link to="tesinas">Investigación</Link></li>
-                <li><Link to="tesinas">Tesinas</Link></li>
-                <li><Link to="tesinas">Contacto</Link></li>
+                <li><Link to="/tesinas">Investigación</Link></li>
+                <li><Link to="/tesinas">Tesinas</Link></li>
+                <li><Link to="/tesinas">Contacto</Link></li>
             </Navbar>
             <Route exact path="/" component={Inicio} />
-            <Route exact path="/inicio" component={Inicio}/>
-            <Route exact path="/planes-de-estudio" component={PlanesDeEstudio}/>
-            <Route exact path="/autoridades" component={Autoridades}/>
-            <Route exact path="/docentes" component={Docentes}/>
-            <Route exact path="/tesinas" component={Tesinas}/>
-            <Route exact path="/extension" component={Extension}/>
+            <Route  path="/planes-de-estudio" component={PlanesDeEstudio}/>
+            <Route  path="/autoridades" component={Autoridades}/>
+            <Route  path="/docentes" component={Docentes}/>
+            <Route  path="/tesinas" component={Tesinas}/>
+            <Route  path="/extension" component={Extension}/>
           </div>
         </Router>
         </Row>

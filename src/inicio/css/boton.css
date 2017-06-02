@@ -26,15 +26,15 @@
 }
 .boton:hover {
 	background-color:transparent;
-		border:2px solid #80cbc4 ;
+	border:2px solid #80cbc4 ;
     color: #80cbc4 ;
     transition: color 0.5s;
     transition: border 0.5s;
     
 }
-.boton:active {
+/*.boton:active {
 	position:relative;
 	top:1px;
-}
+}*/
 
         
