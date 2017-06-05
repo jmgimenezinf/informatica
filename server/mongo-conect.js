@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 var db;
-var URL = 'mongodb://localhost:27017/admin'
+var URL = '***REMOVED***'
 
 MongoClient.connect(URL, function(err, db) {
   if (err) return

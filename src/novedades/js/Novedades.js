@@ -10,7 +10,8 @@ class Novedades extends Component {
           <h5 className="blue-text" >Novedades</h5>
           <Collection>
               <Modal
-                   header={<h4 className="novedad-text">Novedades para alumnos</h4>}
+                  className="myModal"
+                  header={<h4 className="novedad-text">Novedades para alumnos</h4>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">

@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 var db;
-var URL = 'mongodb://localhost:27017/admin'
+var URL = '***REMOVED***'
 
 router.get('/todas_novedades', function(req, res) {
     MongoClient.connect(URL, function(err, db) {
