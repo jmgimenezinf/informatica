@@ -13,6 +13,8 @@ import {
   Link
 } from 'react-router-dom'
 
+
+
 class Menu extends Component {
   handleClickGitlab = () => {
    window.location="http://192.168.156.49:4554/gitlab/";
@@ -30,7 +32,7 @@ render() {
           </Col>
         </Row>
         <Row>
-        <Router>
+        <Router basename="/prueva">
           <div className="pagina">
             <Navbar className="blue darken-2 menu">
                 <li><Link to="/">Inicio</Link></li>
@@ -63,7 +65,7 @@ render() {
                 <li><Link to="/tesinas">Tesinas</Link></li>
                 <li><Link to="/tesinas">Contacto</Link></li>
             </Navbar>
-            <Route exact path="/" component={Inicio} />
+            <Route  exact path="/" component={Inicio} />
             <Route  path="/planes-de-estudio" component={PlanesDeEstudio}/>
             <Route  path="/autoridades" component={Autoridades}/>
             <Route  path="/docentes" component={Docentes}/>
