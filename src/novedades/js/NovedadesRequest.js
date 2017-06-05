@@ -27,7 +27,7 @@ class NovedadesRequest extends Component {
 
 componentDidMount() {
     var self=this;
-    var url = 'http://127.0.0.1:3001/'+ self.props.url;
+    var url = 'http://192.168.156.49:3001/'+ self.props.url;
     axios.get(url)
     .then(function(response){
         console.log(response.data); 

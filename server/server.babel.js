@@ -14,10 +14,10 @@ app.use(express.static(__dirname + '/../build'));
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'http://www.dinfo.ing.unp.edu.ar');
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
 
     // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -34,7 +34,7 @@ app.use(novedades);
 
 server.listen(3001,'127.0.0.1',function(){
  server.close(function(){
-   server.listen(3001,'127.0.0.1')
+   server.listen(3001,'192.168.156.49')
    console.log('Servidor estático React-Express-Sequelize port 3001!');
  })
 })
