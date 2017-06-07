@@ -12,19 +12,25 @@ class Carreras extends Component {
             <br/>
             <ul className="w3-container w3-animate-left">
                 <li>Duración 5 años</li>
-                <li>36 materias</li>
+                <li>32 materias</li>
                 <li>Tesina</li>
             </ul>
         </div>
         <div  className="tarjeta">
             <h5 className="center-align">Analista Programador Universitario</h5>
-             <ul>
+            <ul>
                 <li>Duración 3 años</li>
-                <li></li>
+                <li>18 materias</li>
             </ul>
         </div>
         <div  className="tarjeta">
             <h5 className="center-align">Licenciatura en Sistemas</h5>
+            <br/>
+            <ul className="w3-container w3-animate-right">
+                <li>Duración 5 años</li>
+                <li>34 materias</li>
+                <li>Tesina</li>
+            </ul>
         </div>
         <div className="tarjeta-breaker"/>
     </section>
