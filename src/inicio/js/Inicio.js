@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {Row,Col,Button} from 'react-materialize';
+import {Row,Col} from 'react-materialize';
 import  '../css/inicio.css';
 import Novedades from '../../novedades/js/Novedades';
 import Figure from './Figure';
 import Carreras from './Carreras';
 import Gestion from './Gestion';
 import '../css/boton.css'
+import Calendario from './Calendario';
 class Inicio extends Component {
 render() {
   return (
@@ -17,7 +18,7 @@ render() {
             </Col>
             <Col l={9} m={9} s={12} className="polarizado">
                     <h2 className="white-text left-align">Departamento de Informática </h2>
-                    <Button floating large className='red' fab="right" waves='light' icon={<i className="fa fa-calendar" aria-hidden="true"></i>}/>
+                    <Calendario/>
             </Col>
         </Col>
         <div className="breaker-inicio"/>

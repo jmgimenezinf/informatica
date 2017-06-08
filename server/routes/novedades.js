@@ -1,3 +1,4 @@
+require('../api-calendar.js');
 var express = require('express');
 var router  = express.Router();
 const MongoClient = require('mongodb').MongoClient;
@@ -44,6 +45,5 @@ router.get('/novedades_alumnos', function(req, res) {
         })
     })
 });
-
 
 module.exports = router;
