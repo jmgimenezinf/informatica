@@ -9,19 +9,19 @@ class Figure extends Component {
         <div className="sedes">
                 <div className="breaker-bottom"/>
                 <figure className="media-left sedes-figure" >
-                    <img className="media-object"  src={'puerto-madryn.jpg'} />
+                    <img alt="sede madryn" className="media-object"  src={'puerto-madryn.jpg'} />
                     <figcaption>Puerto Madryn <Icon className="red-text">room</Icon></figcaption>
                 </figure>
                 <figure className="media-left sedes-figure" >
-                    <img className="media-object" src={'trelew.jpg'} />
+                    <img alt="sede trelew" className="media-object" src={'trelew.jpg'} />
                     <figcaption>Trelew<Icon className="red-text">room</Icon></figcaption>
                 </figure>
                 <figure className="media-left sedes-figure" >
-                    <img className="media-object" src={'comodoro-rivadavia.jpg'} />
+                    <img alt="sede comodoro rivadavia" className="media-object" src={'comodoro-rivadavia.jpg'} />
                     <figcaption>Comodoro Rivadavia<Icon className="red-text">room</Icon></figcaption>
                 </figure>
                 <figure className="media-left sedes-figure" >
-                    <img className="media-object" src={'esquel.jpg'} />
+                    <img alt="sede esquel" className="media-object" src={'esquel.jpg'} />
                     <figcaption>Esquel<Icon className="red-text">room</Icon></figcaption>
                 </figure>
                 <div className="breaker"/>
