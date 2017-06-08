@@ -10,8 +10,7 @@ class Novedades extends Component {
           <h5 className="blue-text" >Novedades</h5>
           <Collection>
               <Modal
-                  className="myModal"
-                  header={<h4 className="novedad-text">Novedades para alumnos</h4>}
+                  header={<span className="novedad-text">Novedades para alumnos</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
@@ -21,7 +20,7 @@ class Novedades extends Component {
                  <NovedadesRequest url="novedades_alumnos"/>
               </Modal>
               <Modal
-                  header={<h4 className="novedad-text">Novedades para docentes</h4>}
+                  header={<span className="novedad-text">Novedades para docentes</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
@@ -31,7 +30,7 @@ class Novedades extends Component {
                  <NovedadesRequest url="novedades_docentes"/>
               </Modal>
               <Modal
-                  header={<h4 className="novedad-text">Novedades para público en general</h4>}
+                  header={<span className="novedad-text">Novedades para público en general</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
@@ -44,7 +43,7 @@ class Novedades extends Component {
       </Col>
       <Col l={12} s={12}>
               <Modal
-                  header={<h4 className="novedad-text">Todas las novedades</h4>}
+                  header={<span className="novedad-text">Todas las novedades</span>}
                   fixedFooter
                   trigger={
                     <Button className="grey white-text"waves='light'>Todas novedades</Button>

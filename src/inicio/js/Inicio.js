@@ -6,6 +6,7 @@ import Figure from './Figure';
 import Carreras from './Carreras';
 import Gestion from './Gestion';
 import '../css/boton.css'
+import Calendario from './Calendario';
 class Inicio extends Component {
 render() {
   return (
@@ -16,7 +17,8 @@ render() {
                 <Novedades/>
             </Col>
             <Col l={9} m={9} s={12} className="polarizado">
-                    <h2 className="white-text left-align">Departamento de Informática</h2>
+                    <h2 className="white-text left-align">Departamento de Informática </h2>
+                    <Calendario/>
             </Col>
         </Col>
         <div className="breaker-inicio"/>
