@@ -3,7 +3,7 @@ import {Col,Card,CardTitle} from 'react-materialize';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../css/card.css"
+// import "../css/card.css"
 class TesinasAprobadas extends Component {
   render() {
         var settings = {
@@ -19,12 +19,12 @@ class TesinasAprobadas extends Component {
                 <div>
                     <Col l={12}>
                     <Card className="z-depth-4 red small" header={<CardTitle reveal waves='light'/>}
-                    title={<div className="white-text">Herramienta para la representacion XML de un modelo fisico de datos</div>}
-                    reveal={<div className="blue"><p>
+                    title={"Herramienta para la representacion XML de un modelo fisico de datos"}
+                    reveal={<p>
                         Alumnos	Dario JENKINS <br/>
                         Tutor	Rodolfo BERTONE <br/>
                         Fecha de defensa	06/08/2004
-                        </p></div>}>
+                        </p>}>
                     </Card>
                     </Col>
                 </div>

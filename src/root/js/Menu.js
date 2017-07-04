@@ -32,7 +32,7 @@ render() {
           </Col>
         </Row>
         <Row>
-        <Router basename="/prueva">
+        <Router basename="/">
           <div className="pagina">
             <Navbar className="blue darken-2 menu">
                 <li><Link to="/">Inicio</Link></li>
@@ -44,8 +44,8 @@ render() {
                               alignment: 'left',
                               stopPropagation: false }} trigger={<li>Institucional</li>}>
                     <li><Link to="/autoridades">Autoridades</Link></li>
-                    <li><Link to="/docentes">Docentes</Link></li>
-                    <li><Link to="/docentes">Laboratorios</Link></li>
+                    {/*<li><Link to="/docentes">Docentes</Link></li>*/}
+                    {/*<li><Link to="/docentes">Laboratorios</Link></li>*/}
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <li><a><Dropdown className="item" options={{outDuration: 225,
@@ -57,11 +57,11 @@ render() {
                               stopPropagation: true }} trigger={<li>Oferta académica</li>}>
                     <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
-                    <li><Link to="/docentes">Cursos de pogrado</Link></li>
-                    <li><Link to="/extension">Extension</Link></li>
+                    {/*<li><Link to="/docentes">Cursos de pogrado</Link></li>*/}
+                    {/*<li><Link to="/extension">Extension</Link></li>*/}
                     <NavItem divider />
                 </Dropdown></a></li>  
-                <li><Link to="/tesinas">Investigación</Link></li>
+                {/*<li><Link to="/tesinas">Investigación</Link></li>*/}
                 <li><Link to="/tesinas">Tesinas</Link></li>
                 <li><Link to="/tesinas">Contacto</Link></li>
             </Navbar>

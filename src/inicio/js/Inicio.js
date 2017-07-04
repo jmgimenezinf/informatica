@@ -33,7 +33,7 @@ render() {
                 <a href="/planes-de-estudio" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
         </Col>
       </Row>
-      <Row>
+      {/*<Row>
         <Col l={12}>
             <h5 className="center-align subtitulo">"La gestión de las carreras incluye no solamente la docencia, sino también las actividades de investigación y 
                 de extensión, que fortalecen la vinculación con la sociedad"</h5>
@@ -41,7 +41,7 @@ render() {
         <Gestion/>
         <Col l={12} offset="l5">
         </Col>
-      </Row>
+      </Row>*/}
       <Row>
         <Col l={12}>
             <h4 className="center-align titulo">Nuestras sedes</h4>
