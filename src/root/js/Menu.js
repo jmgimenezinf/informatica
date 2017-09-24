@@ -6,6 +6,7 @@ import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas';
 import Docentes from '../../docentes/js/Docentes';
 import Autoridades from '../../institucional/js/Autoridades';
+import Contacto from '../../contacto/js/Contacto';
 import '../css/root.css';
 import {
   BrowserRouter as Router,
@@ -32,7 +33,7 @@ render() {
           </Col>
         </Row>
         <Row>
-        <Router basename="/prueva">
+        <Router basename="/">
           <div className="pagina">
             <Navbar className="blue darken-2 menu">
                 <li><Link to="/">Inicio</Link></li>
@@ -63,13 +64,14 @@ render() {
                 </Dropdown></a></li>  
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
                 <li><Link to="/tesinas">Tesinas</Link></li>
-                <li><Link to="/tesinas">Contacto</Link></li>
+                <li><Link to="/contacto">Contacto</Link></li>
             </Navbar>
             <Route  exact path="/" component={Inicio} />
             <Route  path="/planes-de-estudio" component={PlanesDeEstudio}/>
             <Route  path="/autoridades" component={Autoridades}/>
             <Route  path="/docentes" component={Docentes}/>
             <Route  path="/tesinas" component={Tesinas}/>
+            <Route  path="/contacto" component={Contacto}/>
             <Route  path="/extension" component={Extension}/>
           </div>
         </Router>
