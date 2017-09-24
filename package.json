@@ -2,7 +2,7 @@
   "name": "informatica",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://www.dinfo.ing.unp.edu.ar/prueva",
+  "homepage": "http://www.dinfo.ing.unp.edu.ar/prueva",
   "devDependencies": {
     "react-scripts": "0.9.5"
   },

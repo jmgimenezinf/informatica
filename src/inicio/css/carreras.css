@@ -1,3 +1,4 @@
+
 .tarjeta{
     position: relative;
     width: 33.3%;
@@ -10,4 +11,18 @@
 }
 li {
     text-align: center;
+}
+@media only screen and (max-width: 900px) {
+    .tarjeta{
+        position: relative;
+        width: 91.66%;
+        height: 50vw;
+        float: left;
+        border-left: 1px solid #d7ccc8;
+        font-family: "Droid Serif";
+        font-size: 16px;
+    }
+    li {
+        text-align: center;
+    }
 }

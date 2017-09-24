@@ -6,7 +6,7 @@ class Carreras extends Component {
   render() {
     return (
     <section>
-        <div className="tarjeta-breaker-bottom"/>
+        {/* <div className="tarjeta-breaker-bottom"/> */}
         <div className="tarjeta">
             <h5 className="center-align">Licenciatura en Informática</h5>
             <br/>
