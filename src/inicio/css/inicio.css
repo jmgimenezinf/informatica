@@ -50,7 +50,7 @@ h1,h2,h3,h4 {
     background-size: cover;
     z-index: 1;
 }
-.polarizado {
+.polarizado-inicio {
 background: rgba(0,0,0,0.75);
 background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(255,255,255,0)));

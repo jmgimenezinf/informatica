@@ -13,10 +13,10 @@ render() {
       <div>
       <Row>
         <Col l={12}  className="blue lighten-5 parallax">
-            <Col l={3} m={3}s={12} className="polarizado">
+            <Col l={3} m={3}s={12} className="polarizado-inicio">
                 <Novedades/>
             </Col>
-            <Col l={9} m={9} s={12} className="polarizado ocultar">
+            <Col l={9} m={9} s={12} className="polarizado-inicio ocultar">
                     <h2 className="white-text left-align">Departamento de Informática </h2>
                     <Calendario/>
             </Col>

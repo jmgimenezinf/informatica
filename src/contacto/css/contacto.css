@@ -10,14 +10,21 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        z-index: -1;
+        z-index: 1;
 }
 .polarizado {
-    background: rgba(0,0,0,0.75);
-    background: -moz-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.75)), color-stop(100%, rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
-    background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%);
+    height: 70vh;
+    /* background: rgba(0,0,0,0.60); */
+    background: rgba(0,0,0,0.8);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.8)), color-stop(100%, rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 100%);
     z-index: 10;
+}
+
+.opaco{
+    background: white;
+    opacity: 0.7;
 }
