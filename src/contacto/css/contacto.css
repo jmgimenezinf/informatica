@@ -5,7 +5,7 @@
         background-image: url('../images/contactos.jpg');
         position: relative;
         width: 100%;
-        height: 70vh;
+        height: 80vh;
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -27,4 +27,18 @@
 .opaco{
     background: white;
     opacity: 0.7;
+}
+.publicidad-contacto{
+    position: absolute;
+    left: 70%;
+    color: yellow;
+    overflow: hidden;
+    font-family: "Droid Serif";
+}
+.boton-enviar{
+    position: relative; 
+    display: inline;
+    top:-15%;
+    /* top:10%; */
+    left:100%; 
 }

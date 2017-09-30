@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import '../css/rich-editor.css'
 class RichEdit extends React.Component {
@@ -53,6 +52,8 @@ class RichEdit extends React.Component {
         }
         }
         return (
+            //                 {/* placeholder="Escriba su consulta..." */}
+
         <div className="RichEditor-root">
             <BlockStyleControls
             editorState={editorState}
@@ -70,7 +71,6 @@ class RichEdit extends React.Component {
                 handleKeyCommand={this.handleKeyCommand}
                 onChange={this.onChange}
                 onTab={this.onTab}
-                placeholder="Escriba su consulta..."
                 ref="editor"
                 spellCheck={true}
             />

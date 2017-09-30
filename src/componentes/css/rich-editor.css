@@ -11,6 +11,8 @@
     cursor: text;
     font-size: 16px;
     margin-top: 10px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll; /* Add vertical scrollbar */
   }
   
   .RichEditor-editor .public-DraftEditorPlaceholder-root,
@@ -20,7 +22,9 @@
   }
   
   .RichEditor-editor .public-DraftEditor-content {
-    min-height: 100px;
+    position: relative;
+    min-height: 30vh;
+    max-height: 30vh;
   }
   
   .RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
