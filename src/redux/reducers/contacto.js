@@ -7,8 +7,15 @@ const contacto = (state = [], action) => {
             email:action.email
           }
         ]
-      case 'GET_EMAIL':
-        return action.email
+        break;
+      case 'ADD_NOMBRE':
+        return [
+          ...state,
+          {
+            nombre:action.nombre
+          }
+        ]
+        break;
       default:
         return state
     }

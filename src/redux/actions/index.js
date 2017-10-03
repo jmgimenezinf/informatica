@@ -4,13 +4,12 @@ export const addEmail = (email) => ({
   email
 })
 
+export const addNombre = (nombre) => ({
+    type: 'ADD_NOMBRE',
+    nombre
+})
 
-// export const addNombre = (nombre) => ({
-//     type: 'ADD_NOMBRE',
-//     nombre
-// })
-
-// export const addApellido= (apellido) => ({
-//     type:'ADD_APELLIDO',
-//     nombre
-// })
+export const addApellido= (apellido) => ({
+    type:'ADD_APELLIDO',
+    apellido
+})
