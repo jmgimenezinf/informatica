@@ -1,9 +1,9 @@
 import express from 'express';
 import React from 'react';
-import novedades from './routes/novedades.js';
+// import novedades from './routes/novedades.js';
 import http from 'http';
-import  './api-calendar.js';
-
+// import  './api-calendar.js';
+import './mail/gmail.js';
 const app = express();
 const server = http.createServer(app);
 //** Levanta React
@@ -30,11 +30,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(novedades);
+ //app.use(novedades);
 
 server.listen(3001,'127.0.0.1',function(){
  server.close(function(){
-   server.listen(3001,'192.168.156.49')
+   server.listen(3001,'127.0.0.1')
    console.log('Servidor estático React-Express-Sequelize port 3001!');
  })
 })

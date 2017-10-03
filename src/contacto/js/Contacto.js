@@ -13,7 +13,7 @@ class Contacto extends Component {
       activo:false
     };
     this.handleMenuItem = this.handleMenuItem.bind(this);
-}
+  }
 handleMenuItem(e){
   if (!(this.state.fontSize === '60px' && this.state.activo)) {
     this.setState({
