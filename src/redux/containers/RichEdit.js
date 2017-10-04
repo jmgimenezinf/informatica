@@ -18,13 +18,7 @@ class RichEdit extends React.Component {
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
         this.clickButton = this.clickButton.bind(this);
     }
-    clickButton(contentState){
-        // let html = stateToHTML(contentState);        
-        // this.props.dispatch(addRichEdit(html));
-        // console.log(this.props.richEdit);
-        // this.props.estado;
-        //  console.log(html);
-    }
+
     _handleKeyCommand(command, editorState) {
         const newState = RichUtils.handleKeyCommand(editorState, command);
 

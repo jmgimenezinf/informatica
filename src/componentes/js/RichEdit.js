@@ -1,19 +1,36 @@
 import React from 'react';
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import '../css/rich-editor.css'
+import {stateToHTML} from 'draft-js-export-html';
+
 class RichEdit extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {editorState: EditorState.createEmpty()};
+        this.state = {
+            editorState: EditorState.createEmpty()
+        };
         this.focus = () => this.refs.editor.focus();
-        this.onChange = (editorState) => this.setState({editorState});
+        this.onChange = (editorState) => {
+        this.setState({editorState});
+        var currentContent = editorState.getCurrentContent();
+        if(currentContent.hasText()){
+            this.props.onValido(stateToHTML(currentContent));
+        }else {
+            this.props.onValido("");            
+        }    
+        };
         this.handleKeyCommand = this._handleKeyCommand.bind(this);
         this.onTab = this._onTab.bind(this);
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
+        this.handleChangeContent= this.handleChangeContent.bind(this,false);
+    }
+
+
+    handleChangeContent(html){
     }
     _handleKeyCommand(command, editorState) {
-        const newState = RichUtils.handleKeyCommand(editorState, command);
+        const newState = RichUtils.handleKeyCommand(editorState, command);     
         if (newState) {
         this.onChange(newState);
         return true;
@@ -23,22 +40,28 @@ class RichEdit extends React.Component {
     _onTab(e) {
         const maxDepth = 4;
         this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+        
     }
     _toggleBlockType(blockType) {
         this.onChange(
-        RichUtils.toggleBlockType(
-            this.state.editorState,
-            blockType
-        )
+            RichUtils.toggleBlockType(
+                this.state.editorState,
+                blockType
+            )
         );
+        
     }
     _toggleInlineStyle(inlineStyle) {
         this.onChange(
-        RichUtils.toggleInlineStyle(
-            this.state.editorState,
-            inlineStyle
-        )
+            RichUtils.toggleInlineStyle(
+                this.state.editorState,
+                inlineStyle
+            )
         );
+    }
+
+    shouldComponentUpdate(){
+        return true;
     }
     render() {
         const {editorState} = this.state;
@@ -47,14 +70,14 @@ class RichEdit extends React.Component {
         let className = 'RichEditor-editor';
         var contentState = editorState.getCurrentContent();
         if (!contentState.hasText()) {
-        if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-            className += ' RichEditor-hidePlaceholder';
-        }
+            if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+                className += ' RichEditor-hidePlaceholder';
+            }
         }
         return (
             //                 {/* placeholder="Escriba su consulta..." */}
 
-        <div className="RichEditor-root">
+        <div className="RichEditor-root" >
             <BlockStyleControls
             editorState={editorState}
             onToggle={this.toggleBlockType}
