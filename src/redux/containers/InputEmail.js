@@ -31,7 +31,6 @@ class InputEmail extends Component {
       label="Email" 
       onChange={(e)=>this.handleEmail(e)} 
       error={this.state.error}
-      
       />
     );
   }

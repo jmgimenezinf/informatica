@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {Row,Col,Card,Button,Icon} from 'react-materialize';
 import '../css/contacto.css';
 import FormContacto from './FormContacto'; 
-import RichEdit from '../../componentes/js/RichEdit';
+// import RichEdit from '../../componentes/js/RichEdit';
+import RichEdit from '../../redux/containers/RichEdit';
+
 class Contacto extends Component {
   constructor(props) {
     super(props);

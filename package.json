@@ -15,6 +15,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "bunyan": "^1.8.12",
     "draft-js": "^0.10.2",
+    "draft-js-export-html": "^1.2.0",
     "express": "^4.15.3",
     "formsy-react": "^0.19.5",
     "google-auth-library": "^0.10.0",

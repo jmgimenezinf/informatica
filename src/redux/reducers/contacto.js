@@ -16,6 +16,14 @@ const contacto = (state = [], action) => {
           }
         ]
         break;
+      case 'RICH_EDIT':
+        return [
+          ...state,
+          {
+            richEdit:action.richEdit
+          }
+        ]
+        break;
       default:
         return state
     }

@@ -13,3 +13,7 @@ export const addApellido= (apellido) => ({
     type:'ADD_APELLIDO',
     apellido
 })
+export const addRichEdit= (richEdit) => ({
+    type:'ADD_RICH_EDIT',
+    richEdit
+})
