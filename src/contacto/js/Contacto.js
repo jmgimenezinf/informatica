@@ -42,7 +42,7 @@ handleSubmit(e){
   var json = this.state.formContacto;
   var url = 'http://127.0.0.1:3001/send-mail';
   axios.post(
-    url,this.state.formContacto,
+    url,json,
     {headers: {'Content-Type': 'application/json'}})
   .then(function(response){
       console.log(response.data); 
