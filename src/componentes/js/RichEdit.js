@@ -1,7 +1,6 @@
 import React from 'react';
 import {Editor, EditorState,RichUtils} from 'draft-js';
 import '../css/rich-editor.css'
-import {stateToHTML} from 'draft-js-export-html';
 
 class RichEdit extends React.Component {
     constructor(props) {
@@ -14,7 +13,7 @@ class RichEdit extends React.Component {
         this.setState({editorState});
         var currentContent = editorState.getCurrentContent();
         if(currentContent.hasText()){
-            this.props.onValido(stateToHTML(currentContent));
+            this.props.onValido(currentContent);
         }else {
             this.props.onValido("");            
         }    
@@ -23,12 +22,10 @@ class RichEdit extends React.Component {
         this.onTab = this._onTab.bind(this);
         this.toggleBlockType = this._toggleBlockType.bind(this);
         this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
-        this.handleChangeContent= this.handleChangeContent.bind(this,false);
     }
 
 
-    handleChangeContent(html){
-    }
+
     _handleKeyCommand(command, editorState) {
         const newState = RichUtils.handleKeyCommand(editorState, command);     
         if (newState) {

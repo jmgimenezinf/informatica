@@ -31,7 +31,7 @@ let transporter = nodemailer.createTransport(
         // default message fields
 
         // sender info
-        from: 'Testbox <***REMOVED***>',
+        from: 'Dpto.Informática(UNPSJB) <***REMOVED***>',
         headers: {
             'X-Laziness-level': 1000 // just an example header, no need to use this
         }

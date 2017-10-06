@@ -1,37 +1,36 @@
 import express from 'express';
 import React from 'react';
+import bodyParser from 'body-parser';
+
 // import novedades from './routes/novedades.js';
 import http from 'http';
-// import  './api-calendar.js';
-import './mail/gmail.js';
+ // import  './api-calendar.js';
+ //import './mail/gmail.js';
+import email from './routes/email.js';
 const app = express();
 const server = http.createServer(app);
+
 //** Levanta React
 app.use(express.static(__dirname + '/../build'));
 
-//** Levantar todos los routes (uno por uno)
+//extended: false significa que parsea solo string (no archivos de imagenes por ejemplo)
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(function (req, res, next) {
+app.use(bodyParser.json({ type: 'application/*+json' }))
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://www.dinfo.ing.unp.edu.ar');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
+app.use(function(req, res, next) {
+  //en vez de * se puede definir SÓLO los orígenes que permitimos
+  // res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:3001');
+  res.setHeader('Content-Type','aplication/json')
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  //metodos http permitidos para CORS
+  // res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  next();
 });
+app.use(email);
 
  //app.use(novedades);
-
 server.listen(3001,'127.0.0.1',function(){
  server.close(function(){
    server.listen(3001,'127.0.0.1')

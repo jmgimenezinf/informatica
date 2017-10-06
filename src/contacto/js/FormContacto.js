@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row,Col,Card,Input,Button} from 'react-materialize';
+import {Col} from 'react-materialize';
 import InputEmail from '../../componentes/js/InputEmail';
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
@@ -21,13 +21,14 @@ class FormContacto extends Component {
     this.checkState = this.checkState.bind(this);
   }
   checkState(){
-    //  if((this.state.nombre!="")&& (this.state.apellido!="") && (this.state.email!="")&& (this.state.richEdit!="")){
-     if(this.state.nombre!=""&& (this.state.apellido!="") && (this.state.email!="")&&(this.state.richEdit!="")){
+     if(this.state.nombre!==""&& (this.state.apellido!=="") && (this.state.email!=="")&&(this.state.richEdit!=="")){
             this.props.onValido(true);
+            this.props.inputs(this.state);
 
      }else{
       this.props.onValido(false);
      }
+     this.props.inputs(this.state);
   }
 
   emailValido(email){
