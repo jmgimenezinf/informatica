@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var router  = express.Router();
-var gmail = require('../mail/gmail');
 var jsonParser = bodyParser.json();
 const bunyan = require('bunyan');
 const nodemailer = require('nodemailer');
@@ -33,9 +32,11 @@ console.log('SMTP Configured');
 
 router.post('/send-mail',jsonParser,function (req, res) {
   if (!req.body) return res.sendStatus(400);
+
   let message = {
       // Comma separated list of recipients
-      to: 'Gimenez Juan Martín <***REMOVED***>',
+    //   to: req.body.apellido + " "+ req.body.nombre +" "+
+      to:'<'+req.body.email.trim()+'>',
       // Subject of the message
       subject: 'Consultas WEB ' + req.body.apellido +" " + req.body.nombre, //
       // plaintext body
@@ -51,13 +52,15 @@ router.post('/send-mail',jsonParser,function (req, res) {
     if (error) {
       console.log('Error occurred');
       console.log(error.message);
+      res.send(error.message);
       return;
       }
       console.log('Message sent successfully!');
       console.log('Server responded with "%s"', info.response);
+      res.send(info.response);      
       transporter.close();
   });
-  res.send(req.body.richEdit);  
+ // res.send(req.body.richEdit);  
 });
 
 

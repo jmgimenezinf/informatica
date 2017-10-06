@@ -26,6 +26,8 @@ handleMenuItem(e){
       fontSize:'30px',
     });
   } 
+
+  
 }
 handleStyleButtonSubmit(e){
   this.setState({activo:e});
@@ -41,12 +43,18 @@ handleSubmit(e){
   });
   var json = this.state.formContacto;
   var url = 'http://127.0.0.1:3001/send-mail';
+  this.props.preloader(true,"enviando");
+  var self = this
   axios.post(
     url,json,
     {headers: {'Content-Type': 'application/json'}})
-  .then(function(response){
-      console.log(response.data); 
+  .then(function(response){ 
       console.log(response.status); 
+      self.props.preloader(true,response.data)
+    setTimeout(function(){
+      self.props.preloader(false,response.data);
+    }, 3000);
+    
   });
 }
 handleInputs(e){
