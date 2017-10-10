@@ -12,19 +12,22 @@ class FormContacto extends Component {
       email:"",
       nombre:"",
       apellido:"",
-      richEdit:""
+      richEdit:"",
+      resetApellido:false,
+      resetEmail:false,
+      resetNombre:false
     };
     this.emailValido=this.emailValido.bind(this);    
     this.nombreValido=this.nombreValido.bind(this);  
     this.apellidoValido=this.apellidoValido.bind(this);    
     this.richEditValido=this.richEditValido.bind(this);    
     this.checkState = this.checkState.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
-  checkState(){
+
+  checkState(){  
      if(this.state.nombre!==""&& (this.state.apellido!=="") && (this.state.email!=="")&&(this.state.richEdit!=="")){
             this.props.onValido(true);
-            this.props.inputs(this.state);
-
      }else{
       this.props.onValido(false);
      }
@@ -47,13 +50,35 @@ class FormContacto extends Component {
     this.setState({richEdit:richEdit});
     this.checkState();
   }
+  renderInputs(){
+    return <div><InputNombre reset={this.state.resetNombre}
+    onValido={(e) => this.nombreValido(e)}/>
+    <InputApellido reset={this.state.resetApellido}
+    onValido={(e)=> this.apellidoValido(e)}/>
+    <InputEmail reset={this.state.resetEmail}
+    onValido={(e) => this.emailValido(e)}/></div>;
+  }
+  handleFocus(e){
+    if(this.props.reset){
+      this.setState({
+        resetApellido:true,
+        resetNombre:true,
+        resetEmail:true
+    });
+    }else{
+      this.setState({
+        resetApellido:false,
+        resetNombre:false,
+        resetEmail:false
+    });
+    }
+  }
   render() {
+
     return (
-      <div className="opaco">
+      <div className="opaco" onMouseOver={(e)=>this.handleFocus(e)}>
         <Col m={12} s={12} l={12} className="opaco" >
-          <InputNombre  onValido={(e) => this.nombreValido(e)}/>
-          <InputApellido onValido={(e)=> this.apellidoValido(e)}/>
-          <InputEmail  onValido={(e) => this.emailValido(e)}/>
+          {this.renderInputs()}
         </Col>
         <RichEdit height="60px" onValido={(e) => this.richEditValido(e)}/>
       </div>

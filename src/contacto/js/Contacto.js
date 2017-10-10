@@ -12,18 +12,21 @@ class Contacto extends Component {
       col:8,
       height:40,
       activo:false,
-      formContacto:""
+      formContacto:"a",
+      resetNombre:false
     };
     this.handleMenuItem = this.handleMenuItem.bind(this);
     this.handleStyleButtonSubmit = this.handleStyleButtonSubmit.bind(this);
     this.handleInputs= this.handleInputs.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleMouseOver=this.handleMouseOver.bind(this);
+    axios.defaults.timeout = 6000;
   }
 handleMenuItem(e){
   if (!(this.state.fontSize === '60px' && this.state.activo)) {
     this.setState({
       col:11,
-      fontSize:'30px',
+      fontSize:'30px'
     });
   } 
 
@@ -38,27 +41,36 @@ handleSubmit(e){
   this.state.formContacto.richEdit = richEditHTML;
   this.setState({
     "formContacto":{
-      richEdit:stateRichEdit
-    } 
+      richEdit:stateRichEdit,
+    }
   });
   var json = this.state.formContacto;
   var url = 'http://127.0.0.1:3001/send-mail';
-  this.props.preloader(true,"enviando");
-  var self = this
+  // this.props.preloader(true,"Enviando");
+  var self = this;
+  this.setState({
+    resetNombre:true
+  });
   axios.post(
     url,json,
     {headers: {'Content-Type': 'application/json'}})
   .then(function(response){ 
       console.log(response.status); 
       self.props.preloader(true,response.data)
+  }) .catch(function (error) {
+    self.props.preloader(true,"Error de conexión");
     setTimeout(function(){
-      self.props.preloader(false,response.data);
+      self.props.preloader(false,"Error de conexión");
     }, 3000);
-    
   });
 }
 handleInputs(e){
   this.setState({formContacto:e});
+}
+handleMouseOver(e){
+  this.setState({
+    resetNombre:false
+  });
 }
 render() {
   var styleSubMenu ={
@@ -71,7 +83,7 @@ render() {
     msTransition: '750ms' 
   }
   return (
-    <Row className="contacto">
+    <Row className="contacto" onMouseOver={(e)=>{this.handleMouseOver(e)}}>
         <Col l={12} className="polarizado">
           <Col s={8} >
             <h3 className="blue-text" style={styleSubMenu}>Contacto</h3>
@@ -81,14 +93,17 @@ render() {
                 onClick={(e)=> this.handleMenuItem(e)}>
             <Col m={12} s={12} l={7}>
               <FormContacto inputs={(inputs)=>{this.handleInputs(inputs)}} 
-                onValido={(e)=>{this.handleStyleButtonSubmit(e)}}/> 
+                reset={this.state.resetNombre}
+                onValido={(e)=>{this.handleStyleButtonSubmit(e)}}                
+                /> 
             </Col>
             <Col m={12} s={12} l={7}>
               <Button 
                     disabled={!this.state.activo} 
                     floating large className='green boton-enviar' 
                     waves='light' icon='email'
-                    onClick={(e)=>this.handleSubmit(e)}/>
+                    onClick={(e)=>this.handleSubmit(e)
+                    }/>
             </Col>
           </Col>
         </Col>

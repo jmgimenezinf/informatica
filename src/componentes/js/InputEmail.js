@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {Input} from 'react-materialize';
-
 class InputEmail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error:""
+      error:"",
     };
     this.handleEmail = this.handleEmail.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
@@ -17,20 +16,24 @@ class InputEmail extends Component {
   }
   handleEmail(e){
     if(this.validateEmail(e.target.value)){
-       this.props.onValido(e.target.value);
+      this.props.onValido(e.target.value);
     }else {
+      this.setState({error:"Email no válido"})      
       this.props.onValido("");
     }
   } 
   render() {
     return (
       <Input  l={4}
-      type="email"
-      validate  
-      label="Email" 
-      onChange={(e)=>this.handleEmail(e)} 
-      error={this.state.error}
+        type="email"
+        validate
+        label="Email" 
+        value={this.state.email}
+        onChange={(e)=>this.handleEmail(e)} 
+        value={this.props.reset? "":this.state.value}
+        error={this.state.error}
       />
+     
     );
   }
 }

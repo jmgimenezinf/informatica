@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {Input} from 'react-materialize';
-
 class InputApellido extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state= {
       error:""
     };
     this.handleApellido = this.handleApellido.bind(this);
@@ -17,17 +16,21 @@ class InputApellido extends Component {
   handleApellido(e){
     if(this.validateApellido(e.target.value)){
        this.props.onValido(e.target.value);
-    }
+      }    
   } 
+
   render() {
     return (
-      <Input  l={4}
-      type="text"
-      validate  
-      label="Apellido" 
-      onChange={(e)=>this.handleApellido(e)} 
-      error={this.state.error}
-      />
+      <div>
+          <Input  l={4}
+            type="text"
+            value={this.props.reset ? "":this.state.value}
+            validate
+            label="Apellido" 
+            onChange={(e)=>this.handleApellido(e)} 
+            error={this.state.error}
+            /> 
+      </div>
     );
   }
 }

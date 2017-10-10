@@ -32,35 +32,37 @@ console.log('SMTP Configured');
 
 router.post('/send-mail',jsonParser,function (req, res) {
   if (!req.body) return res.sendStatus(400);
+    if(req.body.email!=null){
+        let message = {
+            // Comma separated list of recipients
+            //   to: req.body.apellido + " "+ req.body.nombre +" "+
+            to:'<'+req.body.email.trim()+'>',
+            // Subject of the message
+            subject: 'Consultas WEB ' + req.body.apellido +" " + req.body.nombre, //
+            // plaintext body
+            text:"",
+            // HTML body
+            html: req.body.richEdit,
+            // Apple Watch specific HTML body
+            watchHtml: req.body.richEdit,
+        };
 
-  let message = {
-      // Comma separated list of recipients
-    //   to: req.body.apellido + " "+ req.body.nombre +" "+
-      to:'<'+req.body.email.trim()+'>',
-      // Subject of the message
-      subject: 'Consultas WEB ' + req.body.apellido +" " + req.body.nombre, //
-      // plaintext body
-      text:"",
-      // HTML body
-      html: req.body.richEdit,
-      // Apple Watch specific HTML body
-      watchHtml: req.body.richEdit,
-  };
-
-  console.log('Sending Mail');
-  transporter.sendMail(message, (error, info) => {
-    if (error) {
-      console.log('Error occurred');
-      console.log(error.message);
-      res.send(error.message);
-      return;
-      }
-      console.log('Message sent successfully!');
-      console.log('Server responded with "%s"', info.response);
-      res.send(info.response);      
-      transporter.close();
-  });
- // res.send(req.body.richEdit);  
+        console.log('Sending Mail');
+        transporter.sendMail(message, (error, info) => {
+                if (error) {
+                    console.log('Error occurred');
+                    console.log(error.message);
+                    transporter.close();
+                    res.send(error.message)
+                }else{
+                    console.log('Message sent successfully!');
+                    console.log('Server responded with "%s"', info.response);
+                    transporter.close();
+                    res.send("¡Mensaje enviado!");      
+                }})
+    }else{
+        res.send("email vacio");              
+    };
 });
 
 
