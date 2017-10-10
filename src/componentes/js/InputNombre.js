@@ -10,7 +10,6 @@ class InputNombre extends Component {
     };
     this.handleNombre = this.handleNombre.bind(this);
     this.validateNombre = this.validateNombre.bind(this);
-    this.handleMouseOver = this.handleMouseOver.bind(this);
     this.resetear = this.resetear.bind(this);
   }
 
@@ -22,9 +21,12 @@ class InputNombre extends Component {
        this.props.onValido(e.target.value);
     }
   }
-  handleMouseOver(e){
-    this.props.reset=false;
-  } 
+  shouldComponentUpdate(){
+    if (!this.props.reset){
+      return false;
+    }
+    return true;
+ }
   resetear(){
     console.log(this.props.reset);
     if (this.props.reset !== this.state.reseteado){
@@ -38,7 +40,7 @@ class InputNombre extends Component {
   }
   render() {
     return (
-      <Input  l={4} onMouseOver={(e)=>{this.handleMouseOver(e)}}
+      <Input  l={4} 
       value={(this.resetear())? "":this.state.value}
       type="text"
       validate 

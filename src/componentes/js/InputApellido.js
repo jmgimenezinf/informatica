@@ -18,7 +18,12 @@ class InputApellido extends Component {
        this.props.onValido(e.target.value);
       }    
   } 
-
+  shouldComponentUpdate(){
+    if (!this.props.reset){
+      return false;
+    }
+    return true;
+ }
   render() {
     return (
       <div>

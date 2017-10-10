@@ -22,6 +22,7 @@ class InputEmail extends Component {
       this.props.onValido("");
     }
   } 
+
   render() {
     return (
       <Input  l={4}
