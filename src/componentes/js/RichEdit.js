@@ -71,9 +71,16 @@ class RichEdit extends React.Component {
                 className += ' RichEditor-hidePlaceholder';
             }
         }
+        const styleMap = {
+            CODE: {
+                backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
+                fontSize: 16,
+                padding: 2,
+            }
+            };
         return (
             //                 {/* placeholder="Escriba su consulta..." */}
-
         <div className="RichEditor-root" >
             <BlockStyleControls
             editorState={editorState}
@@ -100,14 +107,7 @@ class RichEdit extends React.Component {
     }
     }
     // Custom overrides for "code" style.
-    const styleMap = {
-    CODE: {
-        backgroundColor: 'rgba(0, 0, 0, 0.05)',
-        fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-        fontSize: 16,
-        padding: 2,
-    },
-    };
+
     function getBlockStyle(block) {
     switch (block.getType()) {
         case 'blockquote': return 'RichEditor-blockquote';

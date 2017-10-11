@@ -7,11 +7,16 @@ import RichEdit from '../../componentes/js/RichEdit';
 import {stateToHTML} from 'draft-js-export-html';
 import axios from 'axios';
 import '../css/contacto.css';
-
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 class Contacto extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      titleAlert:"Enviando...",
+      typeAlert:"",
+      textAlert:"",
+      confirmButton:"false",
       email:"",
       nombre:"",
       apellido:"",
@@ -29,7 +34,7 @@ class Contacto extends Component {
     this.apellidoValido=this.apellidoValido.bind(this);    
     this.richEditValido=this.richEditValido.bind(this);    
     this.checkState = this.checkState.bind(this);
-    this.handleMenuItem = this.handleMenuItem.bind(this);
+    this.handleStyleTitleContact = this.handleStyleTitleContact.bind(this);
     this.handleStyleButtonSubmit = this.handleStyleButtonSubmit.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     this.renderFormContacto= this.renderFormContacto.bind(this);
@@ -80,7 +85,7 @@ class Contacto extends Component {
     </div>);
   }
 
-  handleMenuItem(e){
+  handleStyleTitleContact(e){
     if (!(this.state.fontSize === '60px' && this.state.activo)) {
       this.setState({
         col:11,
@@ -109,7 +114,7 @@ class Contacto extends Component {
                 "richEdit":richEditHTML
               }
     var url = 'http://127.0.0.1:3001/send-mail';
-    this.props.preloader(true,"Enviando");
+    // this.props.preloader(true,"Enviando");
     this.setState({
       resetApellido:true,
       resetEmail:true,
@@ -126,19 +131,33 @@ class Contacto extends Component {
       {headers: {'Content-Type': 'application/json'}})
     .then(function(response){ 
         console.log(response.status); 
-        self.props.preloader(true,"Mensaje enviado,revise su casilla de correo")
-        setTimeout(function(){
-          self.props.preloader(false,"");
-        }, 3000);
-    }) .catch(function (error) {
-      self.props.preloader(true,"Error de conexión");
-      setTimeout(function(){
-        self.props.preloader(false,"");
-      }, 3000);
+        self.setState({
+          titleAlert:"¡Mensaje enviado!",
+          typeAlert:"success",
+          textAlert:"¡Gracias por conmunicarse!le responderemos a la brevedad",
+          confirmButton:true          
+      });
+    }).catch(function (error) {
+      self.setState({
+        titleAlert:"Oops",
+        typeAlert:"error",
+        textAlert:"Error al intentar conectarse con el servidor",
+        confirmButton:true   
+    });
+      // self.props.preloader(true,"Error de conexión");
+      // setTimeout(function(){
+      //   self.props.preloader(false,"");
+      // },3 000);
     });
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.resetApellido) {
+      this.setState({
+        titleAlert:"Enviando...",
+        typeAlert:"",
+        textAlert:"",
+        confirmButton:false            
+      });
         this.handleReset();
     }
   }
@@ -161,7 +180,7 @@ class Contacto extends Component {
         </Col>
         <Col  style={styleTransition} 
               m={12} s={12} l={this.state.col} 
-              onClick={(e)=> this.handleMenuItem(e)}>
+              onClick={(e)=> this.handleStyleTitleContact(e)}>
             <Col m={12} s={12} l={7}>
                 {this.renderFormContacto()}
             </Col>
@@ -170,8 +189,18 @@ class Contacto extends Component {
                     disabled={!this.state.activo} 
                     floating large className='green boton-enviar' 
                     waves='light' icon='email'
-                    onClick={(e)=>{this.handleSubmit(e)}
-                    }/>
+                    onClick={(e)=>{this.handleSubmit(e);this.setState({ show: true })}
+                    }>
+              </Button>
+              <SweetAlert
+                show={this.state.show}
+                title={this.state.titleAlert}
+                text={this.state.textAlert}
+                showConfirmButton={this.state.confirmButton}
+                onConfirm={() => this.setState({ show: false })}
+                onClose={() => console.log('close')} // eslint-disable-line no-console
+                type={this.state.typeAlert}
+              />
             </Col>
         </Col>
       </Col>

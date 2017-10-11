@@ -10,40 +10,41 @@ class InputNombre extends Component {
     };
     this.handleNombre = this.handleNombre.bind(this);
     this.validateNombre = this.validateNombre.bind(this);
-    this.resetear = this.resetear.bind(this);
   }
 
   validateNombre(nombre) {
-    return true;
+    var re = /^[a-zA-Z /t]+$/;
+    return re.test(nombre);
   }
   handleNombre(e){
+  if(e.target.value.length <=25){
     if(this.validateNombre(e.target.value)){
        this.props.onValido(e.target.value);
+    }else{
+      e.target.value = e.target.value.substr(0, e.target.value.length - 1);      
+      this.setState({error:"Email no válido"})      
+      this.props.onValido("");
     }
+  }else{
+    console.log(e.target.value.substr(0, e.target.value.length - 1));
+    e.target.value = e.target.value.substr(0, e.target.value.length - 1);
   }
+    
+  }
+
   shouldComponentUpdate(){
     if (!this.props.reset){
       return false;
     }
     return true;
  }
-  resetear(){
-    console.log(this.props.reset);
-    if (this.props.reset !== this.state.reseteado){
-      this.setState({
-        reseteado:true
-      })
-      return  true;
-    }else{
-      return false;
-    }
-  }
+
   render() {
     return (
       <Input  l={4} 
-      value={(this.resetear())? "":this.state.value}
+      value={this.props.reset? "":this.state.value}
       type="text"
-      validate 
+      validate
       ref="input"
       label="Nombre" 
       onChange={(e)=>this.handleNombre(e)} 

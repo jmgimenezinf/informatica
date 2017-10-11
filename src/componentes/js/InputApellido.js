@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Input} from 'react-materialize';
+
 class InputApellido extends Component {
   constructor(props) {
     super(props);
@@ -11,12 +12,23 @@ class InputApellido extends Component {
   }
 
   validateApellido(apellido) {
-    return true;
+    var re = /^[a-zA-Z ]+$/;
+    return re.test(apellido);
   }
+
+
   handleApellido(e){
-    if(this.validateApellido(e.target.value)){
-       this.props.onValido(e.target.value);
-      }    
+
+    if(e.target.value.length <=25){
+      if(this.validateApellido(e.target.value)){
+         this.props.onValido(e.target.value);
+      }else{
+        e.target.value = e.target.value.substr(0, e.target.value.length - 1);              
+      }
+    }else{
+      console.log(e.target.value.substr(0, e.target.value.length - 1));
+      e.target.value = e.target.value.substr(0, e.target.value.length - 1);
+    }
   } 
   shouldComponentUpdate(){
     if (!this.props.reset){

@@ -15,11 +15,17 @@ class InputEmail extends Component {
     return re.test(email);
   }
   handleEmail(e){
-    if(this.validateEmail(e.target.value)){
-      this.props.onValido(e.target.value);
-    }else {
-      this.setState({error:"Email no válido"})      
-      this.props.onValido("");
+    if(e.target.value.length <=320){
+      if(this.validateEmail(e.target.value)){
+        this.setState({error:""})              
+        this.props.onValido(e.target.value);
+      }else {
+        this.setState({error:"Email no válido"})      
+        this.props.onValido("");
+      }
+    }else{
+      console.log(e.target.value.substr(0, e.target.value.length - 1));
+      e.target.value = e.target.value.substr(0, e.target.value.length - 1);
     }
   } 
 

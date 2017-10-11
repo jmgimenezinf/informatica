@@ -18,7 +18,7 @@ render() {
             </Col>
             <Col l={9} m={9} s={12} className="polarizado-inicio ocultar">
                     <h2 className="white-text left-align">Departamento de Informática </h2>
-                    <Calendario/>
+                    {/* <Calendario/> */}
             </Col>
         </Col>
         <div className="breaker-inicio ocultar"/>
@@ -29,7 +29,7 @@ render() {
             <div className="separador"></div>
         </Col>
         <Carreras/>
-        <Col l={12} l={12} m={12} s={12} offset="l5 m3 s3">
+        <Col l={12}  m={12} s={12} offset="l5 m3 s3">
                 <a href="/planes-de-estudio" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
         </Col>
       </Row>
