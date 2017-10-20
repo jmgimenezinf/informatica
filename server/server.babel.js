@@ -31,9 +31,9 @@ app.use(function(req, res, next) {
 app.use(email);
 
  //app.use(novedades);
-server.listen(3001,'127.0.0.1',function(){
+server.listen(8080,'192.168.183.127',function(){
  server.close(function(){
-   server.listen(3001,'127.0.0.1')
-   console.log('Servidor estático React-Express-Sequelize port 3001!');
+   server.listen(8080,'192.168.183.127')
+   console.log('Servidor estático React-Express-Sequelize port 8080!');
  })
 })

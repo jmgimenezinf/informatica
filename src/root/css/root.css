@@ -1,7 +1,7 @@
 body {
 
    /*background-image: -webkit-gradient(linear, left top, left bottom, from(white),grey-color));*/
-
+    overflow: hidden;
     background-color: #fafafa;
 }
 .loading-animation{
@@ -36,6 +36,14 @@ body {
 .menu{
     padding-left: 15%;
 }
+.calendario-menu{
+    margin: 0;   
+    overflow:hidden; 
+    float: right;
+    width: auto;
+    text-align: right;             
+}  
+
 @media only screen and (max-width: 500px) {
 .menu{
     padding-left: 0%;

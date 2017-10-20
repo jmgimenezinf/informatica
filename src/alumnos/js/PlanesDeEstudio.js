@@ -5,7 +5,7 @@ class PlanesDeEstudio extends Component {
     return (
         <Row className="container">
           <Col l={12} m={12} s={12}>
-            <h3 className="blue-text">Planes de estudio</h3>
+            <h4 className="blue-text titulo">Planes de estudio</h4>
           </Col>
           <Col l={12} m={12} s={12}>
               <p>Actualmente, la Facultad de Ingeniería oferta las siguientes carreras en el área de Informática:</p>

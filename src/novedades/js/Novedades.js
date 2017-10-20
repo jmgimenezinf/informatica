@@ -6,7 +6,7 @@ class Novedades extends Component {
   render() {
     return (
     <div>
-      <Col s={12}>
+      <Col s={12} l={12} m={12}>
           <h5 className="blue-text" >Novedades</h5>
           <Collection>
               <Modal

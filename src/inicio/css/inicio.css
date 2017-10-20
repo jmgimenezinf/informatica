@@ -19,7 +19,9 @@
 }
 p{
     font-family: "Droid Serif";
-    font-size: 16px;
+    font-size: 18px;
+    letter-spacing: 0.5px; 
+    
 }
 h1,h2,h3,h4 {
     letter-spacing: -2px; 
@@ -27,7 +29,7 @@ h1,h2,h3,h4 {
 
 .separador {
     position: relative;
-    background-image: url('../images/ave.svg');
+    background-image: url('../images/aveBackup.svg');
     top: -10px;
     left:45%;
     width: 10%;
@@ -35,6 +37,8 @@ h1,h2,h3,h4 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    margin-bottom: 3%;
+    padding-bottom: 5%;
 }
 .parallax {
 
@@ -75,6 +79,15 @@ z-index: 10;
     overflow: visible;
     z-index: 20;
 }
+@media only screen and (max-width: 1400px) {
+    .parallax{
+        height: 45vh;
+    }
+    .breaker-inicio{
+        top:43vh;
+    }
+}
+    
 @media only screen and (max-width: 900px) {
     .ocultar{
        display: none;

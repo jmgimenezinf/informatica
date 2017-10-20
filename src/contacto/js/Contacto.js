@@ -113,8 +113,7 @@ class Contacto extends Component {
                 "email":this.state.email,
                 "richEdit":richEditHTML
               }
-    var url = 'http://127.0.0.1:3001/send-mail';
-    // this.props.preloader(true,"Enviando");
+    var url = 'http://192.168.183.127:8080/send-mail';
     this.setState({
       resetApellido:true,
       resetEmail:true,
@@ -122,7 +121,6 @@ class Contacto extends Component {
       emailValido:false,
       email:""
     });
-    console.log(this.state);
 
     this.handleStyleButtonSubmit(false);
     var self = this;
@@ -136,18 +134,13 @@ class Contacto extends Component {
           typeAlert:"success",
           textAlert:"¡Gracias por conmunicarse!le responderemos a la brevedad",
           confirmButton:true          
-      });
-    }).catch(function (error) {
-      self.setState({
-        titleAlert:"Oops",
-        typeAlert:"error",
-        textAlert:"Error al intentar conectarse con el servidor",
-        confirmButton:true   
-    });
-      // self.props.preloader(true,"Error de conexión");
-      // setTimeout(function(){
-      //   self.props.preloader(false,"");
-      // },3 000);
+      })}).catch(function (error) {
+          self.setState({
+            titleAlert:"Oops",
+            typeAlert:"error",
+            textAlert:"Error al intentar conectarse con el servidor",
+            confirmButton:true   
+        });
     });
   }
   componentDidUpdate(prevProps, prevState) {

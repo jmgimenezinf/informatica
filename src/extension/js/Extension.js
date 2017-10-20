@@ -8,7 +8,7 @@ class Extension extends Component{
         return(
             <Row className="container">
                 <Col s={12} l={12} m={12}>
-                    <h3 className="blue-text">Extensión</h3>
+                    <h4 className="blue-text titulo">Extensión</h4>
                 </Col>
                 <Col s={12} l={12} m={12}>
                     <ExtensionHtml/>

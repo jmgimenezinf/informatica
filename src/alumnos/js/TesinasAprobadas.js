@@ -10,14 +10,14 @@ class TesinasAprobadas extends Component {
             dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             autoplay:true
         };
     return (
             <Slider {...settings}>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-depth-4 red small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Herramienta para la representacion XML de un modelo fisico de datos</div>}
                     reveal={<div className="blue"><p>
@@ -29,7 +29,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-depth-4 green small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Herramienta para la generacion automatica de codigo en Delphi a 
                         partir de un modelo de datos expresado en XML</div>}
@@ -42,7 +42,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-depth-4 blue small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Help Desk: una disciplina
                     </div>}reveal={<p>
@@ -54,7 +54,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>                
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-depth-4 red small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Desarrollo teorico practico de web service</div>}
                     reveal={<p>
@@ -66,7 +66,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>
                 <div>
-                    <Col l={12}>                    
+                    <Col l={12} m={12} s={12}>                    
                     <Card className="z-delphi-4 green small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Desarrollo de una herramienta CASE para el diseño de una BD</div>}
                     reveal={<p>
@@ -78,7 +78,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-delphi-4 blue small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Seguridad en el comercio electronico: un enfoque B2B</div>}
                     reveal={<p>
@@ -90,7 +90,7 @@ class TesinasAprobadas extends Component {
                     </Col>
                 </div>
                 <div>
-                    <Col l={12}>
+                    <Col l={12} m={12} s={12}>
                     <Card className="z-delphi-4 green small" header={<CardTitle reveal waves='light'/>}
                     title={<div className="white-text">Aplicacion GIS catastral</div>}
                     reveal={<p>

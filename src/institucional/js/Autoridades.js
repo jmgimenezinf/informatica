@@ -6,7 +6,7 @@ class Autoridades extends Component {
     return (
         <Row className="container">
           <Col s={12} l={12} m={12}>
-              <h3 className="blue-text">Autoridades</h3>
+              <h4 className="blue-text titulo">Autoridades</h4>
           </Col>
           <Col s={12} l={12} m={12}>
               <AutoridadesHtml/>
