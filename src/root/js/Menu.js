@@ -68,7 +68,7 @@ render() {
                 </Dropdown></a></li>  
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
                 <li><Link to="/tesinas">Tesinas</Link></li>
-                <li><Link to="/contacto">Contacto</Link></li>
+                <li><div><Link to="/contacto">Contacto</Link></div></li>
                 <li className="calendario-menu"><span><Calendario/></span></li>
             </Navbar>
             <Route  exact path="/" component={Inicio} />
