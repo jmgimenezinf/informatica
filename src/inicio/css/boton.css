@@ -86,6 +86,7 @@
 @media only screen and (max-width: 900px) {
 	.boton-descarga{
 		width: 50%;
+		right:1px;
 	}
 	.boton{
 		width: 50%;		

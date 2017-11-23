@@ -19,7 +19,7 @@ render() {
   var styleSubMenu ={display:this.state.display};
   return (
     <div>
-        <button className="menu-item waves-effect z-depth-1"
+        <button className="menu-item waves-effect "
                 onClick={(e)=> this.handleMenuItem(e)} >{this.props.titulo}</button>
         <div className="sub-menu" style={styleSubMenu}>
             {this.props.children}

@@ -8,6 +8,7 @@ import Docentes from '../../docentes/js/Docentes';
 import Autoridades from '../../institucional/js/Autoridades';
 import Contacto from '../../contacto/js/Contacto';
 import Calendario from '../../inicio/js/Calendario';
+import MenuItem from '../../componentes/js/MenuItem.js';
 
 import '../css/root.css';
 import {
@@ -40,8 +41,8 @@ render() {
         <Router basename="/">
           <div className="pagina">
             <Navbar className="blue darken-2 menu">
-                <li><Link to="/">Inicio</Link></li>
-                <li><a><Dropdown className="item" options={{outDuration: 225,
+                <li className="opcion-menu"><Link to="/">Inicio</Link></li>
+                <li className="no-mobile"><a className="dropdown-menu"><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
                               hover: true, 
                               gutter: 5, 
@@ -53,7 +54,13 @@ render() {
                     {/* <li><Link to="/docentes">Laboratorios</Link></li> */}
                     <NavItem divider />
                 </Dropdown></a></li>  
-                <li><a><Dropdown className="item" options={{outDuration: 225,
+                <MenuItem titulo="Institucional" >
+                      <MenuItem titulo="Autoridades"/>
+                      {/* <MenuItem titulo="Docentes"/> */}
+                      {/* <MenuItem titulo="Laboratorios"/> */}
+                      {/* <MenuItem titulo="Algoritmica y Programacion II"/> */}
+                </MenuItem>
+                <li  className="no-mobile"><a className="dropdown-menu"><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
                               hover: true, 
                               gutter: 5, 
@@ -63,13 +70,18 @@ render() {
                     <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
                     {/* <li><Link to="/docentes">Cursos de pogrado</Link></li> */}
-                    <li><Link to="/extension">Extension</Link></li>
+                    <li><Link to="/extension">Extensión</Link></li>
                     <NavItem divider />
                 </Dropdown></a></li>  
+                <MenuItem titulo="Oferta Academica" >
+                      <MenuItem titulo="Planes de estudio"/>
+                      <MenuItem titulo="Doctorado"/>
+                      <MenuItem titulo="Extensión"/>
+                </MenuItem>
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
-                <li><Link to="/tesinas">Tesinas</Link></li>
-                <li><div><Link to="/contacto">Contacto</Link></div></li>
-                <li className="calendario-menu"><span><Calendario/></span></li>
+                <li className="opcion-menu"><Link to="/tesinas">Tesinas</Link></li>
+                <li className="opcion-menu"><div><Link to="/contacto">Contacto</Link></div></li>
+                <li className="calendario-menu no-mobile"><span><Calendario/></span></li>
             </Navbar>
             <Route  exact path="/" component={Inicio} />
             <Route  path="/planes-de-estudio" component={PlanesDeEstudio}/>

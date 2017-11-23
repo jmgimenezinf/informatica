@@ -17,10 +17,9 @@ class InputEmail extends Component {
   handleEmail(e){
     if(e.target.value.length <=320){
       if(this.validateEmail(e.target.value)){
-        this.setState({error:""})              
+        this.setState({error:"Email no válido"})              
         this.props.onValido(e.target.value);
       }else {
-        this.setState({error:"Email no válido"})      
         this.props.onValido("");
       }
     }else{

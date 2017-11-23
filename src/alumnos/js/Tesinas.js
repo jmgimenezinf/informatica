@@ -27,7 +27,7 @@ class Tesinas extends Component {
         </Row>
         <Row>
             <Col l={12} m={12} s={12} className="carreras">
-                <h4 className="center-align titulo">Portfolio de tesinas</h4>
+                <h4 className="center-align titulo">Repositorio de tesinas</h4>
                 <div className="separador"></div>
             </Col>
             <Col className="grey lighten-3"s={12} l={12} m={12}>

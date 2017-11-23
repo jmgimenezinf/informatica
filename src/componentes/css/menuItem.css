@@ -1,11 +1,12 @@
 /* Style the buttons that are used to open and close the accordion panel */
 button.menu-item {
+    display: none;
     background-color: white;
-    color: #444;
+    color: black;
     cursor: pointer;
-    padding: 18px;
+    padding: 1px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     border: none;
     outline: none;
     /*transition: 0.4s;*/
@@ -14,6 +15,7 @@ button.menu-item {
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 button.menu-item.active, button.menu-item:hover {
+    display: none;
     background-color: #ddd;
   
 }
@@ -22,4 +24,22 @@ button.menu-item.active, button.menu-item:hover {
 div.sub-menu {
     background-color: white;
     display: none;
+}
+
+@media only screen and (max-width: 500px) {
+/* Style the buttons that are used to open and close the accordion panel */
+button.menu-item {
+    display: block;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.menu-item.active, button.menu-item:hover {
+    display: block;
+  
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.sub-menu {
+    display: none;
+}
 }

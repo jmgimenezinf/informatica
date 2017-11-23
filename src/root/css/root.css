@@ -43,24 +43,19 @@ body {
     width: auto;
     text-align: right;             
 }  
- a:as{
-    background:rgba(0, 0, 0,0.2)!important;
-    -moz-border-radius:1px;
-	-webkit-border-radius:1px;
-    border-radius:50em;
-    display: inline-block;
+.opcion-menu a{
+    color:rgba(255, 255, 255, 0.9) !important;
     
-    /* border:0.5px solid rgba(0, 0, 0,0.2) ; */
-    padding: 0px!important;
-
 }
-
-@media only screen and (max-width: 500px) {
-.menu{
-    padding-left: 0%;
+.dropdown-menu{
+    color:rgba(255, 255, 255, 0.9) !important;
+    
 }
-
-
+.opcion-menu a:hover{
+    color:white !important;
+}
+.dropdown-menu:hover{
+    color:white !important;
 }
 .pagina{
     position: relative;
@@ -73,8 +68,44 @@ body {
 .item li a:hover{
     color: #42a5f5;
 }
+
 .boton-gitlab{
     background: url('../images/gitlab.svg');
     background-repeat: no-repeat;
     margin-left: 65%;
+}
+.no-mobile{
+    display: inline-block;
+}
+@media only screen and (max-width: 500px) {
+
+    .no-mobile{
+        display:none;
+    }
+    .opcion-menu a{
+        color:black!important;
+    }
+    .dropdown-menu{
+        display: none;
+        color:black!important;
+    }
+    .dropdown-button{
+        display: none;
+        color:black!important;
+    }
+    .opcion-menu a:hover{
+        color:black !important;
+    }
+    .dropdown-menu:hover{
+        color:black !important;
+    }
+    .menu{
+    padding-left: 0%;
+    }
+    .item li a{
+        display: none;
+    }
+    .item{
+        display: none!important;
+    }
 }
