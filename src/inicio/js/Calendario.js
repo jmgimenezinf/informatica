@@ -10,7 +10,7 @@ render() {
             header={<span className="novedad-text">Calendario</span>}
             fixedFooter
             trigger={
-               <Button floating large className='white' waves='light' 
+               <Button floating large className='red' waves='light' 
             icon={<i className="fa fa-calendar" aria-hidden="true"></i>}>
             </Button>
             }>

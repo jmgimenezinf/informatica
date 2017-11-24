@@ -15,7 +15,7 @@ nodemailer.createTestAccount((err, account) => {
         auth: {
             type: 'OAuth2',
             user: '***REMOVED***',
-            accessToken: '***REMOVED***'
+            accessToken: ''
         }
     });
 

@@ -27,11 +27,9 @@ class NovedadesRequest extends Component {
 
 componentDidMount() {
     var self=this;
-    var url = 'http://localhost:3001/'+ self.props.url;
+    var url = 'http://127.0.0.1:8080/'+ self.props.url;
     axios.get(url)
     .then(function(response){
-        console.log(response.data); 
-        console.log(response.status); 
         self.setState({
             novedades: ResultadoList(response.data),
         });

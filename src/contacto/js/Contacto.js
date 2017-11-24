@@ -113,7 +113,7 @@ class Contacto extends Component {
                 "email":this.state.email,
                 "richEdit":richEditHTML
               }
-    var url = 'http://192.168.183.127:8080/send-mail';
+    var url = 'http://127.0.0.1:8080/send-mail';
     this.setState({
       resetApellido:true,
       resetEmail:true,

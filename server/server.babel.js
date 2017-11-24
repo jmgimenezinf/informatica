@@ -2,9 +2,8 @@ import express from 'express';
 import React from 'react';
 import novedades from './routes/novedades.js';
 import http from 'http';
-
+import bodyParser from 'body-parser';
 // import novedades from './routes/novedades.js';
-import http from 'http';
  // import  './api-calendar.js';
 //import './mail/gmail.1.js';
 import email from './routes/email.js';
@@ -35,7 +34,7 @@ app.use(novedades);
 
 server.listen(3001,'127.0.0.1',function(){
  server.close(function(){
-   server.listen(8080,'192.168.183.127')
+   server.listen(8080,'127.0.0.1')
    console.log('Servidor estático React-Express-Sequelize port 8080!');
  })
 })

@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 var db;
-var URL = '***REMOVED***'
+var URL = 'mongodb://@localhost:27017/informatica'
 
 MongoClient.connect(URL, function(err, db) {
   if (err) return
