@@ -3,7 +3,7 @@ var express = require('express');
 var router  = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 var db;
-var URL = 'mongodb://@localhost:27017/informatica'
+var URL = 'mongodb://informatica:***REMOVED***@localhost:27017/informatica'
 
 router.get('/todas_novedades', function(req, res) {
     MongoClient.connect(URL, function(err, db) {

@@ -9,7 +9,7 @@ import axios from 'axios';
 const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 2,
     slidesToScroll: 1,
     autoplay:true
@@ -24,7 +24,10 @@ function alumnosList(alumnos){
     );
     return (<ul style={listStyle}>{listAlumnos}</ul>);
 }
-
+function fecha(fechaString){
+    var fecha = new Date(fechaString);  
+    return fecha.getDate() + "/"+fecha.getMonth()+"/"+fecha.getFullYear();
+}
 function TesinasList(props){
     const tesinas = props.tesinas;
     const listTesinas = tesinas.map((tesina)=>
@@ -37,7 +40,7 @@ function TesinasList(props){
                                 <div>
                                     <p> Alumnos	         :{alumnosList(tesina.alumnos)}<br/>
                                         Tutor	         :{tesina.tutor} <br/>
-                                        Fecha de defensa :{tesina.fecha}
+                                        Fecha de defensa :{fecha(tesina.fechaDefensa)}
                                     </p>
                                 </div>
                         }>
@@ -53,23 +56,17 @@ class TesinasAprobadas extends Component {
         super(props);
         this.state={
             tesinas:[{
-                titulo:"titulo",
-                alumnos:[1,2],
-                tutor:"tutor",
-                fecha:"22/11/17"    
-            },
-            {
-                titulo:"titulo2",
-                alumnos:[1,3],
-                tutor:"tutor2",
-                fecha:"22/11/17"    
+                titulo:"",
+                alumnos:[""],
+                tutor:"",
+                fechaDefensa:""    
             }]
         }
     }
   
     componentDidMount() {
         var self=this;
-        var url = 'http://192.168.156.49:3001/'+ self.props.url;
+        var url = 'http://192.168.183.127:8080/tesinas-aprobadas';
         axios.get(url)
         .then(function(response){
             console.log(response.data); 
@@ -87,3 +84,14 @@ class TesinasAprobadas extends Component {
 }
 
 export default TesinasAprobadas;
+/*
+db.tesinas.insert(
+    {
+        titulo: "Aplicacion GIS catastral",
+        alumnos :["Luis Enrique RAMOS"],
+        tutor: "Rodolfo BERTONE",
+        fechaDefensa : "14/11/2005",
+        estado :true
+}
+ )
+ */

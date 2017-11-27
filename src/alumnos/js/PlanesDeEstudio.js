@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Row,Col,Table,Icon,Button} from 'react-materialize';
+import "../css/planes-estudio.css"
 class PlanesDeEstudio extends Component {
   render() {
     return (
-        <Row className="container">
+        <Row className="container all-section">
           <Col l={12} m={12} s={12}>
             <h4 className="blue-text titulo">Planes de estudio</h4>
           </Col>
@@ -53,8 +54,8 @@ class PlanesDeEstudio extends Component {
                 </tbody>
               </Table>
           </Col>
-          <Col l={12} m={12} s={12}>
-            <h5>Planes anteriores</h5>
+          <Col l={12} m={12} s={12} >
+            <h5 >Planes anteriores</h5>
             <ul>
               <li><a href="#">Analista Programador Universitario (Plan 1999)</a></li>
               <li><a href="#">Licenciatura en Informática (Plan 2001)</a></li>

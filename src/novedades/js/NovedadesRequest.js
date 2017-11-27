@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import {Row,Col} from 'react-materialize';
 import axios from 'axios';
+function fecha(fechaString){
+    var fecha = new Date(fechaString);  
+    return fecha.getDate() + "/"+fecha.getMonth()+"/"+fecha.getFullYear();
+}
 
 function ResultadoList(result) {
   const listItems = result.map((novedad) =>
     <div>
         <Col s={10} l={10} m={10}><h4 className="novedad-titulo">{novedad.titulo}</h4></Col>
-        <Col s={1} l={1} m={1}><h5 className="novedad-fecha">{novedad.fecha_emision}</h5></Col>
+        <Col s={1} l={1} m={1}><h5 className="novedad-fecha">{fecha(novedad.fecha_emision)}</h5></Col>
         <Col s={12} l={12} m={12} className="novedad-contenido">
             <p>{novedad.descripcion}</p>
         </Col>
@@ -27,7 +31,7 @@ class NovedadesRequest extends Component {
 
 componentDidMount() {
     var self=this;
-    var url = 'http://127.0.0.1:8080/'+ self.props.url;
+    var url = 'http://192.168.183.127:8080/'+ self.props.url;
     axios.get(url)
     .then(function(response){
         self.setState({

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Col,Collection,CollectionItem,Badge,Button,Modal} from 'react-materialize';
 import NovedadesRequest from './NovedadesRequest.js';
 import '../css/novedades.css';
+
+
 class Novedades extends Component {
   render() {
     return (

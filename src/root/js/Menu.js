@@ -70,13 +70,13 @@ render() {
                     <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
                     {/* <li><Link to="/docentes">Cursos de pogrado</Link></li> */}
-                    <li><Link to="/extension">Extensión</Link></li>
+                    {/* <li><Link to="/extension">Extensión</Link></li> */}
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <MenuItem titulo="Oferta Academica" >
                       <MenuItem titulo="Planes de estudio"/>
                       <MenuItem titulo="Doctorado"/>
-                      <MenuItem titulo="Extensión"/>
+                      {/* <MenuItem titulo="Extensión"/> */}
                 </MenuItem>
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
                 <li className="opcion-menu"><Link to="/tesinas">Tesinas</Link></li>
@@ -90,7 +90,7 @@ render() {
             <Route  path="/tesinas" component={Tesinas}/>
             <Route  path="/contacto" 
             component={Contacto}/>
-            <Route  path="/extension" component={Extension}/>
+            {/* <Route  path="/extension" component={Extension}/> */}
           </div>
         </Router>
         </Row>
