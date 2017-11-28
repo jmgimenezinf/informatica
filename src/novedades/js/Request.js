@@ -23,7 +23,7 @@ function ResultadoList(result) {
   );
 }
 
-class NovedadesRequest extends Component {
+class Request extends Component {
     constructor(props) {
     super(props);
     this.state={novedades:""};
@@ -51,4 +51,4 @@ componentDidMount() {
     )}
 }
 
-export default NovedadesRequest;
+export default Request;

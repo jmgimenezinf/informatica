@@ -66,7 +66,7 @@ class TesinasAprobadas extends Component {
   
     componentDidMount() {
         var self=this;
-        var url = 'http://192.168.183.127:8080/tesinas-aprobadas';
+        var url = 'http://manolito:8080/tesinas-aprobadas';
         axios.get(url)
         .then(function(response){
             console.log(response.data); 

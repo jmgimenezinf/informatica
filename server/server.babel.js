@@ -34,9 +34,9 @@ app.use(email);
 app.use(tesinas);
 app.use(novedades);
 
-server.listen(8080,'192.168.183.127',function(){
+server.listen(8080,'manolito',function(){
  server.close(function(){
-   server.listen(8080,'192.168.183.127')
+   server.listen(8080,'manolito')
    console.log('Servidor estático React-Express-Sequelize port 8080!');
  })
 })
