@@ -1,23 +1,61 @@
 import React, { Component } from 'react';
-import {Col,Collection,CollectionItem,Badge,Button,Modal} from 'react-materialize';
-import NovedadesRequest from './NovedadesRequest.js';
+import {Col,Row,Collection,CollectionItem,Badge,Button,Modal} from 'react-materialize';
+// import NovedadesTodas from './NovedadesTodas.js';
 import '../css/novedades.css';
+import axios from "axios"
 
-function News(props) {
-    if (props.news==0) {
-      return null;
+function fecha(fechaString){
+    var fecha = new Date(fechaString);  
+    return fecha.getDate() + "/"+fecha.getMonth()+"/"+fecha.getFullYear();
+}
+function vencida(date){
+    var dateActual = new Date();
+    if (dateActual.getFullYear() <= date.getFullYear()){
+        if (dateActual.getMonth() <= date.getMonth()){
+            if (dateActual.getDate() < date.getDate()){
+                console.log("aca");
+                return false;
+            }
+        }
     }
-    return (
-        <Badge newIcon>{this.state.countAlumnos}</Badge>
-    );
-  }
+    return true;
+}
+
+function filterAlumnos(array){
+    return (array.tipo_novedad === "alumno" && !(vencida(new Date(array.fecha_vencimiento))));
+}
+function filterDocentes(array){
+     return (array.tipo_novedad === "docente" && !vencida(new Date(array.fecha_vencimiento)));
+}
+function filterPublico(array){
+    return (array.tipo_novedad === "publico" && !vencida(new Date(array.fecha_vencimiento)));
+}
+
+function ResultadoList(result) {
+  const listItems = result.map((novedad) =>
+    <Row>
+        <Col s={10} l={10} m={10}><h4 className="novedad-titulo">{novedad.titulo}</h4></Col>
+        <Col s={1} l={1} m={1}><h5 className="novedad-fecha">{fecha(novedad.fecha_emision)}</h5></Col>
+        <Col s={12} l={12} m={12} className="novedad-contenido">
+            <p>{novedad.descripcion}</p>
+        </Col>
+    </Row>
+  );
+  return (
+    <div>
+      {listItems}
+    </div>
+  );
+}
 class Novedades extends Component {
 constructor(props) {
     super(props);
     this.state={
-        bodyAlumnos:<NovedadesRequest url="novedades_alumnos" setCount={(count)=> this.setCountAlumnos(count)}/>,
-        bodyDocentes:<NovedadesRequest url="novedades_docentes" setCount={(count)=> this.setCountDocentes(count)}/>,
-        bodyPublico:<NovedadesRequest url="novedades_publico" setCount={(count)=> this.setCountPublico(count)}/>,
+        novedadesTodas:"",
+        bodyAlumnos: "",
+        bodyDocentes:"",
+        bodyPublico:"",
+        bodyTodas:"",
         countAlumnos:0,
         countDocentes:0,
         countPublico:0};
@@ -41,6 +79,28 @@ setCountPublico(count){
         countPublico:count
     })
 }
+componentDidMount() {
+    var self=this;
+    var url = 'http://manolito:8080/todas_novedades';
+    axios.get(url)
+    .then(function(response){
+       self.setState({
+            novedadesTodas :response.data
+       })
+       var novedadesAlumnos = self.state.novedadesTodas.filter(filterAlumnos);
+       var novedadesDocentes = self.state.novedadesTodas.filter(filterDocentes);
+       var novedadesPublico = self.state.novedadesTodas.filter(filterPublico);
+       self.setState({
+           bodyAlumnos: ResultadoList(novedadesAlumnos),
+           bodyDocentes:ResultadoList(novedadesDocentes),
+           bodyPublico:ResultadoList(novedadesPublico),
+           bodyTodas:ResultadoList(self.state.novedadesTodas),
+           countAlumnos: novedadesAlumnos.length,
+           countDocentes: novedadesDocentes.length,
+           countPublico: novedadesPublico.length
+       }) 
+    });
+}
 
   render() {
     const newsAlumnos = this.state.countAlumnos;     
@@ -58,7 +118,7 @@ setCountPublico(count){
                   <CollectionItem href="#!">
                   Alumnos 
                     {newsAlumnos !== 0 ? (
-                    <Badge newIcon>{this.state.countDocentes}</Badge>
+                    <Badge newIcon>{this.state.countAlumnos}</Badge>
                     ) : (
                        null
                     )}
@@ -71,7 +131,11 @@ setCountPublico(count){
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
-                  Docentes <Badge newIcon>{this.state.countDocentes}</Badge>
+                  Docentes {newsDocentes !== 0 ? (
+                    <Badge newIcon>{this.state.countDocentes}</Badge>
+                    ) : (
+                       null
+                    )}
                   </CollectionItem>
                   }>
                   {this.state.bodyDocentes}
@@ -81,7 +145,11 @@ setCountPublico(count){
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
-                  Público <Badge newIcon>{this.state.countPublico}</Badge>
+                  Público {newsPublico !== 0 ? (
+                    <Badge newIcon>{this.state.countPublico}</Badge>
+                    ) : (
+                       null
+                    )}
                   </CollectionItem>
                   }>
                   {this.state.bodyPublico}
@@ -95,7 +163,7 @@ setCountPublico(count){
                   trigger={
                     <Button className="grey white-text"waves='light'>Todas novedades</Button>
                   }>
-                  <NovedadesRequest url="todas_novedades"/>
+                  {this.state.bodyTodas}
               </Modal>
       </Col>
     </div>
