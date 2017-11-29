@@ -13,7 +13,6 @@ function vencida(date){
     if (dateActual.getFullYear() <= date.getFullYear()){
         if (dateActual.getMonth() <= date.getMonth()){
             if (dateActual.getDate() < date.getDate()){
-                console.log("aca");
                 return false;
             }
         }

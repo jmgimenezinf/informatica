@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 var db;
-var URL = 'mongodb://informatica:***REMOVED***@localhost:27017/informatica'
+var URL = ''
 
 router.get('/tesinas-aprobadas', function(req, res) {
     MongoClient.connect(URL, function(err, db) {
@@ -15,6 +15,21 @@ router.get('/tesinas-aprobadas', function(req, res) {
         })
     })
 });
+router.get('/tesinas-pdf',function(req,res){
 
+    var options = {
+        root: '/home/martin/Programación/node/informatica/server/',
+        dotfiles: 'deny',
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+        }
+      };
+    
+      var fileName ='output.pdf';
+      res.sendFile(fileName, options, function (error) {
+          console.log(error);
+      });
+})
 
 module.exports = router;

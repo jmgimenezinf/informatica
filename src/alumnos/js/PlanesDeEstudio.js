@@ -6,12 +6,13 @@ class PlanesDeEstudio extends Component {
     return (
         <Row className="container all-section">
           <Col l={12} m={12} s={12}>
-            <h4 className="blue-text titulo">Planes de estudio</h4>
+            <h4 className="blue-text titulo center-align">Planes de estudio</h4>
+            <div className="separador"></div>
           </Col>
           <Col l={12} m={12} s={12}>
               <p>Actualmente, la Facultad de Ingeniería oferta las siguientes carreras en el área de Informática:</p>
               <Table centered responsive stripped={true} bordered>
-                <thead>
+                <thead className="blue-text">
                   <tr>
                     <th  data-field="carrera">Carrera</th>
                     <th  data-field="plan_actual">Plan Actual</th>
@@ -25,27 +26,27 @@ class PlanesDeEstudio extends Component {
 
                 <tbody>
                   <tr>
-                    <td><a href="#">Analista Programador Universitario</a></td>
+                    <td><p>Analista Programador Universitario</p></td>
                     <td>2010</td>
-                    <td><Button className="red">PDF</Button></td>
+                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/apu-folleto">file_download</a></Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                   </tr>
                   <tr>
-                    <td><a href="#">Licenciatura en Informática</a></td>
+                    <td><p>Licenciatura en Informática</p></td>
                     <td>2010</td>
-                    <td><Button className="red">PDF</Button></td>
+                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/lic-sistemas-folleto.pdf">file_download</a></Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td></td>
                   </tr>
                   <tr>
-                    <td><a href="#">Licenciatura en Sistemas (Orientación Planificación, Gestión y Control de Proyectos Informáticos)</a></td>
+                    <td><p>Licenciatura en Sistemas (Orientación Planificación, Gestión y Control de Proyectos Informáticos)</p></td>
                     <td>2010</td>
-                    <td><Button className="red">PDF</Button></td>
+                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/lic-informatica-folleto.pdf">file_download</a></Icon></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -54,13 +55,13 @@ class PlanesDeEstudio extends Component {
                 </tbody>
               </Table>
           </Col>
-          <Col l={12} m={12} s={12} >
-            <h5 >Planes anteriores</h5>
+          {/* <Col l={12} m={12} s={12} >
+            <h5 className="blue-text">Planes anteriores</h5>
             <ul>
-              <li><a href="#">Analista Programador Universitario (Plan 1999)</a></li>
-              <li><a href="#">Licenciatura en Informática (Plan 2001)</a></li>
+              <li><p>Analista Programador Universitario (Plan 1999)</p></li>
+              <li><p>Licenciatura en Informática (Plan 2001)</p></li>
             </ul>
-          </Col>
+          </Col> */}
         </Row>
     );
   }

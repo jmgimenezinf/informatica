@@ -14,15 +14,15 @@ nodemailer.createTestAccount((err, account) => {
         secure: true,
         auth: {
             type: 'OAuth2',
-            user: '***REMOVED***',
+            user: '',
             accessToken: ''
         }
     });
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"Fred Foo 👻" <***REMOVED***>', // sender address
-        to: '***REMOVED***', // list of receivers
+        from: '"Fred Foo 👻" <>', // sender address
+        to: '', // list of receivers
         subject: 'Hello ✔', // Subject line
         text: 'Hello world?', // plain text body
         html: '<b>Hello world?</b>' // html body

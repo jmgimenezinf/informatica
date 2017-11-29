@@ -5,7 +5,8 @@ function AutoridadesHtml() {
  var html= <section>
                 <p>El Departamento de Informática se encuentra presente en las Sedes Comodoro Rivadavia, Esquel, Puerto Madryn y Trelew. La jefatura departamental esta en Comodoro Rivadavia mientras que las Sedes Puerto Madryn y Trelew poseen coordinaciones.  </p>
                 <p> </p>
-                <h4 className="blue-text titulo">Autoridades Departamentales</h4>
+                <h4 className="blue-text titulo center-align">Autoridades Departamentales</h4>
+                <div className="separador"></div>
                 <p><em>Jefe del Depto.de Informática (01/01/2014 hasta 31/12/2017):</em></p>
                 <ul>
                 <li>Lic. Néstor LLAUCO</li>

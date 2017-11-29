@@ -16,8 +16,7 @@ render() {
                 <Novedades/>
             </Col>
             <Col l={9} m={9} s={12} className="polarizado-inicio ocultar">
-                    <h2 className="white-text left-align">Departamento de Informática </h2>
-            </Col>
+                    <h2 className="white-text left-align">Departamento de Informática </h2>            </Col>
         </Col>
         <div className="breaker-inicio ocultar"/>
       </Row>

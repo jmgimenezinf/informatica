@@ -14,14 +14,14 @@ let transporter = nodemailer.createTransport(
     {
         service: 'Gmail',
         auth: {
-            user: '***REMOVED***',
+            user: '',
             pass: ''
         },
         logger,
         debug: true // include SMTP traffic in the logs
     },
     {
-        from: 'Dpto.Informática(UNPSJB) <***REMOVED***>',
+        from: 'Dpto.Informática(UNPSJB) <>',
         headers: {
             'X-Laziness-level': 1000 // just an example header, no need to use this
         }

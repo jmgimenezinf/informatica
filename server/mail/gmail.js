@@ -10,14 +10,14 @@ let transporter = nodemailer.createTransport(
     {
         service: 'Gmail',
         auth: {
-            user: '***REMOVED***',
+            user: '',
             pass: ''
         },
         logger,
         debug: true // include SMTP traffic in the logs
     },
     {
-        from: 'Dpto.Informática(UNPSJB) <***REMOVED***>',
+        from: 'Dpto.Informática(UNPSJB) <>',
         headers: {
             'X-Laziness-level': 1000 // just an example header, no need to use this
         }
@@ -27,7 +27,7 @@ console.log('SMTP Configured');
 // Message object
 let message = {
     // Comma separated list of recipients
-    to: 'Gimenez Juan Martín <***REMOVED***>',
+    to: 'Gimenez Juan Martín <>',
     // Subject of the message
     subject: 'Nodemailer is unicode friendly ✔ #', //
     // plaintext body
