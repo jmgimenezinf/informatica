@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 var db;
-const URL = ''
+var URL = require('../ignorar/config.js').mongoConection;
 
 MongoClient.connect(URL, function(err, db) {
   if (err) return

@@ -1,6 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 #password
 password.txt
+#todo lo quiero ignorar
+/ignorar
 
 # dependencies
 /node_modules
