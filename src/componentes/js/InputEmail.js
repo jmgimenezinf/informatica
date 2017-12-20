@@ -38,6 +38,7 @@ class InputEmail extends Component {
         onChange={(e)=>this.handleEmail(e)} 
         value={this.props.reset? "":this.state.value}
         error={this.state.error}
+        name="email"
       />
      
     );

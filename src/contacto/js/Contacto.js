@@ -9,6 +9,8 @@ import axios from 'axios';
 import '../css/contacto.css';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+// import {url,port} from '../../../ignorar/configReact.js'
+
 class Contacto extends Component {
   constructor(props) {
     super(props);
@@ -113,7 +115,7 @@ class Contacto extends Component {
                 "email":this.state.email,
                 "richEdit":richEditHTML
               }
-    var url = 'http://127.0.0.1:8080/send-mail';
+    
     this.setState({
       resetApellido:true,
       resetEmail:true,
@@ -124,8 +126,9 @@ class Contacto extends Component {
 
     this.handleStyleButtonSubmit(false);
     var self = this;
+    // var urlVar = 'http://www.dinfo.ing.unp.edu.ar:7527/send-mail';    
     axios.post(
-      url,json,
+      'http://www.dinfo.ing.unp.edu.ar:7527/send-mail',json,
       {headers: {'Content-Type': 'application/json'}})
     .then(function(response){ 
         console.log(response.status); 
@@ -191,7 +194,7 @@ class Contacto extends Component {
                 text={this.state.textAlert}
                 showConfirmButton={this.state.confirmButton}
                 onConfirm={() => this.setState({ show: false })}
-                onClose={() => console.log('close')} // eslint-disable-line no-console
+                onClose={() => console.log('close')}
                 type={this.state.typeAlert}
               />
             </Col>

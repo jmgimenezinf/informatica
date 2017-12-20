@@ -5,13 +5,14 @@ import "slick-carousel/slick/slick-theme.css";
 import TesinasAprobadas from './TesinasAprobadas'
 import TesinasHtml from '../html/TesinasHtml'
 import '../css/card.css'
+// import {url,port} from '../../../ignorar/configReact.js'
 class Tesinas extends Component {
 
   render() {
     return (
         <Row>
          <Row className="container">
-            <Col l={12}>
+            <Col l={12} m={12} s={12}>
                 <h4 className="blue-text titulo center-align">Tesinas</h4>
                 <div className="separador"></div>
             </Col>         
@@ -32,7 +33,7 @@ class Tesinas extends Component {
                 <TesinasAprobadas/>
             </Col>
             <Col l={12}  m={12} s={12} offset="l5 m3 s3">
-                <a href="http://manolito:8080/tesinas-pdf" className="boton-descarga w3-container w3-center w3-animate-top">Descargar PDF</a>
+                <a href={"http://www.dinfo.ing.unp.edu.ar:7527/tesinas-pdf"} className="boton-descarga w3-container w3-center w3-animate-top">Descargar PDF</a>
             </Col>
         </Row>
        

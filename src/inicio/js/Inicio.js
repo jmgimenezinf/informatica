@@ -4,7 +4,7 @@ import  '../css/inicio.css';
 import Novedades from '../../novedades/js/Novedades';
 import Figure from './Figure';
 import Carreras from './Carreras';
-import Gestion from './Gestion';
+// import Gestion from './Gestion';
 import '../css/boton.css'
 class Inicio extends Component {
 render() {
@@ -27,6 +27,10 @@ render() {
         </Col>
         <Carreras/>
         <Col l={12}  m={12} s={12} offset="l5 m3 s3">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <a href="/planes-de-estudio" className="boton w3-container w3-center w3-animate-top">Planes de estudios</a>
         </Col>
       </Row>

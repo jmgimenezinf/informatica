@@ -3,7 +3,7 @@ ul.slick-dots{
 }
 .galaxya {
     background-image: url('../images/tesina1.svg');
-    background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
     background-repeat: no-repeat;
     /* background-attachment: scroll; */
     background-position: center center;
@@ -11,8 +11,8 @@ ul.slick-dots{
     width: 100%;
 }
 .ampliar{
-   position: relative;
-   z-index: 1;
+    position: relative;
+    z-index: 1;
     padding-bottom: 25vh;
 
 }

@@ -72,7 +72,7 @@ MongoClient.connect(URL, function(err, db) {
                return  {titulo: tesina.titulo, alumnos: [].concat(tesina.alumnos), tutor:tesina.tutor, fecha_defensa:fecha(tesina.fechaDefensa)}
             })
             table.addBody(docsMap);
-            pdf.pipe(fs.createWriteStream('output.pdf'));
+            pdf.pipe(fs.createWriteStream('./files/tesinas.pdf'));
             pdf.end();
             db.close()
         })

@@ -49,6 +49,7 @@ class InputNombre extends Component {
       label="Nombre" 
       onChange={(e)=>this.handleNombre(e)} 
       error={this.state.error}
+      name="nombre"
       />
     );
   }

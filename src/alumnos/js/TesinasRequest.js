@@ -27,7 +27,7 @@ class NovedadesRequest extends Component {
 
 componentDidMount() {
     var self=this;
-    var url = 'http://manolito:8080/'+ self.props.url;
+    var url = 'http://www.dinfo.ing.unp.edu.ar:7527'+ self.props.url;
     axios.get(url)
     .then(function(response){
         console.log(response.data); 

@@ -2,3 +2,18 @@
     position: "relative";
     height: 80vh;
 }
+
+.download:hover{
+    color: #f44336 !important;
+    -webkit-transition: color 1s; /* Safari */
+    -webkit-border-radius: 100% 100%;  /*Safari*/ 
+    -moz-border-radius: 5px 10px;     /*Firefox*/
+    -webkit-box-shadow: 0.1px 0.1px 0.1px 1px #e57373;
+    -moz-box-shadow: 0.1px 0.1px 0.1px 1px #e57373;
+    box-shadow: 0.1px 0.1px 0.1px 1px #e57373;
+    transition: box-shadow 0.3s;
+    /* transition: color 1s; */
+}
+.download{
+    color : #616161;
+}

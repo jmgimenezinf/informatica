@@ -42,4 +42,13 @@
     top:-15%;
     /* top:10%; */
     left:100%; 
+    opacity: 0.75;
+}
+.boton-enviar:hover{
+    position: relative; 
+    display: inline;
+    top:-15%;
+    /* top:10%; */
+    left:100%; 
+    opacity: 1;
 }

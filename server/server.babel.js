@@ -8,6 +8,10 @@ import bodyParser from 'body-parser';
 import os from 'os';
 import './routes/pdfmake.js';
 import email from './routes/email.js';
+// import './mail/gmail.js';
+import {url,port} from '../ignorar/config.js';
+import path from 'path';
+
 
 var interfaces = os.networkInterfaces();
 var addresses = [];
@@ -24,7 +28,7 @@ const app = express();
 const server = http.createServer(app);
 
 //** Levanta React
-app.use(express.static(__dirname + '/../build'));
+//app.use(express.static(__dirname + '/../build'));
 
 //extended: false significa que parsea solo string (no archivos de imagenes por ejemplo)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,9 +36,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(function(req, res, next) {
   //en vez de * se puede definir SÓLO los orígenes que permitimos
  // res.setHeader('Access-Control-Allow-Origin', 'http://92.168.183.127:8080');
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
+    // res.setHeader('Content-type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
   //metodos http permitidos para CORS
-  // res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 
+//   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
 });
@@ -44,9 +49,10 @@ app.use(tesinas);
 app.use(novedades);
 app.use(planesEstudio);
 
-server.listen(8080, addresses, function(){
+server.listen(port, addresses, function(){ 
  server.close(function(){
-   server.listen(8080,addresses)
-   console.log('Servidor estático React-Express-Sequelize port 8080!'+ addresses);
+    console.log(path.dirname(__dirname));
+   server.listen(port,addresses)
+   console.log('Servidor estático React-Express-Sequelize port '+port+' '+ addresses);
  })
 })

@@ -3,7 +3,7 @@ import {Col,Row,Collection,CollectionItem,Badge,Button,Modal} from 'react-materi
 // import NovedadesTodas from './NovedadesTodas.js';
 import '../css/novedades.css';
 import axios from "axios"
-
+// import {url,port} from '../../../ignorar/configReact.js'
 function fecha(fechaString){
     var fecha = new Date(fechaString);  
     return fecha.getDate() + "/"+fecha.getMonth()+"/"+fecha.getFullYear();
@@ -80,8 +80,8 @@ setCountPublico(count){
 }
 componentDidMount() {
     var self=this;
-    var url = 'http://manolito:8080/todas_novedades';
-    axios.get(url)
+    // var url = url'http://manolito:8080/todas_novedades';
+    axios.get('http://www.dinfo.ing.unp.edu.ar:7527/todas_novedades')
     .then(function(response){
        self.setState({
             novedadesTodas :response.data
@@ -110,49 +110,49 @@ componentDidMount() {
       <Col s={12} l={12} m={12}>
           <h5 className="blue-text" >Novedades</h5>
           <Collection>
+            {newsAlumnos === 0 ?( <CollectionItem className="grey-text left-align">Alumnos</CollectionItem>):
+            (
               <Modal
                   header={<span className="novedad-text">Novedades para alumnos</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
                   Alumnos 
-                    {newsAlumnos !== 0 ? (
-                    <Badge newIcon>{this.state.countAlumnos}</Badge>
-                    ) : (
-                       null
-                    )}
+                    <Badge className="white-text teal lighten-2">{this.state.countAlumnos} nueva</Badge>
                   </CollectionItem>
                   }>
                  {this.state.bodyAlumnos}
-              </Modal>
-              <Modal
+              </Modal>)}
+              {newsDocentes === 0 ?( <CollectionItem className="grey-text left-align">Docentes</CollectionItem>):
+              (<Modal
                   header={<span className="novedad-text">Novedades para docentes</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
                   Docentes {newsDocentes !== 0 ? (
-                    <Badge newIcon>{this.state.countDocentes}</Badge>
+                    <Badge className="white-text teal lighten-2">{this.state.countDocentes} nueva</Badge>
                     ) : (
                        null
                     )}
                   </CollectionItem>
                   }>
                   {this.state.bodyDocentes}
-              </Modal>
-              <Modal
+              </Modal>)}
+              {newsPublico === 0 ?( <CollectionItem className="grey-text left-align">Público</CollectionItem>):
+              (<Modal
                   header={<span className="novedad-text" >Novedades para público en general</span>}
                   fixedFooter
                   trigger={
                   <CollectionItem href="#!">
                   Público {newsPublico !== 0 ? (
-                    <Badge newIcon>{this.state.countPublico}</Badge>
+                    <Badge className="white-text teal lighten-2">{this.state.countPublico} nueva</Badge>
                     ) : (
                        null
                     )}
                   </CollectionItem>
                   }>
                   {this.state.bodyPublico}
-              </Modal>
+              </Modal>)}
           </Collection>
       </Col>
       <Col l={12} s={12}>

@@ -46,6 +46,7 @@ class InputApellido extends Component {
             label="Apellido" 
             onChange={(e)=>this.handleApellido(e)} 
             error={this.state.error}
+            name="apellido"
             /> 
       </div>
     );

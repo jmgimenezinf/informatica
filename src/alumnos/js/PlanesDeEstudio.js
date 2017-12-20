@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {Row,Col,Table,Icon,Button} from 'react-materialize';
+import {Row,Col,Table,Icon} from 'react-materialize';
 import "../css/planes-estudio.css"
 class PlanesDeEstudio extends Component {
   render() {
+
     return (
         <Row className="container all-section">
           <Col l={12} m={12} s={12}>
@@ -28,7 +29,7 @@ class PlanesDeEstudio extends Component {
                   <tr>
                     <td><p>Analista Programador Universitario</p></td>
                     <td>2010</td>
-                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/apu-folleto">file_download</a></Icon></td>
+                    <td><Icon className="grey-text text-darken-2" ><a className="text-darken-2 download" href="http://www.dinfo.ing.unp.edu.ar:7527/apu-folleto">file_download </a></Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
@@ -37,7 +38,7 @@ class PlanesDeEstudio extends Component {
                   <tr>
                     <td><p>Licenciatura en Informática</p></td>
                     <td>2010</td>
-                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/lic-sistemas-folleto.pdf">file_download</a></Icon></td>
+                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2 download" href="http://www.dinfo.ing.unp.edu.ar:7527/lic-sistemas-folleto">file_download</a></Icon></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
                     <td></td>
                     <td><Icon className="green-text text-darken-2">done</Icon></td>
@@ -46,7 +47,7 @@ class PlanesDeEstudio extends Component {
                   <tr>
                     <td><p>Licenciatura en Sistemas (Orientación Planificación, Gestión y Control de Proyectos Informáticos)</p></td>
                     <td>2010</td>
-                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2" href="http://manolito:8080/lic-informatica-folleto.pdf">file_download</a></Icon></td>
+                    <td><Icon className="grey-text text-darken-2"><a className="grey-text text-darken-2 download" href="http://www.dinfo.ing.unp.edu.ar:7527/lic-informatica-folleto">file_download</a></Icon></td>
                     <td></td>
                     <td></td>
                     <td></td>

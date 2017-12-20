@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import {NavItem,Navbar,Row,Col,Dropdown,Footer} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import Inicio from '../../inicio/js/Inicio';
-import Extension from '../../extension/js/Extension';
+// import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas';
 import Docentes from '../../docentes/js/Docentes';
 import Autoridades from '../../institucional/js/Autoridades';
 import Contacto from '../../contacto/js/Contacto';
 import Calendario from '../../inicio/js/Calendario';
 import MenuItem from '../../componentes/js/MenuItem.js';
-
+// import {url,port} from '../../../ignorar/configReact.js'
 import '../css/root.css';
 import {
   BrowserRouter as Router,
@@ -18,9 +18,7 @@ import {
 } from 'react-router-dom'
 
 class Menu extends Component {
-  constructor(props){
-    super(props);
-  }
+
   handleClickGitlab = () => {
    window.location="http://192.168.156.49:4554/gitlab/";
   }
@@ -55,7 +53,7 @@ render() {
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <MenuItem titulo="Institucional" >
-                      <MenuItem titulo="Autoridades"/>
+                  <Link to="/autoridades"><MenuItem titulo="Autoridades"/></Link>
                       {/* <MenuItem titulo="Docentes"/> */}
                       {/* <MenuItem titulo="Laboratorios"/> */}
                       {/* <MenuItem titulo="Algoritmica y Programacion II"/> */}
@@ -68,14 +66,14 @@ render() {
                               alignment: 'left',
                               stopPropagation: true }} trigger={<li>Oferta académica</li>}>
                     <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
-                    <li><a href="http://www.dinfo.ing.unp.edu.ar/dci/">Doctorado</a></li>
+                    <li><a href={"http://www.dinfo.ing.unp.edu.ar/dci"}>Doctorado</a></li>
                     {/* <li><Link to="/docentes">Cursos de pogrado</Link></li> */}
                     {/* <li><Link to="/extension">Extensión</Link></li> */}
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <MenuItem titulo="Oferta Academica" >
-                      <MenuItem titulo="Planes de estudio"/>
-                      <MenuItem titulo="Doctorado"/>
+                <Link to="/planes-de-estudio"> <MenuItem titulo="Planes de estudio"/> </Link>
+                <a href={"http://www.dinfo.ing.unp.edu.ar/dci"} ><MenuItem titulo="Doctorado"></MenuItem> </a>
                       {/* <MenuItem titulo="Extensión"/> */}
                 </MenuItem>
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}

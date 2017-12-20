@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../css/card.css"
 import axios from 'axios';
+// import {url,port} from '../../../ignorar/configReact.js'
 
 const settings = {
     dots: true,
@@ -36,7 +37,7 @@ function TesinasList(props){
                     <Card className="z-depth-4 blue small" 
                         header={<CardTitle reveal waves='light'/>}
                         title={<div className="white-text">{tesina.titulo}</div>}
-                        reveal = {
+                        reveal={
                                 <div>
                                     <p> Alumnos	         :{alumnosList(tesina.alumnos)}<br/>
                                         Tutor	         :{tesina.tutor} <br/>
@@ -66,8 +67,8 @@ class TesinasAprobadas extends Component {
   
     componentDidMount() {
         var self=this;
-        var url = 'http://manolito:8080/tesinas-aprobadas';
-        axios.get(url)
+        // var url = 'http://www.dinfo.ing.unp.edu.ar:7527/tesinas-aprobadas';
+        axios.get("http://www.dinfo.ing.unp.edu.ar:7527/tesinas-aprobadas")
         .then(function(response){
             console.log(response.data); 
             console.log(response.status); 
