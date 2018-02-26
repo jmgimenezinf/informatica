@@ -33,7 +33,7 @@ class Tesinas extends Component {
                 <TesinasAprobadas/>
             </Col>
             <Col l={12}  m={12} s={12} offset="l5 m3 s3">
-                <a href={"http://www.dinfo.ing.unp.edu.ar:7527/tesinas-pdf"} className="boton-descarga w3-container w3-center w3-animate-top">Descargar PDF</a>
+                <a href={"http://192.168.1.45:7527/tesinas-pdf"} className="boton-descarga w3-container w3-center w3-animate-top">Descargar PDF</a>
             </Col>
         </Row>
        

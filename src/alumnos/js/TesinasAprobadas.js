@@ -68,7 +68,7 @@ class TesinasAprobadas extends Component {
     componentDidMount() {
         var self=this;
         // var url = 'http://www.dinfo.ing.unp.edu.ar:7527/tesinas-aprobadas';
-        axios.get("http://www.dinfo.ing.unp.edu.ar:7527/tesinas-aprobadas")
+        axios.get("http://127.0.0.1:7527/tesinas-aprobadas")
         .then(function(response){
             console.log(response.data); 
             console.log(response.status); 

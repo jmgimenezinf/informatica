@@ -81,7 +81,7 @@ setCountPublico(count){
 componentDidMount() {
     var self=this;
     // var url = url'http://manolito:8080/todas_novedades';
-    axios.get('http://www.dinfo.ing.unp.edu.ar:7527/todas_novedades')
+    axios.get('http://127.0.0.1:7527/todas_novedades')
     .then(function(response){
        self.setState({
             novedadesTodas :response.data

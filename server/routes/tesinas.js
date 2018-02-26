@@ -25,5 +25,8 @@ router.get('/tesinas-pdf',function(req,res){
         console.log(error);
     })
 })
+router.get('/hola',function(req,res){
+    res.send("hola maca");
+})
 
 module.exports = router;
