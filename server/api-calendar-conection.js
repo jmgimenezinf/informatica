@@ -7,19 +7,24 @@ var googleAuth = require('google-auth-library');
 // at ~/.credentials/calendar-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
-var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
+    process.env.USERPROFILE) + '/ignorar/';
+var TOKEN_PATH = TOKEN_DIR + 'calendar-tokens.json';
 
-// Load client secrets from a local file.
-fs.readFile('../ignorar/calendar-nodejs-quickstart.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  // Authorize a client with the loaded credentials, then call the
-  // Google Calendar API.
-  authorize(JSON.parse(content), listEvents);
-});
+/**
+ * @param {callback: (auth:google.auth.OAuth2)} f The function that would be executed by the credentials in TOKEN_PATH
+ */
+function processFunction(f) {
+  var credentials = null;
+
+  fs.readFile(TOKEN_PATH, function processClientSecrets(err, data) {
+    if(err) {
+      console.log('Error loading client secret file: ' + err);
+      return;
+    }
+    credentials = JSON.parse(data)
+    authorize(credentials, f);
+  });
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -86,7 +91,7 @@ function getNewToken(oauth2Client, callback) {
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
-  } catch (err) {
+  } catchgoogle.auth.OAuth2 (err) {
     if (err.code != 'EEXIST') {
       throw err;
     }

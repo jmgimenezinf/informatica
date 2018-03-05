@@ -1,6 +1,6 @@
-  import Reserva from './Reserva';
+  import APICalendar from './APICalendar';
 
   
-  const cuadrado = new Reserva("fecha");
+  const api = new APICalendar();
   // cuadrado.calcular(2,2);
   // console.log(cuadrado.fechaReserva);
