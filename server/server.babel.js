@@ -9,6 +9,7 @@ import os from 'os';
 import './routes/pdfmake.js';
 import email from './routes/email.js';
 // import './mail/gmail.js';
+import apiCalendar from './api-calendar';
 import {url,port} from '../ignorar/config.js';
 import path from 'path';
 
