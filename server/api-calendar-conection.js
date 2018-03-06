@@ -7,7 +7,7 @@ var googleAuth = require('google-auth-library');
 // at ~/.credentials/calendar-nodejs-quickstart.json
 var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/ignorar/';
+    process.env.USERPROFILE) + '/Programación/node/informatica/ignorar/';
 var TOKEN_PATH = TOKEN_DIR + 'calendar-tokens.json';
 
 /**
@@ -31,7 +31,7 @@ function processFunction(f) {
  * given callback function.
  *
  * @param {Object} credentials The authorization client credentials.
- * @param {function} callback The callback to call with the authorized client.
+   @param {function} callback The callback to call with the authorized client.
  */
 function authorize(credentials, callback) {
   var clientSecret = credentials.installed.client_secret;
@@ -91,7 +91,7 @@ function getNewToken(oauth2Client, callback) {
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
-  } catchgoogle.auth.OAuth2 (err) {
+  } catch  (err) {
     if (err.code != 'EEXIST') {
       throw err;
     }
@@ -138,4 +138,7 @@ function listEvents(auth) {
     }
   });
 }
+
+  processFunction(listEvents);
+
 module.exports = {authorize};
