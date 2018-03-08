@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import {Modal,Button, Icon} from 'react-materialize';
-import Iframe from 'react-iframe'
 import '../css/calendario.css'
-import FormSolicitud from '../../reserva/js/Solicitud'
+import FormSolicitud from '../../reserva/js/Solicitud';
+import Calendar from '../../componentes/js/Calendar';
 class Calendario extends Component {
 render() {
-  var styleCalendario ={
-    position:"relative",
-    width:"100%",
-    height:"100%",
-  };  
+
   return (
     <div>
         <Modal
@@ -34,12 +30,9 @@ render() {
             </Button>
             }
         >
-        <FormSolicitud/>
-            {/* <Iframe url="https://calendar.google.com/calendar/embed?src=fd7mr7mrcjct59asoqkr85ldl0%40group.calendar.google.com&ctz=America/Argentina/Buenos_Aires" 
-                    display="initial"
-                    position="relative"
-                    style={styleCalendario}
-                    allowFullScreen/> */}
+          <FormSolicitud/>
+
+            {/* <Calendar/> */}
         </Modal>
     </div>
     

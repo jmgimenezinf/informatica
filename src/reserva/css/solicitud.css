@@ -1,0 +1,13 @@
+.solicitudForm{
+	width: 95%;
+	position: relative;
+	float: left;
+}
+
+.calendarContainer{
+	float: right;
+}
+
+#contenedorReserva{
+	width: 34%;
+}
