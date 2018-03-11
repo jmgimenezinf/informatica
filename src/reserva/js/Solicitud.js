@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Input} from 'react-materialize';
+import {Input, Button, Icon} from 'react-materialize';
 import Iframe from 'react-iframe'
-import TextField from 'material-ui/TextField';
+import esLang from 'date-fns/locale/es';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
-import Grid from 'material-ui/Grid';
+import {Grid, TextField} from 'material-ui';
 import '../css/solicitud.css';
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
@@ -44,6 +44,7 @@ class Solicitud extends Component {
         return (
             <div id='contenedorReserva'>
                 <div className='solicitudForm'>
+                    <h5>Nueva solicitud de reserva</h5>
                     <div className="form">
                         <Grid container spacing={24}>
                             <Grid item xs={6}>
@@ -53,70 +54,52 @@ class Solicitud extends Component {
                                 <InputApellido/>
                             </Grid>
                             <Grid item xs={12}>
-                                <Input type="email" label="Email" s={12} />
+                                <Input type="email" label="Email" s={12}/>
                             </Grid> 
                             <Grid item xs={4}>
                                 <DatePicker
+                                    disablePast="true"
+                                    okLabel="Aceptar"
+                                    cancelLabel="Cancelar"
+                                    label="Fecha"
                                     value={selectedDate}
                                     onChange={this.handleDateChange}
+                                    InputProps={{
+                                        disableUnderline: true
+                                    }}
                                 />
                             </Grid> 
                             <Grid item xs={4}>
                                 <TimePicker
-                                value={selectedTime}
-                                onChange={this.handleTimeChange}
+                                    label="Hora de inicio"
+                                    value={selectedTime}
+                                    onChange={this.handleTimeChange}
+                                    InputProps={{
+                                        disableUnderline: true
+                                    }}
                                 />
-                            </Grid> 
+                            </Grid>
+                            <Grid item xs={4}>
+                                <TimePicker
+                                    label="Hora de finalización"
+                                    value={selectedTime}
+                                    onChange={this.handleTimeChange}
+                                    InputProps={{
+                                        disableUnderline: true,
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Input type='textarea' label="Motivo de la reserva"/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Input type='textarea' label="Observaciones"/>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button className="blue" waves='light'>Enviar<Icon left>send</Icon></Button>
+                            </Grid>
                         </Grid>
-                    </div>
-
-            
-                    
-                        {/* <Row>
-                            <Col l={4}> 
-                                <div>
-                                    <Row>
-                                        <Col l={12}>
-                                            <TextField
-                                                className="input"
-                                                floatingLabelText="Nombre"
-                                                type="text"
-                                            />
-                                            <TextField
-                                                floatingLabelText="Apellido"
-                                                type="text"
-                                            />
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col l={10}>
-                                        <TextField
-                                            floatingLabelText="Email"
-                                            type="email"
-                                            fullWidth="true"
-                                        />
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col l={8}>
-
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col l={12}>
-
-                                        </Col>
-                                    </Row>
-                                </div>
-                            </Col>
-                            <Col l={8}>
-                                <div>
-                                    <Calendar/>
-                                </div>
-                            </Col>
-                        </Row> */}
-                    
-
+                    </div>                
                 </div>
                 <div className='calendarContainer'>
                     <Calendar/>
