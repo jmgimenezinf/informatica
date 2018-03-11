@@ -44,7 +44,9 @@ class Solicitud extends Component {
         return (
             <div id='contenedorReserva'>
                 <div className='solicitudForm'>
-                    <h5>Nueva solicitud de reserva</h5>
+                    <div id="encabezadoSol">
+                        <h5 id="tituloSol" align="center">Solicitud de reserva</h5>
+                    </div>
                     <div className="form">
                         <Grid container spacing={24}>
                             <Grid item xs={6}>
@@ -53,8 +55,11 @@ class Solicitud extends Component {
                             <Grid item xs={6}>
                                 <InputApellido/>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={8}>
                                 <Input type="email" label="Email" s={12}/>
+                            </Grid> 
+                            <Grid item xs={4}>
+                                <Input type="number" label="Teléfono" s={12}/>
                             </Grid> 
                             <Grid item xs={4}>
                                 <DatePicker
