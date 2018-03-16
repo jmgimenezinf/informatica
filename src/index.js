@@ -7,9 +7,7 @@ import App from './root/js/Menu.js';
 
 ReactDOM.render(
   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-  <MuiThemeProvider>
     <App />
-  </MuiThemeProvider>
   </MuiPickersUtilsProvider>,
   document.getElementById('menu')
 );
