@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input} from 'react-materialize';
+import {TextField, Grid} from 'material-ui';
 
 class InputApellido extends Component {
   constructor(props) {
@@ -38,8 +38,8 @@ class InputApellido extends Component {
  }
   render() {
     return (
-      <div>
-          <Input  l={4}
+      <Grid item xs={4}>
+          <TextField
             type="text"
             value={this.props.reset ? "":this.state.value}
             validate
@@ -47,8 +47,9 @@ class InputApellido extends Component {
             onChange={(e)=>this.handleApellido(e)} 
             error={this.state.error}
             name="apellido"
+            fullWidth
             /> 
-      </div>
+      </Grid>
     );
   }
 }

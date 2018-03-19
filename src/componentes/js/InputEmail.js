@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import {Input} from 'react-materialize';
+import {TextField,Grid} from 'material-ui';
+
 class InputEmail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error:"",
+      errorMessage:"",
+      hasError:false,
     };
     this.handleEmail = this.handleEmail.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
@@ -17,9 +19,16 @@ class InputEmail extends Component {
   handleEmail(e){
     if(e.target.value.length <=320){
       if(this.validateEmail(e.target.value)){
-        this.setState({error:"Email no válido"})              
+        this.setState({
+          hasError:false,
+          errorMessage:""
+        })            
         this.props.onValido(e.target.value);
       }else {
+        this.setState({
+          hasError:true,
+          errorMessage:"Email no válido"
+        }) 
         this.props.onValido("");
       }
     }else{
@@ -30,17 +39,20 @@ class InputEmail extends Component {
 
   render() {
     return (
-      <Input  l={4}
-        type="email"
-        validate
-        label="Email" 
-        value={this.state.email}
-        onChange={(e)=>this.handleEmail(e)} 
-        value={this.props.reset? "":this.state.value}
-        error={this.state.error}
-        name="email"
-      />
-     
+      <Grid item xs={4}>
+        <TextField 
+          type="email"
+          validate
+          label="Email"
+          value={this.state.email}
+          onBlur={(e)=>this.handleEmail(e)} 
+          value={this.props.reset? "":this.state.value}
+          error={this.state.hasError}
+          helperText={this.state.errorMessage}
+          name="email"
+          fullWidth
+        />
+     </Grid>
     );
   }
 }

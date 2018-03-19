@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Input} from 'react-materialize';
+import {TextField, Grid} from 'material-ui';
 
 class InputNombre extends Component {
   constructor(props) {
@@ -41,16 +41,19 @@ class InputNombre extends Component {
 
   render() {
     return (
-      <Input  l={4} 
-      value={this.props.reset? "":this.state.value}
-      type="text"
-      validate
-      ref="input"
-      label="Nombre" 
-      onChange={(e)=>this.handleNombre(e)} 
-      error={this.state.error}
-      name="nombre"
-      />
+      <Grid item xs={4}>
+        <TextField
+          value={this.props.reset? "":this.state.value}
+          type="text"
+          validate
+          ref="input"
+          label="Nombre" 
+          onChange={(e)=>this.handleNombre(e)} 
+          error={this.state.error}
+          name="nombre"
+          fullWidth
+        />
+      </Grid>
     );
   }
 }
