@@ -39,7 +39,6 @@ class InputEmail extends Component {
 
   render() {
     return (
-      <Grid item xs={4}>
         <TextField 
           type="email"
           validate
@@ -52,7 +51,6 @@ class InputEmail extends Component {
           name="email"
           fullWidth
         />
-     </Grid>
     );
   }
 }

@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
-import {Grid} from 'material-ui';
-import {Input} from 'react-materialize';
+import {TextField, Grid } from 'material-ui';
+import List, {
+    ListItem,
+    ListItemAvatar,
+    ListItemIcon,
+    ListItemSecondaryAction,
+    ListItemText,
+} from 'material-ui/List';
 
 class FormDatosReserva extends Component {
 
@@ -23,6 +29,12 @@ class FormDatosReserva extends Component {
         const { selectedDate, selectedTime } = this.state;
         return (
                 <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        <TextField 
+                            fullWidth
+                            label="Título del evento"
+                        />
+                    </Grid> 
                     <Grid item xs={4}>
                         <DatePicker
                             disablePast="true"
@@ -31,9 +43,6 @@ class FormDatosReserva extends Component {
                             label="Fecha"
                             value={selectedDate}
                             onChange={this.handleDateChange}
-                            InputProps={{
-                                disableUnderline: true
-                            }}
                         />
                     </Grid> 
                     <Grid item xs={4}>
@@ -41,9 +50,6 @@ class FormDatosReserva extends Component {
                             label="Hora de inicio"
                             value={selectedTime}
                             onChange={this.handleTimeChange}
-                            InputProps={{
-                                disableUnderline: true
-                            }}
                         />
                     </Grid>
                     <Grid item xs={4}>
@@ -51,16 +57,10 @@ class FormDatosReserva extends Component {
                             label="Hora de finalización"
                             value={selectedTime}
                             onChange={this.handleTimeChange}
-                            InputProps={{
-                                disableUnderline: true,
-                            }}
                         />
                 </Grid>
                 <Grid item xs={12}>
-                    <Input type='textarea' label="Motivo de la reserva"/>
-                </Grid>
-                <Grid item xs={12}>
-                    <Input type='textarea' label="Observaciones"/>
+  
                 </Grid>
             </Grid>
         );

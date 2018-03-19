@@ -38,7 +38,6 @@ class InputApellido extends Component {
  }
   render() {
     return (
-      <Grid item xs={4}>
           <TextField
             type="text"
             value={this.props.reset ? "":this.state.value}
@@ -49,7 +48,6 @@ class InputApellido extends Component {
             name="apellido"
             fullWidth
             /> 
-      </Grid>
     );
   }
 }

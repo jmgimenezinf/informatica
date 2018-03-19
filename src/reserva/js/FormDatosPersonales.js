@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Grid} from 'material-ui';
-import {Input} from 'react-materialize';
+import {TextField, Grid} from 'material-ui';
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
+import InputEmail from '../../componentes/js/InputEmail';
 
 class FormDatosPersonales extends Component {
 
@@ -48,44 +48,47 @@ class FormDatosPersonales extends Component {
         return (
             <Grid container spacing={24}>
                 <Grid item xs={6}>
-                    <Input 
+                    {/* <TextField 
                         name="nombre" 
                         type="text" 
                         label="Nombre" 
                         value={this.state.nombre} 
                         onChange={this.handleChange}
                         error={this.state.errorNombre}
-                        s={12}
-                    />
+                        fullWidth
+                    /> */}
+                    <InputNombre/>
                 </Grid>
                 <Grid item xs={6}>
-                    <Input 
+                    {/* <TextField 
                         name="apellido" 
                         type="text" 
                         label="Apellido" 
                         value={this.state.apellido} 
                         onChange={this.handleChange}
-                        s={12}
-                    />
+                        fullWidth
+                    /> */}
+                    <InputApellido/>
                 </Grid>
                 <Grid item xs={8}>
-                    <Input 
+                    {/* <TextField 
                         name="email" 
                         type="email" 
                         label="Email" 
                         value={this.state.email} 
                         onChange={this.handleChange}
-                        s={12}
-                    />
+                        fullWidth
+                    /> */}
+                    <InputEmail/>
                 </Grid> 
                 <Grid item xs={4}>
-                    <Input 
+                    <TextField 
                         email="tel" 
                         type="number" 
                         label="Teléfono" 
                         value={this.state.telefono} 
                         onChange={this.handleChange}
-                        s={12}
+                       fullWidth
                     />
                 </Grid> 
             </Grid>

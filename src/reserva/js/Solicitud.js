@@ -13,6 +13,7 @@ import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
 import FormDatosPersonales from './FormDatosPersonales';
+import FormDatosReserva from './FormDatosReserva';
 
 const styles = theme => ({
     textField: {
@@ -62,47 +63,7 @@ class Solicitud extends Component {
           case 0:
             return   <FormDatosPersonales ref={instance => {this.childPersonales = instance;}}/> 
           case 1:
-            return <Grid container spacing={24}>
-                    <Grid item xs={4}>
-                        <DatePicker
-                            disablePast="true"
-                            okLabel="Aceptar"
-                            cancelLabel="Cancelar"
-                            label="Fecha"
-                            value={this.state.selectedDate}
-                            onChange={this.handleDateChange}
-                            InputProps={{
-                                disableUnderline: true
-                            }}
-                        />
-                    </Grid> 
-                    <Grid item xs={4}>
-                        <TimePicker
-                            label="Hora de inicio"
-                            value={this.state.selectedTime}
-                            onChange={this.handleTimeChange}
-                            InputProps={{
-                                disableUnderline: true
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <TimePicker
-                            label="Hora de finalización"
-                            value={this.state.selectedTime}
-                            onChange={this.handleTimeChange}
-                            InputProps={{
-                                disableUnderline: true,
-                            }}
-                        />
-                </Grid>
-                <Grid item xs={12}>
-                    <Input type='textarea' label="Motivo de la reserva"/>
-                </Grid>
-                <Grid item xs={12}>
-                    <Input type='textarea' label="Observaciones"/>
-                </Grid>
-            </Grid>
+            return <FormDatosReserva/>
           case 2: 
             return `Try out different ad text to see what brings in the most customers,
                     and learn how to enhance your ads using features like ad extensions.
@@ -127,13 +88,16 @@ class Solicitud extends Component {
     //   }
 
       handleNext = () => {
-        if(this.state.activeStep == 0){
-            if(this.childPersonales.validate()){ //si no hay errores de validación // 
-                this.setState({
+        // if(this.state.activeStep == 0){
+        //     if(this.childPersonales.validate()){ //si no hay errores de validación // 
+        //         this.setState({
+        //           activeStep: this.state.activeStep + 1,
+        //         });
+        //     }
+        // }
+                        this.setState({
                   activeStep: this.state.activeStep + 1,
                 });
-            }
-        }
       };
     
       handleBack = () => {

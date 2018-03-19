@@ -41,7 +41,6 @@ class InputNombre extends Component {
 
   render() {
     return (
-      <Grid item xs={4}>
         <TextField
           value={this.props.reset? "":this.state.value}
           type="text"
@@ -53,7 +52,6 @@ class InputNombre extends Component {
           name="nombre"
           fullWidth
         />
-      </Grid>
     );
   }
 }
