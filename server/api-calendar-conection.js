@@ -5,9 +5,9 @@ var googleAuth = require('google-auth-library');
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-nodejs-quickstart.json
-var SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/Programación/node/informatica/ignorar/';
+    process.env.USERPROFILE) + '/Programación/node/informatica/ignorar/credential';
 var TOKEN_PATH = TOKEN_DIR + 'calendar-tokens.json';
 
 /**
@@ -16,12 +16,13 @@ var TOKEN_PATH = TOKEN_DIR + 'calendar-tokens.json';
 function processFunction(f) {
   var credentials = null;
 
-  fs.readFile(TOKEN_PATH, function processClientSecrets(err, data) {
+  fs.readFile('../ignorar/calendar-tokens.json', function processClientSecrets(err, data) {
     if(err) {
       console.log('Error loading client secret file: ' + err);
       return;
     }
     credentials = JSON.parse(data)
+    console.log(credentials);
     authorize(credentials, f);
   });
 }
@@ -106,9 +107,9 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listEvents(auth) {
-  console.log(new Date().toISOString());
+  console.log("auth test:",auth);
   var calendar = google.calendar('v3');
-  
+  console.log(auth);
   calendar.events.list({
     auth: auth,
     calendarId: 'fd7mr7mrcjct59asoqkr85ldl0@group.calendar.google.com',
@@ -139,6 +140,6 @@ function listEvents(auth) {
   });
 }
 
-  processFunction(listEvents);
+ // processFunction(listEvents);
 
-module.exports = {authorize};
+module.exports = {authorize,processFunction};
