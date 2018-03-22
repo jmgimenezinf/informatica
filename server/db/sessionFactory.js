@@ -3,7 +3,7 @@ const passDB = require('../../ignorar/config.js').passDB;
 const username = require('../../ignorar/config.js').username;
 
 const Sequelize = require('sequelize');
-const Session = new Sequelize(db,username,passDB, {
+const SessionFactory = new Sequelize(db,username,passDB, {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
@@ -15,4 +15,4 @@ const Session = new Sequelize(db,username,passDB, {
   }
 });
 
-module.exports ={Session}
+module.exports ={SessionFactory}
