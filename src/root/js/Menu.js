@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {Dialog, Slide, Button, AppBar, Toolbar, IconButton, Typography} from 'material-ui'
+import CloseIcon from 'material-ui-icons/Close'
+import EventIcon from 'material-ui-icons/Event'
+import PropTypes from 'prop-types';
 import {NavItem,Navbar,Row,Col,Dropdown,Footer} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import Inicio from '../../inicio/js/Inicio';
@@ -7,21 +11,39 @@ import Tesinas from '../../alumnos/js/Tesinas';
 import Docentes from '../../docentes/js/Docentes';
 import Autoridades from '../../institucional/js/Autoridades';
 import Contacto from '../../contacto/js/Contacto';
-import Calendario from '../../inicio/js/Calendario';
+// import Calendario from '../../inicio/js/Calendario';
 import MenuItem from '../../componentes/js/MenuItem.js';
+import Solicitud from '../../reserva/js/Solicitud'
 // import {url,port} from '../../../ignorar/configReact.js'
 import '../css/root.css';
 import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 
 class Menu extends Component {
+
+  state = {
+    open: false,
+  };
 
   handleClickGitlab = () => {
    window.location="http://192.168.156.49:4554/gitlab/";
   }
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
 render() {     
   return (
@@ -79,7 +101,27 @@ render() {
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
                 <li className="opcion-menu"><Link to="/tesinas">Tesinas</Link></li>
                 <li className="opcion-menu"><div><Link to="/contacto">Contacto</Link></div></li>
-                <li className="calendario-menu no-mobile"><span><Calendario/></span></li>
+                <li className="calendario-menu no-mobile">
+                  <Button onClick={this.handleClickOpen}><EventIcon/>Calendario y reservas</Button>
+                  <Dialog
+                    fullScreen
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    transition={Transition}
+                  >
+                    <AppBar
+                      position='relative'
+                    >
+                      <Toolbar>
+                        <Button color="inherit" onClick={this.handleClose}>
+                          <CloseIcon/>CERRAR
+                        </Button>
+                      </Toolbar>
+                    </AppBar>
+
+                    <Solicitud/>
+                  </Dialog>
+                </li>
             </Navbar>
             <Route  exact path="/" component={Inicio} />
             <Route  path="/planes-de-estudio" component={PlanesDeEstudio}/>

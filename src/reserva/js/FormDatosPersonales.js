@@ -54,8 +54,7 @@ class FormDatosPersonales extends Component {
         this.validate();
       }
       nombreValido(nombre){
-        this.setState({nombre:nombre},this.props.onDataChange(this.state));
-        console.log("nombre form" + nombre);
+        this.setState({nombre:nombre});
         this.validate();
       }
       apellidoValido(apellido){

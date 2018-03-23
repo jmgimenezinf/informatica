@@ -9,7 +9,7 @@ class Calendar extends Component {
                             display="initial"
                             position="absolute"
                             allowFullScreen
-                            height="85%"
+                            height="90%"
                             width="65%"
                 />
         );

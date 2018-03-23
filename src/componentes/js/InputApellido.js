@@ -36,6 +36,13 @@ class InputApellido extends Component {
     }
     return true;
  }
+
+ componentWillMount(){
+  if (this.props.val !== ""){
+    this.state.value = this.props.val;
+  }
+}
+
   render() {
     return (
           <TextField

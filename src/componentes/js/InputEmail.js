@@ -37,6 +37,12 @@ class InputEmail extends Component {
     }
   } 
 
+  componentWillMount(){
+    if (this.props.val !== ""){
+      this.state.value = this.props.val;
+    }
+  }
+
   render() {
     return (
         <TextField 

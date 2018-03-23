@@ -111,12 +111,11 @@ class Solicitud extends Component {
                     telefono:datosPersonales.state.telefono,
                     activeStep: this.state.activeStep + 1,
                 });
-                console.log(this.state.telefono);
             }
         }
-            this.setState({
-                activeStep: this.state.activeStep + 1,
-            });
+            // this.setState({
+            //     activeStep: this.state.activeStep + 1,
+            // });
       };
     
       handleBack = () => {
@@ -142,6 +141,7 @@ class Solicitud extends Component {
         return (
             <div id='contenedorReserva'>
                 <div className='solicitudForm'>
+                    <h4 align="center"> Solicitud de reserva </h4>
                     <Stepper activeStep={activeStep} orientation="vertical">
                         {steps.map((label, index) => {
                             return (
