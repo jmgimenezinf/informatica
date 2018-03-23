@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
-import {TextField, Grid } from 'material-ui';
+import {TextField, Grid, IconButton} from 'material-ui';
 import List, {
     ListItem,
-    ListItemAvatar,
-    ListItemIcon,
     ListItemSecondaryAction,
     ListItemText,
+    ListSubheader
 } from 'material-ui/List';
+import DeleteIcon from 'material-ui-icons/Delete';
 
 class FormDatosReserva extends Component {
 
@@ -60,7 +60,53 @@ class FormDatosReserva extends Component {
                         />
                 </Grid>
                 <Grid item xs={12}>
-  
+                    <ListSubheader>Lista de reservas</ListSubheader>
+                    <List className="listaReservas">
+                        <ListItem>
+                            <ListItemText
+                                primary="EPYA"
+                                secondary="Martes de 17 a 19hs"
+                            />
+                            <ListItemSecondaryAction>
+                            <IconButton aria-label="Delete">
+                                <DeleteIcon />
+                            </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText
+                                primary="Algorítmica y Programación I"
+                                secondary="Jueves de 14 a 16:30hs"
+                            />
+                            <ListItemSecondaryAction>
+                            <IconButton aria-label="Delete">
+                                <DeleteIcon />
+                            </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText
+                                primary="Arquitectura de Computadoras"
+                                secondary="Miércoles de 15 a 17:30hs"
+                            />
+                            <ListItemSecondaryAction>
+                            <IconButton aria-label="Delete">
+                                <DeleteIcon />
+                            </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText
+                                primary="Base de Datos"
+                                secondary="Lunes de 13 a 16hs"
+                            />
+                            <ListItemSecondaryAction>
+                            <IconButton aria-label="Delete">
+                                <DeleteIcon />
+                            </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
+                    </List>
                 </Grid>
             </Grid>
         );

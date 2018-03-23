@@ -9,14 +9,17 @@ class FormDatosPersonales extends Component {
     constructor(props){
         super(props);
         this.state={
-            nombre:"",
+            nombre:this.props.nombre,
             errorNombre:"",
-            apellido:"",
+            apellido:this.props.apellido,
             errorApellido:"",
-            email:"",
+            email:this.props.email,
             errorEmail:"",
             telefono:"",
-            errorTelefono:""
+            errorTelefono:"",
+            resetApellido:false,
+            resetEmail:false,
+            resetNombre:false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.validate = this.validate.bind(this);
@@ -26,23 +29,44 @@ class FormDatosPersonales extends Component {
         const name = event.target.name;
         this.setState({
             [name]: event.target.value
-        });
+        }, () => this.props.onDataChange(this.state));
+        // console.log("tel form: "+ this.state.telefono);
+
     }
 
+    componentWillMount(){
+        this.setState({
+            telefono:this.props.telefono,
+        })
+    }
 
-    validate(){
-        if(this.state.nombre.length < 3){
-            this.setState({
-                errorNombre: "El nombre debe contener al menos 3 caracteres"
-            })
-            return false;
-        }else{
-            this.setState({
-                errorNombre: ""
-            })
+    validate(){  
+        if(this.state.nombre!==""&& (this.state.apellido!=="") && (this.state.email!=="")){
             return true;
+         }else{
+            return false;
         }
-    }
+     }
+     
+
+    emailValido(email){
+        this.setState({email:email});
+        this.validate();
+      }
+      nombreValido(nombre){
+        this.setState({nombre:nombre},this.props.onDataChange(this.state));
+        console.log("nombre form" + nombre);
+        this.validate();
+      }
+      apellidoValido(apellido){
+        this.setState({apellido:apellido});
+        this.validate();
+      }
+
+      telefonoValido(){
+
+        this.props.onDataChange(this.state);
+      }
 
     render() {
         return (
@@ -57,7 +81,11 @@ class FormDatosPersonales extends Component {
                         error={this.state.errorNombre}
                         fullWidth
                     /> */}
-                    <InputNombre/>
+                    <InputNombre 
+                        reset={this.state.resetNombre}
+                        val={this.state.nombre}
+                        onValido={(e) => this.nombreValido(e)}
+                    />
                 </Grid>
                 <Grid item xs={6}>
                     {/* <TextField 
@@ -68,7 +96,11 @@ class FormDatosPersonales extends Component {
                         onChange={this.handleChange}
                         fullWidth
                     /> */}
-                    <InputApellido/>
+                    <InputApellido 
+                        reset={this.state.resetApellido}
+                        val={this.state.apellido}
+                        onValido={(e)=> this.apellidoValido(e)}
+                    />
                 </Grid>
                 <Grid item xs={8}>
                     {/* <TextField 
@@ -79,12 +111,16 @@ class FormDatosPersonales extends Component {
                         onChange={this.handleChange}
                         fullWidth
                     /> */}
-                    <InputEmail/>
+                    <InputEmail 
+                        reset={this.state.resetEmail}
+                        val={this.state.email}
+                        onValido={(e) => this.emailValido(e)}
+                    />
                 </Grid> 
                 <Grid item xs={4}>
                     <TextField 
-                        email="tel" 
                         type="number" 
+                        name="telefono"
                         label="Teléfono" 
                         value={this.state.telefono} 
                         onChange={this.handleChange}

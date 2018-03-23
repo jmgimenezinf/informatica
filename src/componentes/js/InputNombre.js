@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextField, Grid} from 'material-ui';
+import {TextField} from 'material-ui';
 
 class InputNombre extends Component {
   constructor(props) {
@@ -20,16 +20,23 @@ class InputNombre extends Component {
   if(e.target.value.length <=25){
     if(this.validateNombre(e.target.value)){
        this.props.onValido(e.target.value);
+       console.log("nombre input " + e.target.value);
     }else{
       e.target.value = e.target.value.substr(0, e.target.value.length - 1);      
       this.setState({error:"Email no válido"})      
       this.props.onValido("");
     }
   }else{
-    console.log(e.target.value.substr(0, e.target.value.length - 1));
+    // console.log(e.target.value.substr(0, e.target.value.length - 1));
     e.target.value = e.target.value.substr(0, e.target.value.length - 1);
   }
     
+  }
+
+  componentWillMount(){
+    if (this.props.val !== ""){
+      this.state.value = this.props.val;
+    }
   }
 
   shouldComponentUpdate(){

@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 import Stepper, { Step, StepLabel, StepContent } from 'material-ui/Stepper';
 import '../css/solicitud.css';
 import Calendar from '../../componentes/js/Calendar';
-// import FormDatosReserva from './FormDatosReserva';
-// import FormDatosPersonales from './FormDatosPersonales';
-
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
@@ -45,12 +42,14 @@ class Solicitud extends Component {
     constructor(props){
         super(props);
         this.state = {
-            // email:"",
-            // telefono:"",
             personalDataError:false,
             selectedDate: new Date(),
             selectedTime: new Date(),
-            activeStep:0
+            activeStep:0,
+            nombre:"",
+            apellido:"",
+            email:"",
+            telefono:null,
         }
     }
 
@@ -61,7 +60,14 @@ class Solicitud extends Component {
     getStepContent(step) {
         switch (step) {
           case 0:
-            return   <FormDatosPersonales ref={instance => {this.childPersonales = instance;}}/> 
+            return  <FormDatosPersonales
+                        nombre={this.state.nombre}
+                        apellido={this.state.apellido}
+                        email={this.state.email}
+                        telefono={this.state.telefono}
+                        onDataChange = {(state) => this.updatePersonalState(state)}
+                        ref={instance => {this.childPersonales = instance;}}
+                    /> 
           case 1:
             return <FormDatosReserva/>
           case 2: 
@@ -73,6 +79,15 @@ class Solicitud extends Component {
             return 'Unknown step';
         }
       }
+      
+
+      updatePersonalState(state){
+          this.setState({
+              nombre:state.nombre,
+              telefono:state.telefono,
+          })
+          console.log(state.telefono);
+      }
 
       handleDateChange = date => {
         this.setState({ selectedDate: date })
@@ -83,24 +98,29 @@ class Solicitud extends Component {
       }
 
     
-    //   validatePersonalData(){
-    //     if ()
-    //   }
-
       handleNext = () => {
-        // if(this.state.activeStep == 0){
-        //     if(this.childPersonales.validate()){ //si no hay errores de validación // 
-        //         this.setState({
-        //           activeStep: this.state.activeStep + 1,
-        //         });
-        //     }
-        // }
-                        this.setState({
-                  activeStep: this.state.activeStep + 1,
+        let datosPersonales = this.childPersonales;
+
+        if(this.state.activeStep == 0){
+            if(this.childPersonales.validate()){ //si no hay errores de validación //
+                // console.log(datosPersonales.state.nombre);
+                this.setState({
+                    nombre:datosPersonales.state.nombre,
+                    apellido:datosPersonales.state.apellido,
+                    email:datosPersonales.state.email,
+                    telefono:datosPersonales.state.telefono,
+                    activeStep: this.state.activeStep + 1,
                 });
+                console.log(this.state.telefono);
+            }
+        }
+            this.setState({
+                activeStep: this.state.activeStep + 1,
+            });
       };
     
       handleBack = () => {
+
         this.setState({
           activeStep: this.state.activeStep - 1,
         });

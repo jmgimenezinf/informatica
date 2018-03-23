@@ -34,9 +34,8 @@ input[type=number] {
 #tituloSol{
 	margin-top: 0px;
 }
-/* 
-#encabezadoSol{
-	border-bottom: solid 2px #1976D2;
-	box-shadow: 0px 4px 3px -3px #1976D2;
-	margin-bottom: 1%;
-} */
+
+.listaReservas{
+	max-height: 70%;
+	overflow-y: scroll;
+}
