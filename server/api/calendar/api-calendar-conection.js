@@ -16,7 +16,7 @@ var TOKEN_PATH = TOKEN_DIR + 'calendar-tokens.json';
 function processFunction(f) {
   var credentials = null;
 
-  fs.readFile('../ignorar/calendar-tokens.json', function processClientSecrets(err, data) {
+  fs.readFile('../../../ignorar/calendar-tokens.json', function processClientSecrets(err, data) {
     if(err) {
       console.log('Error loading client secret file: ' + err);
       return;
