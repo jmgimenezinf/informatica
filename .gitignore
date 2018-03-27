@@ -4,6 +4,9 @@ password.txt
 #todo lo quiero ignorar
 /ignorar
 
+#package json
+package-lock.json
+
 # dependencies
 /node_modules
 
