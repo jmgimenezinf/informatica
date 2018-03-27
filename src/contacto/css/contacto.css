@@ -52,3 +52,17 @@
     left:100%; 
     opacity: 1;
 }
+
+input:not([read-only]){
+    margin-bottom:0px;
+}
+
+input:focus:not([read-only]) {
+	border-bottom: none!important;
+	box-shadow: none!important;
+} 
+
+input:not([read-only]) {
+	border-bottom: none!important;
+	box-shadow: none!important;	
+} 

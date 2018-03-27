@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Row,Col,Button} from 'react-materialize';
+import {Grid} from 'material-ui';
 import InputEmail from '../../componentes/js/InputEmail';
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
@@ -69,12 +70,28 @@ class Contacto extends Component {
     this.checkState();
   }
   renderInputs(){
-    return (<div><InputNombre reset={this.state.resetNombre}
-    onValido={(e) => this.nombreValido(e)}/>
-    <InputApellido reset={this.state.resetApellido}
-    onValido={(e)=> this.apellidoValido(e)}/>
-    <InputEmail reset={this.state.resetEmail}
-    onValido={(e) => this.emailValido(e)}/></div>);
+    return (
+      <Grid container spacing={24}>
+        <Grid item xs={4}>
+          <InputNombre 
+            reset={this.state.resetNombre}
+            onValido={(e) => this.nombreValido(e)}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <InputApellido 
+            reset={this.state.resetApellido}
+            onValido={(e)=> this.apellidoValido(e)}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <InputEmail 
+            reset={this.state.resetEmail}
+            onValido={(e) => this.emailValido(e)}
+          />
+        </Grid>
+      </Grid>
+    );
   }
 
   renderFormContacto(){
