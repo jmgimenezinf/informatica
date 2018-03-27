@@ -17,10 +17,11 @@ class InputNombre extends Component {
     return re.test(nombre);
   }
   handleNombre(e){
+    console.log("nombre input " + e.target.value);
   if(e.target.value.length <=25){
     if(this.validateNombre(e.target.value)){
        this.props.onValido(e.target.value);
-       console.log("nombre input " + e.target.value);
+
     }else{
       e.target.value = e.target.value.substr(0, e.target.value.length - 1);      
       this.setState({error:"Email no válido"})      
@@ -33,11 +34,6 @@ class InputNombre extends Component {
     
   }
 
-  componentWillMount(){
-    if (this.props.val !== ""){
-      this.state.value = this.props.val;
-    }
-  }
 
   shouldComponentUpdate(){
     if (!this.props.reset){

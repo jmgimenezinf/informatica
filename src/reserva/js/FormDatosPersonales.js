@@ -1,27 +1,50 @@
 import React, { Component } from 'react';
-import {TextField, Grid} from 'material-ui';
+import {Grid, Button} from 'material-ui';
+import {TextValidator, ValidatorForm} from 'react-material-ui-form-validator';
 import InputNombre from '../../componentes/js/InputNombre';
 import InputApellido from '../../componentes/js/InputApellido';
 import InputEmail from '../../componentes/js/InputEmail';
+
+const styles = theme => ({
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 200,
+    },
+    root: {
+        width: '90%',
+    },
+    button: {
+    marginTop: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    },
+    actionsContainer: {
+    marginBottom: theme.spacing.unit * 2,
+    },
+    resetContainer: {
+    padding: theme.spacing.unit * 3,
+    },
+});
+
 
 class FormDatosPersonales extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            nombre:this.props.nombre,
-            errorNombre:"",
-            apellido:this.props.apellido,
-            errorApellido:"",
-            email:this.props.email,
-            errorEmail:"",
-            telefono:"",
-            errorTelefono:"",
-            resetApellido:false,
-            resetEmail:false,
-            resetNombre:false,
+                nombre:this.props.nombre,
+                errorNombre:"",
+                apellido:this.props.apellido,
+                errorApellido:"",
+                email:this.props.email,
+                errorEmail:"",
+                resetApellido:false,
+                resetEmail:false,
+                resetNombre:false,
+                submitted: false,
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.validate = this.validate.bind(this);
     }
 
@@ -47,85 +70,71 @@ class FormDatosPersonales extends Component {
             return false;
         }
      }
-     
-
-    emailValido(email){
-        this.setState({email:email});
-        this.validate();
-      }
-      nombreValido(nombre){
-        this.setState({nombre:nombre});
-        this.validate();
-      }
-      apellidoValido(apellido){
-        this.setState({apellido:apellido});
-        this.validate();
-      }
-
-      telefonoValido(){
-
-        this.props.onDataChange(this.state);
-      }
+    
+    handleSubmit(){
+        this.setState({ submitted: true }, () => {
+            setTimeout(() => this.setState({ submitted: false }), 5000);
+        });
+    }
 
     render() {
         return (
             <Grid container spacing={24}>
                 <Grid item xs={6}>
-                    {/* <TextField 
+                    <TextValidator 
                         name="nombre" 
                         type="text" 
                         label="Nombre" 
                         value={this.state.nombre} 
                         onChange={this.handleChange}
-                        error={this.state.errorNombre}
+                        errorMessages={[
+                            'Este campo es obligatorio',
+                            'El nombre no puede contener números'
+                        ]}
                         fullWidth
-                    /> */}
-                    <InputNombre 
-                        reset={this.state.resetNombre}
-                        val={this.state.nombre}
-                        onValido={(e) => this.nombreValido(e)}
+                        validators = {[
+                            'required',
+                            'matchRegexp:^[a-zA-Z /t]+$'
+
+                        ]}
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    {/* <TextField 
+                    <TextValidator 
                         name="apellido" 
                         type="text" 
                         label="Apellido" 
                         value={this.state.apellido} 
                         onChange={this.handleChange}
+                        errorMessages={[
+                            'Este campo es obligatorio'
+                        ]}
                         fullWidth
-                    /> */}
-                    <InputApellido 
-                        reset={this.state.resetApellido}
-                        val={this.state.apellido}
-                        onValido={(e)=> this.apellidoValido(e)}
+                        validators = {[
+                            'required',
+
+                        ]}
                     />
                 </Grid>
                 <Grid item xs={8}>
-                    {/* <TextField 
+                    <TextValidator 
                         name="email" 
                         type="email" 
                         label="Email" 
                         value={this.state.email} 
                         onChange={this.handleChange}
+                        errorMessages={[
+                            'Este campo es obligatorio',
+                            'El email es inválido'
+                        ]}
                         fullWidth
-                    /> */}
-                    <InputEmail 
-                        reset={this.state.resetEmail}
-                        val={this.state.email}
-                        onValido={(e) => this.emailValido(e)}
+                        validators = {[
+                            'required',
+                            'isEmail'
+
+                        ]}
                     />
-                </Grid> 
-                <Grid item xs={4}>
-                    <TextField 
-                        type="number" 
-                        name="telefono"
-                        label="Teléfono" 
-                        value={this.state.telefono} 
-                        onChange={this.handleChange}
-                       fullWidth
-                    />
-                </Grid> 
+                </Grid>
             </Grid>
         );
     }
