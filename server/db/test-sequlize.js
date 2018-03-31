@@ -1,4 +1,4 @@
-const Session = require('./Session').Session;
+const Session = require('./sessionFactory').SessionFactory;
 
 const Reserva = Session.import('./models/reserva');
 const Disertante = Session.import('./models/disertante');

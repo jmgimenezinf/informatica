@@ -57,6 +57,54 @@ function listSingleEventsWithinDateRange(calendarId, startDateTime, endDateTime,
 		});
 }
 
+function crearEventoFromJson (jsonEvento) {
+	let evento = {
+		id: jsonEvento.id,
+		summary: jsonEvento.summary,
+		location: jsonEvento.location,
+		start: jsonEvento.start,
+		end: jsonEvento.end,
+		status: jsonEvento.status
+	}
+
+	return evento
+}
+
+async function  obtenerEventos(calendarId, startDateTime, endDateTime) {
+	let eventsArray = [];
+	let params = {
+		timeMin: startDateTime,
+		timeMax: endDateTime,
+		singleEvents: false
+	}
+
+	return new Promise(function(resolve,reject){
+		 cal.Events.list(calendarId, params)	
+		.then(jsonEventos => {
+			for (let i = 0; i < jsonEventos.length; i++) {
+				let event = {
+					id: jsonEventos[i].id,
+					summary: jsonEventos[i].summary,
+					location: jsonEventos[i].location,
+					start: jsonEventos[i].start,
+					end: jsonEventos[i].end,
+					status: jsonEventos[i].status
+				};
+				eventsArray.push(event);
+			}
+			console.log('List of events on calendar within time-range:');
+			console.log(eventsArray);
+			resolve(eventsArray);
+		}).catch(err => {
+			console.log('Error: listSingleEventsWithinDateRange', err.message);
+			reject('error');
+		});
+
+	})
+
+	
+}
+
 function listRecurringEventsWithinDateRange(calendarId, startDateTime, endDateTime, query) {
 	let eventsArray = [];
 	let params = {
@@ -146,26 +194,22 @@ function insertEventWithAttendee(calendarId, eventSummary, startDateTime, endDat
 			console.log('Error: insertEventWithAttendee', err.message);
 		});
 }
+var moment = require('moment-timezone');
+
+var startDateTime = moment.tz("2018-03-27 23:00","America/Argentina/Buenos_Aires").format();
+var endDateTime = moment.tz("2018-03-27 23:31","America/Argentina/Buenos_Aires").format();
 
 function insertEventSample(calendarId) {
 	let params = {
 		'summary': 'Sample Event with reminders',
-		'start': { 'dateTime': '2017-10-15T21:30:00+08:00' },
-		'end': { 'dateTime': '2017-10-15T22:00:00+08:00' },
+		'start': { 'dateTime': startDateTime },
+		'end': { 'dateTime': endDateTime },
 		'description': '',
 		'status': 'confirmed',
-		'colorId': 3,
-		"reminders": {
-			"useDefault": false,
-			"overrides": [
-				{ "method": "email", "minutes": 25 },
-				{ "method": "popup", "minutes": 20 }
-			]
-		},
-		'attendees': [{ 'email': 'yuhong90@gmail.com' }]
+		'colorId': 3
 	};
 	let optionalQueryParams = {
-		sendNotifications: true
+		sendNotifications: false
 	};
 
 	return cal.Events.insert(calendarId, params, optionalQueryParams)
@@ -178,7 +222,7 @@ function insertEventSample(calendarId) {
 		});
 }
 
-function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, location, status, description) {
+function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, description,colorId) {
 	let event = {
 		'start': {
 			'dateTime': startDateTime
@@ -186,11 +230,10 @@ function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, locat
 		'end': {
 			'dateTime': endDateTime
 		},
-		'location': location,
 		'summary': eventSummary,
-		'status': status,
+		'status': 'confirmed',
 		'description': description,
-		'colorId': 1
+		'colorId': colorId
 	};
 	let optionalQueryParams = {
 		sendNotifications: true
@@ -336,4 +379,5 @@ module.exports.updateEvent = updateEvent;
 module.exports.deleteEvent = deleteEvent;
 module.exports.eventInstances = eventInstances;
 module.exports.moveEvent = moveEvent;
+module.exports.obtenerEventos = obtenerEventos;
 
