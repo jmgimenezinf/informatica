@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Input, Button, Icon} from 'react-materialize';
+import {ValidatorForm} from 'react-material-ui-form-validator';
 import Iframe from 'react-iframe'
 import {Grid, Typography, withStyles,Paper} from 'material-ui';
 import PropTypes from 'prop-types';
@@ -132,6 +133,10 @@ class Solicitud extends Component {
       };
       
 
+      handleSubmit(){
+          
+      }
+
 
     render() {
         const { classes } = this.props;
@@ -139,46 +144,52 @@ class Solicitud extends Component {
         const { activeStep } = this.state
         const { selectedDate, selectedTime } = this.state;
         return (
-            <div id='contenedorReserva'>
-                <div className='solicitudForm'>
-                    <h4 align="center"> Solicitud de reserva </h4>
-                    <Stepper activeStep={activeStep} orientation="vertical">
-                        {steps.map((label, index) => {
-                            return (
-                            <Step key={label}>
-                                <StepLabel>{label}</StepLabel>
-                                <StepContent>
-                                <Typography>{this.getStepContent(index)}</Typography>
-                                <div className={classes.actionsContainer}>
-                                    <div>
-                                    <Button
-                                        disabled={activeStep === 0}
-                                        onClick={this.handleBack}
-                                        className={classes.button}
-                                    >
-                                        Volver
-                                    </Button>
-                                    <Button
-                                        variant="raised"
-                                        color="primary"
-                                        onClick={this.handleNext}
-                                        className={classes.button}
-                                     
-                                    >
-                                        {activeStep === steps.length - 1 ? 'Enviar' : 'Siguiente'}
-                                    </Button>
+            <ValidatorForm
+                ref="form"
+                onSubmit={this.handleSubmit}
+                instantValidate
+            >
+                <div id='contenedorReserva'>
+                    <div className='solicitudForm'>
+                        <h4 align="center"> Solicitud de reserva </h4>
+                        <Stepper activeStep={activeStep} orientation="vertical">
+                            {steps.map((label, index) => {
+                                return (
+                                <Step key={label}>
+                                    <StepLabel>{label}</StepLabel>
+                                    <StepContent>
+                                    <Typography>{this.getStepContent(index)}</Typography>
+                                    <div className={classes.actionsContainer}>
+                                        <div>
+                                        <Button
+                                            disabled={activeStep === 0}
+                                            onClick={this.handleBack}
+                                            className={classes.button}
+                                        >
+                                            Volver
+                                        </Button>
+                                        <Button
+                                            variant="raised"
+                                            color="primary"
+                                            onClick={this.handleNext}
+                                            className={classes.button}
+                                        
+                                        >
+                                            {activeStep === steps.length - 1 ? 'Enviar' : 'Siguiente'}
+                                        </Button>
+                                        </div>
                                     </div>
-                                </div>
-                                </StepContent>
-                            </Step>
-                            );
-                        })}
-                    </Stepper>  
+                                    </StepContent>
+                                </Step>
+                                );
+                            })}
+                        </Stepper>  
+                    </div>
+                    <div className='calendarContainer'>
+                        <Calendar/>
+                    </div>
                 </div>
-                <div className='calendarContainer'>
-                    <Calendar/>
-                </div>
-            </div>
+            </ValidatorForm>
         );
     }
 }
