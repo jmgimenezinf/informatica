@@ -22,15 +22,17 @@ Reserva.hasMany(Evento)
 Evento.belongsTo(Reserva)
 
 
-//Verifica si esta ocupado el evento
+//Verifica si esta ocupado el evento en el calendar
 async function verificarEventoOcupado(calendarId, startDateTime, endDateTime) {
-    eventos = await obtenerEventos(calendarId,startDateTime,endDateTime)
+    let eventos = await obtenerEventos(calendarId,startDateTime,endDateTime).catch(()=>{
+        reject();
+    })
     
-    promesaLibre = new Promise(function (resolve, reject) {
+    let promesaLibre = new Promise(function (resolve, reject) {
         if (eventos.length == 0) {
-            resolve()
+            resolve(eventos)
         }
-        reject()
+        reject();
     })
 
     return promesaLibre
@@ -43,77 +45,86 @@ async function verificarEventoOcupado(calendarId, startDateTime, endDateTime) {
     eventos.forEach(function(evento){
         promesas[i] = verificarEventoOcupado(calendarId,evento.startDateTime,evento.endDateTime);
     })
-    
-    Promise.all(promesas)
-    .then(() => {
-        console.log("esta libre");
-        return true;
-    })
-    .catch(() => {
-        console.log("esta ocupado");
-        return false;
-    });
-}
-//Crea los eventos y retorna los id de los eventos creado por la API
-function crearEventos(calendarId,eventos){
     return new Promise(function(resolve,reject){
-        var eventosCreados=[];
-        var i=0;
-        eventos.forEach(function(evento){
-            eventosCreados[i]=insertEvent(calendarId, 
-                evento.titulo, 
-                evento.startDateTime, 
-                evento.endDateTime,"",1)
-            i++;
+        Promise.all(promesas)
+        .then(() => {
+            console.log("esta libre");
+            resolve(true);
+    
         })
-        resolve(eventosCreados);
+        .catch(() => {
+            console.log("esta ocupado");
+            resolve(false);
+        });
     })
 }
+//Crea un evento en el calendar y lo retorna
+async function crearEventoCalendar(calendarId,evento){
+    let eventoCreado = await insertEvent(calendarId, 
+        evento.titulo, 
+        evento.startDateTime, 
+        evento.endDateTime,"",1);
+    return new Promise(function(resolve,reject){
+        resolve(eventoCreado);
+    })
 
+}
+//Crea una lista de eventos en el calendar y los retorna
+async function crearEventosCalendar(calendarId,eventos){
+    let eventosCreados=[];
+    var i=0;
+    eventos.forEach(function(evento){
+        let eventoCreado = crearEventoCalendar(calendarId,evento);
+        eventosCreados[i]= eventoCreado; 
+        i++;
+    })
+
+    console.log("los eventos cerdos son" + eventosCreados +"estos")
+    return new Promise(function(resolve,reject){
+        Promise.all(eventosCreados)
+        .then(()=>{
+            resolve(eventosCreados); 
+        }).catch(()=>{
+            reject();
+        })
+    })
+}
+// guarda los eventos de una reserva en la DB
 function guardarEventos (reserva, eventos) {
-    return eventos.forEach(function (evento) {
+    eventos.forEach(function (evento) {
+        console.log("evento : 1" + evento)
         Evento.create({
             evento_calendar: evento.id,
-            reservaIdReserva: reserva.idReserva,
+            reservaIdReserva: reserva.idReserva
         })
     })
 }
-
-function guardarReserva (disertante) {
-    return Reserva.findOrCreate({
-        where: {
-            nombre: disertante.nombre,
-            apellido: disertante.apellido,
-            email: disertante.email
-        }
-    })
-    .then((reserva) => guardarEventos(reserva, eventos))
+//guarda las reservas la DB
+function guardarReserva (disertante,eventos) {
+    return Reserva.create({
+        disertanteIdDisertante:disertante.idDisertante
+    });
+}
+// spread creado es un booleano si se creo o no
+function guardarDisertanteReservaEventos(disertante,eventos){
+    Disertante.findOrCreate({where:{nombre:disertante.nombre,apellido:disertante.apellido,email:disertante.email}}).spread((disertanteCreado, creado) => {
+        guardarReserva(disertanteCreado,eventos)
+        .then((reserva)=>{
+            guardarEventos(reserva, eventos)});
+    });
 }
 
-function reservar(calendarId,titulo,disertante,eventos){
-    verificarEventosReserva(calendarId,eventos).then(()=>{
-        crearEventos(calendarId,eventos).then((eventosCreados)=>{
-            Disertante.findOrCreate({where:{nombre:disertante.nombre,apellido:disertante.apellido,email:disertante.email}}).spread((disertanteCreado, creado) => {
-                guardarReserva(disertante)
-            });
-        })
-    }).catch((eventos)=>{
-        console.log(eventos)
-    })
-
-    // if (verificarEventosReserva(calendarId,eventos)){
-    //     crearEventos(calendarId,eventos).then((eventosId)=>{
-    //         if (eventosId!==[]){
-    //             Disertante.findOrCreate({where:{nombre:disertante.nombre,apellido:disertante.apellido,email:disertante.email}}).spread((disertanteCreado, creado) => {
-    //                 Reserva.create({titulo:titulo,disertanteIdDisertante:disertanteCreado.idDisertante}).then((reserva)=>{
-    //                     eventosId.forEach(function(evento) {
-    //                         Evento.create({evento_calendar:evento.id,reservaIdReserva:reserva.idReserva});
-    //                     });    
-    //                 });
-    //             });
-    //         }
-    //     })
-    // }else { console.log("ocupado")}
+async function reservar(calendarId,titulo,disertante,eventos){
+   let disponible = await verificarEventosReserva(calendarId,eventos);
+   if (disponible) {
+      let eventosCreados = await crearEventosCalendar(calendarId,eventos);
+      
+      Promise.all(eventosCreados).then((eventosCreados)=>{
+          guardarDisertanteReservaEventos(disertante, eventosCreados);
+      })
+   } else {
+        console.log("No se creo la reserva, horario ocupado");
+   }
 }
 
 module.exports.reservar = reservar;

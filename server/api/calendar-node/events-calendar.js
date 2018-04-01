@@ -70,40 +70,7 @@ function crearEventoFromJson (jsonEvento) {
 	return evento
 }
 
-async function  obtenerEventos(calendarId, startDateTime, endDateTime) {
-	let eventsArray = [];
-	let params = {
-		timeMin: startDateTime,
-		timeMax: endDateTime,
-		singleEvents: false
-	}
 
-	return new Promise(function(resolve,reject){
-		 cal.Events.list(calendarId, params)	
-		.then(jsonEventos => {
-			for (let i = 0; i < jsonEventos.length; i++) {
-				let event = {
-					id: jsonEventos[i].id,
-					summary: jsonEventos[i].summary,
-					location: jsonEventos[i].location,
-					start: jsonEventos[i].start,
-					end: jsonEventos[i].end,
-					status: jsonEventos[i].status
-				};
-				eventsArray.push(event);
-			}
-			console.log('List of events on calendar within time-range:');
-			console.log(eventsArray);
-			resolve(eventsArray);
-		}).catch(err => {
-			console.log('Error: listSingleEventsWithinDateRange', err.message);
-			reject('error');
-		});
-
-	})
-
-	
-}
 
 function listRecurringEventsWithinDateRange(calendarId, startDateTime, endDateTime, query) {
 	let eventsArray = [];
@@ -221,8 +188,35 @@ function insertEventSample(calendarId) {
 			console.log('Error: insertEvent', err.message);
 		});
 }
+async function  obtenerEventos(calendarId, startDateTime, endDateTime) {
+	let eventsArray = [];
+	let params = {
+		timeMin: startDateTime,
+		timeMax: endDateTime,
+		singleEvents: false
+	}
 
-function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, description,colorId) {
+	return new Promise(function(resolve,reject){
+		 cal.Events.list(calendarId, params)	
+		.then(jsonEventos => {
+			for (let i = 0; i < jsonEventos.length; i++) {
+				let event = crearEventoFromJson(jsonEventos[i])
+				eventsArray.push(event);
+			}
+			console.log('List of events on calendar within time-range:');
+			console.log(eventsArray);
+			resolve(eventsArray);
+		}).catch(err => {
+			console.log('Error: listSingleEventsWithinDateRange', err.message);
+			reject('error');
+		});
+
+	})
+
+	
+}
+
+async function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, description,colorId) {
 	let event = {
 		'start': {
 			'dateTime': startDateTime
@@ -239,25 +233,26 @@ function insertEvent(calendarId, eventSummary, startDateTime, endDateTime, descr
 		sendNotifications: true
 	};
 
-	return cal.Events.insert(calendarId, event, optionalQueryParams)
-		.then(resp => {
-			console.log(resp);
-			let results = {
-				id: resp.id,
-				'summary': resp.summary,
-				'location': resp.location,
-				'status': resp.status,
-				'start': resp.start.dateTime,
-				'end': resp.end.dateTime,
-				'created': new Date(resp.created)
-			};
-			console.log('inserted event:');
-			console.log(results);
-			return results;
-		})
-		.catch(err => {
-			console.log('Error: insertEvent', err.message);
-		});
+	return new Promise(function(resolve,reject){
+		cal.Events.insert(calendarId, event, optionalQueryParams)
+			.then(resp => {
+				let results = {
+					'id': resp.id,
+					'summary': resp.summary,
+					'location': resp.location,
+					'status': resp.status,
+					'start': resp.start.dateTime,
+					'end': resp.end.dateTime,
+					'created': new Date(resp.created)
+				};
+				resolve(results);
+			})
+			.catch(err => {
+				console.log('Error: insertEvent', err.message);
+				reject();
+			});
+	})
+
 }
 
 function insertRecurringEvent(calendarId, eventSummary, startDateTime, endDateTime, location, status, description, recurrenceRule) {
