@@ -114,17 +114,20 @@ function guardarDisertanteReservaEventos(disertante,eventos){
     });
 }
 
-async function reservar(calendarId,titulo,disertante,eventos){
-   let disponible = await verificarEventosReserva(calendarId,eventos);
-   if (disponible) {
-      let eventosCreados = await crearEventosCalendar(calendarId,eventos);
-      
-      Promise.all(eventosCreados).then((eventosCreados)=>{
-          guardarDisertanteReservaEventos(disertante, eventosCreados);
-      })
-   } else {
-        console.log("No se creo la reserva, horario ocupado");
-   }
+async function reservar(calendarId,disertante,eventos){
+  return new Promise(async function(resolve,reject){
+      let disponible = await verificarEventosReserva(calendarId,eventos);
+      if (disponible) {
+         let eventosCreados = await crearEventosCalendar(calendarId,eventos);
+         Promise.all(eventosCreados).then((eventosCreados)=>{
+             guardarDisertanteReservaEventos(disertante, eventosCreados);
+             resolve(true);
+         })
+      } else {
+           console.log("No se creo la reserva, horario ocupado");
+           reject(false);
+      }
+  })  
 }
 
 module.exports.reservar = reservar;

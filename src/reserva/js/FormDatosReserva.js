@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
-import {TextField, Grid, IconButton} from 'material-ui';
+import {TextField, Grid, IconButton,Button} from 'material-ui';
 import List, {
     ListItem,
     ListItemSecondaryAction,
@@ -8,105 +8,97 @@ import List, {
     ListSubheader
 } from 'material-ui/List';
 import DeleteIcon from 'material-ui-icons/Delete';
+import FormEvento from './FormEvento';
+function horaInicioFinFormat(evento){
+    let inicio = new Date(evento.horaInicio);
+    let fin = new Date(evento.horaFin);
+    return "desde "+inicio.getHours() + ":"+inicio.getMinutes()
+    +" hasta "+fin.getHours()+":"+fin.getMinutes();
+}
+function ListEventos(props){
+    const eventos = props.eventos;
+    const list = eventos.map((evento,index)=>
+            <ListItem>
+                <ListItemText
+                    primary={evento.titulo}
+                    secondary={evento.fecha + " " +horaInicioFinFormat(evento)}
+                />
+                <ListItemSecondaryAction>
+                <IconButton aria-label="Delete" onClick={()=>props.self.borrarEvento(index)}>
+                    <DeleteIcon />
+                </IconButton>
+                </ListItemSecondaryAction>
+            </ListItem>
+    );
+    return ( <List className="listaReservas"> {list} </List>);
+}
+
 
 class FormDatosReserva extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            titulo:"",
+            horaInicio: new Date(),
+            horaFin: new Date(),
+            fecha:new Date(),
+            eventos:[]
+        }
+        this.handleHoraInicio = this.handleHoraInicio.bind(this);
+        this.handleHoraFin = this.handleHoraFin.bind(this);
+        this.handleFechaEvento = this.handleFechaEvento.bind(this);
+        this.handleTitulo = this.handleTitulo.bind(this);
+        this.handleAgregarEvento = this.handleAgregarEvento.bind(this);
+        this.borrarEvento = this.borrarEvento.bind(this);
+        
+    }
 
-    state = {
-        selectedDate: new Date(),
-        selectedTime: new Date(),
-      }
-    
-      handleDateChange = date => {
-        this.setState({ selectedDate: date })
-      }
-    
-      handleTimeChange = time => {
-        this.setState({ selectedTime: time })
-      }
-
-
+    handleHoraInicio(hora){
+        this.setState({horaInicio: hora});
+    }
+    handleHoraFin(hora){
+        this.setState({horaFin:hora});
+    }
+    handleFechaEvento(fecha){
+        this.setState({fechaEvento:fecha});
+    }
+    handleTitulo(titulo){
+        this.setState({titulo:titulo});
+    }
+    handleAgregarEvento(){
+        let evento = {
+            titulo:this.state.titulo,
+            fecha:this.state.fecha.toLocaleDateString(),
+            horaInicio:this.state.horaInicio.toISOString(),
+            horaFin:this.state.horaFin.toISOString()
+        }
+        let updateEventos = this.state.eventos;
+        updateEventos.push(evento);
+        this.setState({eventos:updateEventos});
+    }
+    borrarEvento(index){
+        let updateEventos = this.state.eventos;
+        updateEventos.splice(index,1);
+        this.setState({eventos:updateEventos});
+    }
     render() {
         const { selectedDate, selectedTime } = this.state;
         return (
-                <Grid container spacing={24}>
-                    <Grid item xs={12}>
-                        <TextField 
-                            fullWidth
-                            label="Título del evento"
-                        />
-                    </Grid> 
-                    <Grid item xs={4}>
-                        <DatePicker
-                            disablePast="true"
-                            okLabel="Aceptar"
-                            cancelLabel="Cancelar"
-                            label="Fecha"
-                            value={selectedDate}
-                            onChange={this.handleDateChange}
-                        />
-                    </Grid> 
-                    <Grid item xs={4}>
-                        <TimePicker
-                            label="Hora de inicio"
-                            value={selectedTime}
-                            onChange={this.handleTimeChange}
-                        />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <TimePicker
-                            label="Hora de finalización"
-                            value={selectedTime}
-                            onChange={this.handleTimeChange}
-                        />
+            <Grid container spacing={12}>
+                <FormEvento 
+                fechaValue={(e) => this.handleFechaEvento(e)} 
+                horaInicioValue={(e) => this.handleHoraInicio(e)} 
+                horaFinValue={(e) => this.handleHoraFin(e)}
+                tituloValue={(e)=> this.handleTitulo(e)}
+                />
+                <Grid item xs={12} justify='flex-end'>
+                    <Button color="primary" onClick={this.handleAgregarEvento}>
+                        Agregar
+                    </Button>
                 </Grid>
                 <Grid item xs={12}>
                     <ListSubheader>Lista de reservas</ListSubheader>
-                    <List className="listaReservas">
-                        <ListItem>
-                            <ListItemText
-                                primary="EPYA"
-                                secondary="Martes de 17 a 19hs"
-                            />
-                            <ListItemSecondaryAction>
-                            <IconButton aria-label="Delete">
-                                <DeleteIcon />
-                            </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText
-                                primary="Algorítmica y Programación I"
-                                secondary="Jueves de 14 a 16:30hs"
-                            />
-                            <ListItemSecondaryAction>
-                            <IconButton aria-label="Delete">
-                                <DeleteIcon />
-                            </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText
-                                primary="Arquitectura de Computadoras"
-                                secondary="Miércoles de 15 a 17:30hs"
-                            />
-                            <ListItemSecondaryAction>
-                            <IconButton aria-label="Delete">
-                                <DeleteIcon />
-                            </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText
-                                primary="Base de Datos"
-                                secondary="Lunes de 13 a 16hs"
-                            />
-                            <ListItemSecondaryAction>
-                            <IconButton aria-label="Delete">
-                                <DeleteIcon />
-                            </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                    </List>
+                    <ListEventos self={this} eventos={this.state.eventos} />
                 </Grid>
             </Grid>
         );

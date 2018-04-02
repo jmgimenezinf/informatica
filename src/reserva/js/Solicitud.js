@@ -60,7 +60,7 @@ class Solicitud extends Component {
       
     getStepContent(step) {
         switch (step) {
-          case 0:
+          case 1:
             return  <FormDatosPersonales
                         nombre={this.state.nombre}
                         apellido={this.state.apellido}
@@ -69,7 +69,7 @@ class Solicitud extends Component {
                         onDataChange = {(state) => this.updatePersonalState(state)}
                         ref={instance => {this.childPersonales = instance;}}
                     /> 
-          case 1:
+          case 0:
             return <FormDatosReserva/>
           case 2: 
             return `Try out different ad text to see what brings in the most customers,
