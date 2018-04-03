@@ -9,11 +9,12 @@ import List, {
 } from 'material-ui/List';
 import DeleteIcon from 'material-ui-icons/Delete';
 import FormEvento from './FormEvento';
+import { equal } from 'assert';
 function horaInicioFinFormat(evento){
     let inicio = new Date(evento.horaInicio);
     let fin = new Date(evento.horaFin);
-    return "desde "+inicio.getHours() + ":"+inicio.getMinutes()
-    +" hasta "+fin.getHours()+":"+fin.getMinutes();
+    return " de "+inicio.getHours() + ":"+inicio.getMinutes()
+    +" a "+fin.getHours()+":"+fin.getMinutes();
 }
 function ListEventos(props){
     const eventos = props.eventos;
@@ -38,11 +39,12 @@ class FormDatosReserva extends Component {
     constructor(props){
         super(props);
         this.state={
-            titulo:"",
+            titulo:null,
             horaInicio: new Date(),
             horaFin: new Date(),
             fecha:new Date(),
-            eventos:[]
+            eventos:[],
+            mensaje:""
         }
         this.handleHoraInicio = this.handleHoraInicio.bind(this);
         this.handleHoraFin = this.handleHoraFin.bind(this);
@@ -50,9 +52,23 @@ class FormDatosReserva extends Component {
         this.handleTitulo = this.handleTitulo.bind(this);
         this.handleAgregarEvento = this.handleAgregarEvento.bind(this);
         this.borrarEvento = this.borrarEvento.bind(this);
+        this.jsonEqual = this.jsonEqual.bind(this);
+        this.existeEvento = this.existeEvento.bind(this);
         
     }
 
+    jsonEqual(a,b) {
+        return JSON.stringify(a) === JSON.stringify(b);
+    }
+    existeEvento(evento,eventos){
+        let self=this;
+        return eventos.find(function(elem){
+                if(self.jsonEqual(elem,evento)){
+                    return true;
+                }
+                return false
+        })
+    } 
     handleHoraInicio(hora){
         this.setState({horaInicio: hora});
     }
@@ -65,21 +81,36 @@ class FormDatosReserva extends Component {
     handleTitulo(titulo){
         this.setState({titulo:titulo});
     }
+
     handleAgregarEvento(){
-        let evento = {
-            titulo:this.state.titulo,
-            fecha:this.state.fecha.toLocaleDateString(),
-            horaInicio:this.state.horaInicio.toISOString(),
-            horaFin:this.state.horaFin.toISOString()
+
+        if(this.state.titulo !== null){
+            let evento = {
+                titulo:this.state.titulo,
+                fecha:this.state.fecha.toLocaleDateString(),
+                horaInicio:this.state.horaInicio.toISOString(),
+                horaFin:this.state.horaFin.toISOString()
+            }
+            let updateEventos = this.state.eventos;
+            let existe = this.existeEvento(evento,updateEventos);
+            if (!existe){
+                updateEventos.push(evento);
+                this.setState({
+                    eventos:updateEventos,
+                    mensaje:""
+                });
+            }else{
+                this.setState({mensaje:"El evento ya esta en la lista"});
+            }
         }
-        let updateEventos = this.state.eventos;
-        updateEventos.push(evento);
-        this.setState({eventos:updateEventos});
     }
     borrarEvento(index){
         let updateEventos = this.state.eventos;
         updateEventos.splice(index,1);
-        this.setState({eventos:updateEventos});
+        this.setState({
+            eventos:updateEventos,
+            mensaje:"Evento eliminado"
+        });
     }
     render() {
         const { selectedDate, selectedTime } = this.state;
@@ -91,7 +122,10 @@ class FormDatosReserva extends Component {
                 horaFinValue={(e) => this.handleHoraFin(e)}
                 tituloValue={(e)=> this.handleTitulo(e)}
                 />
-                <Grid item xs={12} justify='flex-end'>
+                <Grid item xs={8} justify='flex-end'>
+                    <div><h7>{this.state.mensaje}</h7></div>
+                </Grid>
+                <Grid item xs={4} justify='flex-end'>
                     <Button color="primary" onClick={this.handleAgregarEvento}>
                         Agregar
                     </Button>
