@@ -40,9 +40,9 @@ class FormDatosReserva extends Component {
         super(props);
         this.state={
             titulo:null,
-            horaInicio: new Date(),
-            horaFin: new Date(),
-            fecha:new Date(),
+            fecha:this.inicializarFecha(),
+            horaInicio: this.inicializarHoraInicio(),
+            horaFin: this.inicializarHoraFin(),
             eventos:[],
             mensaje:""
         }
@@ -54,6 +54,10 @@ class FormDatosReserva extends Component {
         this.borrarEvento = this.borrarEvento.bind(this);
         this.jsonEqual = this.jsonEqual.bind(this);
         this.existeEvento = this.existeEvento.bind(this);
+        this.beetwenDate = this.beetwenDate.bind(this);
+        this.inicializarHoraInicio=this.inicializarHoraFin.bind(this);
+        this.inicializarHoraFin=this.inicializarHoraFin.bind(this);
+        this.inicializarFecha=this.inicializarFecha.bind(this);
         
     }
 
@@ -63,11 +67,32 @@ class FormDatosReserva extends Component {
     existeEvento(evento,eventos){
         let self=this;
         return eventos.find(function(elem){
-                if(self.jsonEqual(elem,evento)){
-                    return true;
+                if(evento.fecha == elem.fecha){
+                    if(self.beetwenDate(evento.horaInicio,elem.horaInicio,elem.horaFin)){
+                        return true;
+                    }else if(self.beetwenDate(evento.horaFin,elem.horaInicio,elem.horaFin)){
+                        return true;
+                    }
                 }
                 return false
         })
+    }
+    inicializarHoraInicio(){
+        let date = new Date();
+        date.setHours(8);
+        date.setMinutes(0);
+        return date;
+    }
+    inicializarHoraFin(){
+        let date = new Date();
+        date.setHours(8);
+        date.setMinutes(30);
+        return date;
+    }
+    inicializarFecha(){
+        let date = new Date();
+        date.setDate(date.getDate() +1);
+        return date;
     } 
     handleHoraInicio(hora){
         this.setState({horaInicio: hora});
@@ -76,12 +101,17 @@ class FormDatosReserva extends Component {
         this.setState({horaFin:hora});
     }
     handleFechaEvento(fecha){
-        this.setState({fechaEvento:fecha});
+        this.setState({fecha:fecha});
     }
     handleTitulo(titulo){
         this.setState({titulo:titulo});
     }
-
+    beetwenDate(date,minDate,maxDate){
+        if( date >=minDate && date < maxDate){
+            return true;
+        }
+        return false;
+    }
     handleAgregarEvento(){
 
         if(this.state.titulo !== null){
@@ -100,7 +130,7 @@ class FormDatosReserva extends Component {
                     mensaje:""
                 });
             }else{
-                this.setState({mensaje:"El evento ya esta en la lista"});
+                this.setState({mensaje:"Existe un evento agregado en ese rango de tiempo"});
             }
         }
     }

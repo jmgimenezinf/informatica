@@ -92,7 +92,7 @@ horaFinMin(){
 
 render() {
     return (
-        <Grid item container >
+        <Grid container spacing={24}>
             <Grid item xs={12}>
                 <TextField 
                     fullWidth
@@ -101,7 +101,7 @@ render() {
                     onChange={(titulo)=>this.handleTituloChange(titulo)}
                 />
             </Grid> 
-            <Grid item xs={12}>
+            <Grid item xs={4}>
                 <DatePicker
                     disablePast="true"
                     okLabel="Aceptar"
@@ -113,7 +113,7 @@ render() {
 
                 />
             </Grid> 
-            <Grid item  xs={6} >
+            <Grid item  xs={4} >
                 <TimePicker
                     label="Hora de inicio"
                     value={this.state.horaInicio}
@@ -127,7 +127,7 @@ render() {
                     maxDate={this.horaMax()}
                 />
             </Grid>
-            <Grid item  xs={6}>
+            <Grid item  xs={4}>
                 <TimePicker
                     label="Hora de finalización"
                     value={this.state.horaFin}
