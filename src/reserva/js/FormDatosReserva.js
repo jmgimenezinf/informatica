@@ -10,11 +10,13 @@ import List, {
 import DeleteIcon from 'material-ui-icons/Delete';
 import FormEvento from './FormEvento';
 import { equal } from 'assert';
+import axios from 'axios';
+
 function horaInicioFinFormat(evento){
     let inicio = new Date(evento.horaInicio);
     let fin = new Date(evento.horaFin);
-    return " de "+inicio.getHours() + ":"+inicio.getMinutes()
-    +" a "+fin.getHours()+":"+fin.getMinutes();
+    return " de "+  ('0' + inicio.getHours()).slice(-2) + ":" + ('0' + inicio.getMinutes()).slice(-2)
+    +" a "+ ('0' + fin.getHours()).slice(-2)+":" + ('0' + fin.getMinutes()).slice(-2)
 }
 function ListEventos(props){
     const eventos = props.eventos;
@@ -22,8 +24,9 @@ function ListEventos(props){
             <ListItem>
                 <ListItemText
                     primary={evento.titulo}
-                    secondary={evento.fecha + " " +horaInicioFinFormat(evento)}
+                    secondary={evento.fecha.toLocaleDateString() + " " +horaInicioFinFormat(evento)}
                 />
+                <h6>{(evento.libre)?"libre":"ocupado"}</h6>
                 <ListItemSecondaryAction>
                 <IconButton aria-label="Delete" onClick={()=>props.self.borrarEvento(index)}>
                     <DeleteIcon />
@@ -67,7 +70,7 @@ class FormDatosReserva extends Component {
     existeEvento(evento,eventos){
         let self=this;
         return eventos.find(function(elem){
-                if(evento.fecha == elem.fecha){
+                if(evento.fecha.toLocaleDateString() == elem.fecha.toLocaleDateString()){
                     if(self.beetwenDate(evento.horaInicio,elem.horaInicio,elem.horaFin)){
                         return true;
                     }else if(self.beetwenDate(evento.horaFin,elem.horaInicio,elem.horaFin)){
@@ -95,13 +98,13 @@ class FormDatosReserva extends Component {
         return date;
     } 
     handleHoraInicio(hora){
-        this.setState({horaInicio: hora});
+        this.setState({horaInicio: hora,mensaje:""});
     }
     handleHoraFin(hora){
-        this.setState({horaFin:hora});
+        this.setState({horaFin:hora,mensaje:""});
     }
     handleFechaEvento(fecha){
-        this.setState({fecha:fecha});
+        this.setState({fecha:fecha,mensaje:""});
     }
     handleTitulo(titulo){
         this.setState({titulo:titulo});
@@ -112,22 +115,37 @@ class FormDatosReserva extends Component {
         }
         return false;
     }
-    handleAgregarEvento(){
+    verificarEvento(evento){
+        return new Promise(function(resolve,reject){
+            axios.post("http://192.168.1.37:7527/validar-evento",evento)
+            .then(function(response){
+                resolve(response.data);
+            }).catch(()=>{
+                console.log("inaccesible")
+            });
+        })      
+    }
+     handleAgregarEvento(){
 
         if(this.state.titulo !== null){
             let evento = {
                 titulo:this.state.titulo,
-                fecha:this.state.fecha.toLocaleDateString(),
+                fecha:this.state.fecha,
                 horaInicio:this.state.horaInicio.toISOString(),
-                horaFin:this.state.horaFin.toISOString()
+                horaFin:this.state.horaFin.toISOString(),
+                libre:null
             }
+            console.log(Date.UTC(evento.fecha));
             let updateEventos = this.state.eventos;
             let existe = this.existeEvento(evento,updateEventos);
             if (!existe){
-                updateEventos.push(evento);
-                this.setState({
-                    eventos:updateEventos,
-                    mensaje:""
+                this.verificarEvento(evento).then((libre)=>{
+                    evento.libre= libre;
+                    updateEventos.push(evento);
+                    this.setState({
+                        eventos:updateEventos,
+                        mensaje:""
+                    });
                 });
             }else{
                 this.setState({mensaje:"Existe un evento agregado en ese rango de tiempo"});
@@ -161,7 +179,7 @@ class FormDatosReserva extends Component {
                     </Button>
                 </Grid>
                 <Grid item xs={12}>
-                    <ListSubheader>Lista de reservas</ListSubheader>
+                    <ListSubheader>Eventos agregados</ListSubheader>
                     <ListEventos self={this} eventos={this.state.eventos} />
                 </Grid>
             </Grid>

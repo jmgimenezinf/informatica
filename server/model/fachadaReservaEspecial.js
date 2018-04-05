@@ -32,7 +32,7 @@ async function verificarEventoOcupado(calendarId, startDateTime, endDateTime) {
         if (eventos.length == 0) {
             resolve(eventos)
         }
-        reject();
+        reject(eventos);
     })
 
     return promesaLibre
@@ -132,3 +132,4 @@ async function reservar(calendarId,disertante,eventos){
 
 module.exports.reservar = reservar;
 module.exports.verificarEventosReserva = verificarEventosReserva;
+module.exports.verificarEventoOcupado = verificarEventoOcupado;

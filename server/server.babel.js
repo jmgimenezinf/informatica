@@ -1,5 +1,4 @@
 import express from 'express';
-import React from 'react';
 import novedades from './routes/novedades.js';
 import tesinas from './routes/tesinas.js';
 import planesEstudio from './routes/planes-estudio.js';
@@ -8,10 +7,12 @@ import bodyParser from 'body-parser';
 import os from 'os';
 import './routes/pdfmake.js';
 import email from './routes/email.js';
+import reservasRouter from './routes/reservas.js';
 // import './mail/gmail.js';
-import apiCalendar from './api-calendar';
 import {url,port} from '../ignorar/config.js';
 import path from 'path';
+import cors from 'cors';
+
 
 
 var interfaces = os.networkInterfaces();
@@ -44,8 +45,9 @@ app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
 });
-
+app.use(cors());
 app.use(email);
+app.use(reservasRouter);
 app.use(tesinas);
 app.use(novedades);
 app.use(planesEstudio);

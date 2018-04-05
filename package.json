@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://www.dinfo.ing.unp.edu.ar/",
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "react-scripts": "1.1.1"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
+    "cors": "^2.8.4",
     "date-fns": "^2.0.0-alpha.7",
     "draft-js": "^0.10.5",
     "draft-js-export-html": "^1.2.0",

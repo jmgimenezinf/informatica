@@ -55,29 +55,29 @@ class Solicitud extends Component {
     }
 
     getSteps() {
-        return ['Datos personales y de contacto', 'Datos de la reserva', 'Detalle de la solicitud'];
+        return ['Elija los eventos para la reserva','Datos personales y de contacto', 'Detalle de la solicitud'];
       }
       
     getStepContent(step) {
         switch (step) {
-          case 1:
-            return  <FormDatosPersonales
-                        nombre={this.state.nombre}
-                        apellido={this.state.apellido}
-                        email={this.state.email}
-                        telefono={this.state.telefono}
-                        onDataChange = {(state) => this.updatePersonalState(state)}
-                        ref={instance => {this.childPersonales = instance;}}
-                    /> 
-          case 0:
-            return <FormDatosReserva/>
-          case 2: 
-            return `Try out different ad text to see what brings in the most customers,
+            case 0:
+                return <FormDatosReserva/>
+            case 1:
+                return  <FormDatosPersonales
+                            nombre={this.state.nombre}
+                            apellido={this.state.apellido}
+                            email={this.state.email}
+                            telefono={this.state.telefono}
+                            onDataChange = {(state) => this.updatePersonalState(state)}
+                            ref={instance => {this.childPersonales = instance;}}
+                        /> 
+            case 2: 
+                return `Try out different ad text to see what brings in the most customers,
                     and learn how to enhance your ads using features like ad extensions.
                     If you run into any problems with your ads, find out how to tell if
                     they're running and how to resolve approval issues.`;
-          default:
-            return 'Unknown step';
+            default:
+                return 'Unknown step';
         }
       }
       
