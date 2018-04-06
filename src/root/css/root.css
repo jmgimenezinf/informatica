@@ -68,12 +68,6 @@ body {
 .item li a:hover{
     color: #42a5f5;
 }
-
-.boton-gitlab{
-    background: url('../images/gitlab.svg');
-    background-repeat: no-repeat;
-    margin-left: 65%;
-}
 .no-mobile{
     display: inline-block;
 }

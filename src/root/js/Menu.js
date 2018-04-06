@@ -6,21 +6,20 @@ import PropTypes from 'prop-types';
 import {NavItem,Navbar,Row,Col,Dropdown,Footer} from 'react-materialize';
 import PlanesDeEstudio from '../../alumnos/js/PlanesDeEstudio';
 import Inicio from '../../inicio/js/Inicio';
-// import Extension from '../../extension/js/Extension';
 import Tesinas from '../../alumnos/js/Tesinas';
 import Docentes from '../../docentes/js/Docentes';
 import Autoridades from '../../institucional/js/Autoridades';
 import Contacto from '../../contacto/js/Contacto';
-// import Calendario from '../../inicio/js/Calendario';
 import MenuItem from '../../componentes/js/MenuItem.js';
 import Solicitud from '../../reserva/js/Solicitud'
-// import {url,port} from '../../../ignorar/configReact.js'
 import '../css/root.css';
+
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
+import { blue700 } from 'material-ui/colors';
 
 
 function Transition(props) {
@@ -32,10 +31,6 @@ class Menu extends Component {
   state = {
     open: false,
   };
-
-  handleClickGitlab = () => {
-   window.location="http://192.168.156.49:4554/gitlab/";
-  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -53,9 +48,6 @@ render() {
              {/* eslint-disable-next-line*/}
             <div className="logo"><img alt="logo universidad" src={'logo.svg'}></img></div>
           </Col>
-          <Col offset="l4" l={2}>
-              {/*<Button onClick={this.handleClickGitlab}floating className='grey small boton-gitlab' waves='light'/>*/}
-          </Col>
         </Row>
         <Row>
         <Router basename="/">
@@ -70,15 +62,10 @@ render() {
                               alignment: 'left',
                               stopPropagation: false }} trigger={<li>Institucional</li>}>
                     <li><Link to="/autoridades">Autoridades</Link></li>
-                    {/* <li><Link to="/docentes">Docentes</Link></li> */}
-                    {/* <li><Link to="/docentes">Laboratorios</Link></li> */}
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <MenuItem titulo="Institucional" >
                   <Link to="/autoridades"><MenuItem titulo="Autoridades"/></Link>
-                      {/* <MenuItem titulo="Docentes"/> */}
-                      {/* <MenuItem titulo="Laboratorios"/> */}
-                      {/* <MenuItem titulo="Algoritmica y Programacion II"/> */}
                 </MenuItem>
                 <li  className="no-mobile"><a className="dropdown-menu"><Dropdown className="item" options={{outDuration: 225,
                               constrainWidth: false, 
@@ -89,14 +76,11 @@ render() {
                               stopPropagation: true }} trigger={<li>Oferta académica</li>}>
                     <li><Link to="/planes-de-estudio">Planes de estudio</Link></li>
                     <li><a href={"http://www.dinfo.ing.unp.edu.ar/dci"}>Doctorado</a></li>
-                    {/* <li><Link to="/docentes">Cursos de pogrado</Link></li> */}
-                    {/* <li><Link to="/extension">Extensión</Link></li> */}
                     <NavItem divider />
                 </Dropdown></a></li>  
                 <MenuItem titulo="Oferta Academica" >
                 <Link to="/planes-de-estudio"> <MenuItem titulo="Planes de estudio"/> </Link>
                 <a href={"http://www.dinfo.ing.unp.edu.ar/dci"} ><MenuItem titulo="Doctorado"></MenuItem> </a>
-                      {/* <MenuItem titulo="Extensión"/> */}
                 </MenuItem>
                 {/* <li><Link to="/tesinas">Investigación</Link></li> */}
                 <li className="opcion-menu"><Link to="/tesinas">Tesinas</Link></li>
@@ -128,13 +112,11 @@ render() {
             <Route  path="/autoridades" component={Autoridades}/>
             <Route  path="/docentes" component={Docentes}/>
             <Route  path="/tesinas" component={Tesinas}/>
-            <Route  path="/contacto" 
-            component={Contacto}/>
-            {/* <Route  path="/extension" component={Extension}/> */}
+            <Route  path="/contacto" component={Contacto}/>
           </div>
         </Router>
         </Row>
-        <Footer className="blue darken-2"copyrights="&copy; 2017 Equipo de Desarrollo - Departamento Informática - UNPSJB"></Footer>
+        <Footer className="blue darken-2"copyrights="&copy; 2018 Equipo de Desarrollo - Departamento Informática - UNPSJB"></Footer>
     </div>
   );
 }

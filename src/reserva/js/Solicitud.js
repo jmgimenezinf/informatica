@@ -12,8 +12,13 @@ import InputApellido from '../../componentes/js/InputApellido';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
 import FormDatosPersonales from './FormDatosPersonales';
 import FormDatosReserva from './FormDatosReserva';
+import { blue700 } from 'material-ui/colors';
+import { red100 } from 'material-ui/colors';
 
 const styles = theme => ({
+    palette: {
+        primary: red100,
+      },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
@@ -23,6 +28,7 @@ const styles = theme => ({
         width: '90%',
     },
     button: {
+    color:red100,
     marginTop: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     },
@@ -55,7 +61,7 @@ class Solicitud extends Component {
     }
 
     getSteps() {
-        return ['Elija los eventos para la reserva','Datos personales y de contacto', 'Detalle de la solicitud'];
+        return ['Elija los espacios vacios del calendario para agregar eventos a su reserva','Datos personales y de contacto', 'Detalle de la solicitud'];
       }
       
     getStepContent(step) {
@@ -175,7 +181,7 @@ class Solicitud extends Component {
                                             className={classes.button}
                                         
                                         >
-                                            {activeStep === steps.length - 1 ? 'Enviar' : 'Siguiente'}
+                                            {activeStep === steps.length - 1 ? 'Enviar' : 'Continuar con la reserva'}
                                         </Button>
                                         </div>
                                     </div>

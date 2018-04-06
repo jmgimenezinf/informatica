@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { TimePicker, DatePicker } from 'material-ui-pickers'
 import {TextField, Grid} from 'material-ui';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class FormEvento extends Component {
 constructor(props){
@@ -93,13 +95,16 @@ horaFinMin(){
 render() {
     return (
         <Grid container spacing={24}>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
                 <TextField 
                     fullWidth
                     label="Título del evento"
                     value={this.state.titulo}
                     onChange={(titulo)=>this.handleTituloChange(titulo)}
                 />
+            </Grid>  */}
+            <Grid item xs={12}>
+                <h5>Consulte la disponiblidad del laboratorio</h5>
             </Grid> 
             <Grid item xs={4}>
                 <DatePicker

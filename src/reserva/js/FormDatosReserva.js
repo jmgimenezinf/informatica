@@ -11,6 +11,17 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import FormEvento from './FormEvento';
 import { equal } from 'assert';
 import axios from 'axios';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
+import Dialog, {
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    withMobileDialog,
+  } from 'material-ui/Dialog';
+import PropTypes from 'prop-types';
+
 
 function horaInicioFinFormat(evento){
     let inicio = new Date(evento.horaInicio);
@@ -26,7 +37,6 @@ function ListEventos(props){
                     primary={evento.titulo}
                     secondary={evento.fecha.toLocaleDateString() + " " +horaInicioFinFormat(evento)}
                 />
-                <h6>{(evento.libre)?"libre":"ocupado"}</h6>
                 <ListItemSecondaryAction>
                 <IconButton aria-label="Delete" onClick={()=>props.self.borrarEvento(index)}>
                     <DeleteIcon />
@@ -46,8 +56,12 @@ class FormDatosReserva extends Component {
             fecha:this.inicializarFecha(),
             horaInicio: this.inicializarHoraInicio(),
             horaFin: this.inicializarHoraFin(),
+            eventoActual:"",
             eventos:[],
-            mensaje:""
+            dialogTitle:"",
+            dialogContent:"",
+            openDialog:false,
+            dialogPregunta:""
         }
         this.handleHoraInicio = this.handleHoraInicio.bind(this);
         this.handleHoraFin = this.handleHoraFin.bind(this);
@@ -61,6 +75,10 @@ class FormDatosReserva extends Component {
         this.inicializarHoraInicio=this.inicializarHoraFin.bind(this);
         this.inicializarHoraFin=this.inicializarHoraFin.bind(this);
         this.inicializarFecha=this.inicializarFecha.bind(this);
+        this.mostrarDisponibilidad= this.mostrarDisponibilidad.bind(this);
+        this.handleCloseDialog=this.handleCloseDialog.bind(this);
+        this.handleConsultarEvento=this.handleConsultarEvento.bind(this);
+        this.handleAgregar=this.handleAgregar.bind(this);
         
     }
 
@@ -115,9 +133,39 @@ class FormDatosReserva extends Component {
         }
         return false;
     }
+    
+    mostrarDisponibilidad(evento){
+        this.setState({disponible:evento.libre});
+        this.setState({openDialog:true});
+        if(evento.libre){
+            this.setState({botones:
+            <div>
+                <Button onClick={this.handleCloseDialog} color="primary">
+                    No
+                </Button>
+                <Button onClick={this.handleAgregarEvento} color="primary" autoFocus>
+                    Si
+                </Button>
+            </div>
+            });
+            let texto="El laboratorio se encuentra disponible para el dia "+
+            this.state.fecha.toLocaleDateString() + horaInicioFinFormat(evento);
+            this.setState({openAgregarEvento:true});
+            this.setState({dialogTitle:<div align="center"><h4>¿Desea reservarlo?</h4></div>})
+            this.setState({dialogPregunta:""});
+            this.setState({dialogContent:texto});
+        }else{
+            let texto="El laboratorio se encuentra ocupado para el dia "+
+            this.state.fecha.toLocaleDateString() + horaInicioFinFormat(evento);
+            this.setState({openAgregarEvento:true});
+            this.setState({dialogTitle:texto})
+            this.setState({dialogPregunta:""});
+            this.setState({dialogContent:""});
+        }
+    }
     verificarEvento(evento){
         return new Promise(function(resolve,reject){
-            axios.post("http://192.168.1.37:7527/validar-evento",evento)
+            axios.post("http://10.15.1.181:7527/validar-evento",evento)
             .then(function(response){
                 resolve(response.data);
             }).catch(()=>{
@@ -125,31 +173,64 @@ class FormDatosReserva extends Component {
             });
         })      
     }
-     handleAgregarEvento(){
+    handleAgregar(){
+        let updateEventos = this.state.eventos;
+        let evento = this.state.eventoActual;
+        evento.titulo = this.state.titulo;
+        updateEventos.push(evento);
+        this.setState({
+            eventos:updateEventos,
+            mensaje:""
+        });
+        this.handleCloseDialog();
+    }
+    handleAgregarEvento(){
+        this.setState({botones:
+        <div>
+            <Button onClick={this.handleCloseDialog} color="primary">
+                Cancelar
+            </Button>
+            <Button onClick={this.handleAgregar} color="primary" autoFocus>
+                Agregar
+            </Button>
+        </div>
+        });
+     
+        this.setState({dialogContent:""})
+        this.setState({dialogTitle:<div align="center"><h4>Ingrese un título para el evento</h4></div>})
+        this.setState({dialogPregunta:<TextField 
+            fullWidth
+            label="Título del evento"
+            value={this.state.titulo}
+            placeholder="Ej Curso de Informática"
+            onChange={(e)=>this.handleTituloChange(e)}
+        />});
+        this.setState({openAgregarEvento:true});
 
-        if(this.state.titulo !== null){
-            let evento = {
-                titulo:this.state.titulo,
-                fecha:this.state.fecha,
-                horaInicio:this.state.horaInicio.toISOString(),
-                horaFin:this.state.horaFin.toISOString(),
-                libre:null
-            }
-            console.log(Date.UTC(evento.fecha));
-            let updateEventos = this.state.eventos;
-            let existe = this.existeEvento(evento,updateEventos);
-            if (!existe){
-                this.verificarEvento(evento).then((libre)=>{
-                    evento.libre= libre;
-                    updateEventos.push(evento);
-                    this.setState({
-                        eventos:updateEventos,
-                        mensaje:""
-                    });
-                });
-            }else{
-                this.setState({mensaje:"Existe un evento agregado en ese rango de tiempo"});
-            }
+    }
+
+    handleTituloChange(titulo){
+         this.setState({titulo: titulo.target.value});
+    }
+    handleConsultarEvento(){
+        let evento = {
+            titulo:this.state.titulo,
+            fecha:this.state.fecha,
+            horaInicio:this.state.horaInicio.toISOString(),
+            horaFin:this.state.horaFin.toISOString(),
+            libre:null
+        }
+        console.log(Date.UTC(evento.fecha));
+        let updateEventos = this.state.eventos;
+        let existe = this.existeEvento(evento,updateEventos);
+        if (!existe){
+            this.verificarEvento(evento).then((libre)=>{
+                evento.libre= libre;
+                this.mostrarDisponibilidad(evento);
+                this.setState({eventoActual:evento})
+            });
+        }else{
+            this.setState({mensaje:"Existe un evento agregado en ese rango de tiempo"});
         }
     }
     borrarEvento(index){
@@ -160,10 +241,40 @@ class FormDatosReserva extends Component {
             mensaje:"Evento eliminado"
         });
     }
+    handleCloseDialog(){
+        this.setState({openDialog:false});
+    }
     render() {
-        const { selectedDate, selectedTime } = this.state;
+        const { fullScreen } = this.props;
         return (
             <Grid container spacing={12}>
+                <Dialog
+                fullScreen={fullScreen}
+                open={this.state.openDialog}
+                onClose={this.handleCloseDialog}
+                aria-labelledby="responsive-dialog-title"
+                >
+                <DialogTitle id="responsive-dialog-title">{this.state.dialogTitle}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            {this.state.dialogContent}
+                        </DialogContentText>
+                        <DialogContentText>
+                            {this.state.dialogPregunta}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        {(this.state.disponible)?
+                        <div>
+                            {this.state.botones} 
+                        </div>
+                            :
+                            <Button onClick={this.handleCloseDialog} color="primary">
+                                Aceptar
+                            </Button>
+                            }
+                    </DialogActions>
+                </Dialog>
                 <FormEvento 
                 fechaValue={(e) => this.handleFechaEvento(e)} 
                 horaInicioValue={(e) => this.handleHoraInicio(e)} 
@@ -174,8 +285,8 @@ class FormDatosReserva extends Component {
                     <div><h7>{this.state.mensaje}</h7></div>
                 </Grid>
                 <Grid item xs={4} justify='flex-end'>
-                    <Button color="primary" onClick={this.handleAgregarEvento}>
-                        Agregar
+                    <Button color="primary" onClick={this.handleConsultarEvento}>
+                        Consultar
                     </Button>
                 </Grid>
                 <Grid item xs={12}>
@@ -186,5 +297,7 @@ class FormDatosReserva extends Component {
         );
     }
 }
-
-export default FormDatosReserva;
+FormDatosReserva.propTypes = {
+    fullScreen: PropTypes.bool.isRequired,
+  };
+export default withMobileDialog()(FormDatosReserva);
